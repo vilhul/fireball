@@ -19,5 +19,6 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space)) {
             rb.AddForce(Vector2.up * 10f, ForceMode2D.Impulse);
         }
+
     }
 }
