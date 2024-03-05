@@ -1,21 +1,36 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerBasicMovement : MonoBehaviour
 {
-    Rigidbody2D rigidbody;
-    public float playerMovementSpeed = 1.0f;
+    //[SerializeField]
+    private float playerMovementSpeedMultiplier = 30f;
+    private Rigidbody2D playerRigidbody;
+    private float playerJumpForceMultiplier = 10f;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        playerRigidbody = GetComponent<Rigidbody2D>();
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        float horizontalInput = Input.GetAxis("Horizontal");
+        bool verticalInput = Input.GetKeyDown(KeyCode.Space);
+
+        if (verticalInput)
+        {
+            playerRigidbody.AddForce(Vector2.up * playerJumpForceMultiplier, ForceMode2D.Impulse);
+        }
+
+        Vector2 direction = new Vector2(horizontalInput, 0);
+        transform.Translate(direction * playerMovementSpeedMultiplier * Time.deltaTime);
+
+        if (Input.GetKey(KeyCode.R))
+        {
+            transform.position = (Vector2.zero);
+        }
     }
 }
