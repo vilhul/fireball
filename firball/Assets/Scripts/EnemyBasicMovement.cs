@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class EnemyBasicMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private float horizontal; 
+    private float speed = 8f;
+    private float jumpingPower = 16f;
+    private bool isFacingRight = true;
+
 
     // Update is called once per frame
-    void Update()
+    private void Update() 
     {
-        
+        horizontal = Input.GetAxisRaw("Horizontal");
     }
 }
+
+
+// https://www.youtube.com/watch?v=K1xZ-rycYY8
