@@ -9,7 +9,8 @@ public class InputSystemController : MonoBehaviour
     private float playerMovementDirection;
 
     [SerializeField]
-    private float playerMovementSpeed = 5.0f;
+    private float playerMovementSpeed = 5f;
+    private float playerJumpStrength = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,8 @@ public class InputSystemController : MonoBehaviour
         playerMovementDirection = context.ReadValue<Vector2>().x;
     }
 
-    //public void jump()
-    //{ }
+    public void Jump(InputAction.CallbackContext context)
+    {
+        rb.AddForce(new Vector2(0, playerJumpStrength), ForceMode2D.Impulse);
     }
+}
