@@ -2,11 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestingForSpeechBubble : MonoBehaviour
+public class ToggelableInvis : MonoBehaviour
 {
-
-
-
     // Start is called before the first frame update
     void Start()
     {
