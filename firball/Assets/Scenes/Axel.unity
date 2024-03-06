@@ -510,6 +510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 2020366197}
   playerMovementSpeed: 5
+  playerJumpStrength: 10
 --- !u!114 &2020366193
 MonoBehaviour:
   m_ObjectHideFlags: 0
