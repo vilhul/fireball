@@ -19,9 +19,5 @@ public class MovementNameSoNoConflict : MonoBehaviour
         {
             rb.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
         }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Console.WriteLine("Hello");
-        }
     }
 }
