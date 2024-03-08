@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &490217380 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6153679429556408790, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
+  m_PrefabInstance: {fileID: 4991973123796026580}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &743516600
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,6 +488,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 390616395922136996, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
+      propertyPath: groundCheckPos
+      value: 
+      objectReference: {fileID: 490217380}
+    - target: {fileID: 390616395922136996, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
+      propertyPath: groundCheckSize.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 390616395922136996, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
+      propertyPath: groundCheckSize.y
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 390616395922136996, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2525945559299255710, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -527,6 +548,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4961659746470146123, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 8e218c03ef45fa54b92e140fd9377ae1, type: 2}
     - target: {fileID: 6603163321816494269, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
       propertyPath: m_Name
       value: Player
