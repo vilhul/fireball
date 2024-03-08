@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -42,29 +39,31 @@ public class InputSystemController : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (isGrounded())
+        if (IsGrounded())
         {
             if (context.performed)
             {
                 //hold down space => full jump power
                 rb.velocity = new Vector2(rb.velocity.x, playerJumpStrength);
             }
-            else if (context.canceled)
-            {
-                //tap space => half jump power
-                rb.velocity = new Vector2(rb.velocity.x, playerJumpStrength * 0.5f);
-            }
+            //else if (context.canceled)
+            //{
+            //    //tap space => half jump power
+            //    rb.velocity = new Vector2(rb.velocity.x, playerJumpStrength * 0.5f);
+            //}
         }
     }
 
-    private bool isGrounded()
+    public bool IsGrounded()
     {
-        if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer));
+        if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer))
         {
+            Debug.Log("På marken");
             return true;
         }
+        Debug.Log("Funktionen kallas");
         return false;
-        
+
     }
 
     public void OnDrawGizmosSelected()

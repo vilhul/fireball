@@ -213,10 +213,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 4961659746470146123}
   groundCheckPos: {fileID: 6153679429556408790}
-  groundCheckSize: {x: 0.1, y: 0.01}
+  groundCheckSize: {x: 0.23, y: 0.04}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
 --- !u!50 &4961659746470146123
 Rigidbody2D:
   serializedVersion: 4
@@ -233,7 +233,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8e218c03ef45fa54b92e140fd9377ae1, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
