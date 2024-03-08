@@ -20,7 +20,6 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-            Debug.Log("gubben ska hoppa");
         }
 
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
