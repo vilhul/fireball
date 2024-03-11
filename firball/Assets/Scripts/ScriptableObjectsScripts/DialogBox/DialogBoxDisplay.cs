@@ -7,15 +7,24 @@ public class DialogBoxDisplay : MonoBehaviour
 {
     public DialogBox dialogBox;
 
-    public Text speechText;
+    public List<Text> speechCollection;
     public Image talkerImage;
+    public int currentSpeechInContentIndex;
+    public Text currentSpeech;
 
     // Start is called before the first frame update
     void Start()
     {
-        dialogBox.PrintInfo();
+        dialogBox.LogSpeech();
+        // SpeechCollection is currently empty???? check in DialogBox next time
+        speechCollection = dialogBox.speechCollection;
+        currentSpeechInContentIndex = 0;
+        Debug.Log(speechCollection.Count);
+        currentSpeech = speechCollection[currentSpeechInContentIndex];
+
+        // Sprite
         talkerImage.sprite = dialogBox.talkerImage;
-        speechText.text = dialogBox.speechText;
-        
+
+        dialogBox.LogSpeech();
     }
 }

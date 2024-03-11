@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e728dee97a2a8c747b913ca2f5338c1f, type: 3}
-  m_Name: Example 2
+  m_Name: Dialog Box
   m_EditorClassIdentifier: 
-  speechText: This text is an example
-  talkerImage: {fileID: -1467341761, guid: 0c7162b0691a3f74b8f604c5356ce745, type: 3}
+  speechCollection: []
+  talkerImage: {fileID: 21300000, guid: 7d618fd1de5dddd43b8e52678b253978, type: 3}
