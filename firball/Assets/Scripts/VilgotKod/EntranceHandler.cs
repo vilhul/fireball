@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class EntranceHandler : MonoBehaviour
 {
 
-    [SerializeField] private GameObject player;
+    private GameObject player;
     [SerializeField] private EntranceDataSO entranceDataSO;
 
     private void Awake()
@@ -17,7 +17,10 @@ public class EntranceHandler : MonoBehaviour
 
     private void Start()
     {
-        //player.transform.position
+        if (InputSystemController.nextEntranceName != string.Empty)
+        {
+            player.transform.position = transform.position;
+        }
     }
 
 
@@ -27,12 +30,12 @@ public class EntranceHandler : MonoBehaviour
         {
 
             InputSystemController.isInEntrance = true;
+            InputSystemController.nextEntranceName = entranceDataSO.nextEntranceName;
 
             Debug.Log("loading");
             SceneManager.LoadScene(entranceDataSO.nextRoom.name, LoadSceneMode.Additive);
             Debug.Log("unloading");
             SceneManager.UnloadSceneAsync(entranceDataSO.thisRoom.name);
-            player.transform.position = entranceDataSO.nextEntrance.transform.position;
         }
     }
 
