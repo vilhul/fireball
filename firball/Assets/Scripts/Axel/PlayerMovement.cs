@@ -5,6 +5,11 @@ public class InputSystemController : MonoBehaviour
 {
     public Rigidbody2D rb;
 
+    //vilgot
+    public static bool isInEntrance = false;
+    public static bool hasExitedOnce = false;
+
+
 
     [Header("Movement")]
     private float playerMovementSpeed = 5f;
