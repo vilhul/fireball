@@ -1,20 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "EntranceData", menuName = "EntranceData")]
 public class EntranceDataSO : ScriptableObject
 {
-    public GameObject nextRoom;
+    public SceneAsset nextRoom;
+    public SceneAsset thisRoom;
     public GameObject nextEntrance;
-    
-    public enum EntranceType
-    {
-        Left,
-        Right,
-        Up,
-        Down,
-    }
-
-    public EntranceType entranceType;
 }

@@ -19,7 +19,11 @@ public class EntranceHandler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       player.transform.position = entranceDataSO.nextEntrance.transform.position;
-        
+        player.transform.position = entranceDataSO.nextEntrance.transform.position;
+        SceneManager.LoadScene(entranceDataSO.nextRoom.name, LoadSceneMode.Additive);
+
+
+        SceneManager.UnloadSceneAsync(entranceDataSO.thisRoom.name);
+
     }
 }

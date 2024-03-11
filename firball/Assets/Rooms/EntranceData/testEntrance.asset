@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a3256abee46a643bc2513e48c8eeaf, type: 3}
   m_Name: testEntrance
   m_EditorClassIdentifier: 
-  nextRoom: {fileID: 0}
-  thisEntranceType: 0
-  nextEntranceType: 0
+  nextRoom: {fileID: 102900000, guid: 527f6894b1b5a01488742ebeb55fab01, type: 3}
+  thisRoom: {fileID: 102900000, guid: 3fc9f0865b5462045a1d960e3f6633f0, type: 3}
+  nextEntrance: {fileID: 2109853563251125415, guid: 7c7b14d09a783c446bd0194a234188ba, type: 3}
