@@ -8,6 +8,7 @@ public class InputSystemController : MonoBehaviour
     //vilgot
     public static bool isInEntrance = false;
     public static bool hasExitedOnce = false;
+    public static string nextEntranceName = string.Empty;
 
 
 
