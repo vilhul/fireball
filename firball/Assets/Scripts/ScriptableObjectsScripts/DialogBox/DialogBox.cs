@@ -19,25 +19,24 @@ public class DialogBox : ScriptableObject
     {
         for (int i = 0; i < speechCollectionInput.Count; i++)
         {
-            Debug.Log(i);
-            //Debug.Log("Current speech: " + speechCollection[i].text);
-            //Debug.Log("collection: " + speechCollection);
+            Debug.Log("Current speech: " + speechCollection[i].text);
         }
     }
-    public void Start()
+    public void Awake()
     {
         // Helt ärligt; allt under är ChatGPT som kom på, men det är så jävla smart så snor det. KAN inte komma på en smartare lösning själv.
         // Kanske bara är jag som är noob
+        // Nvm det funka inte så har fått skriva om ganska mycket
 
         speechCollection = new List<Text>(); // Instantiate the List<Text> before using it
-
         for (int i = 0; i < speechCollectionInput.Count; i++)
         {
-            Text speechText = new GameObject("SpeechText" + i).AddComponent<Text>();
-            if (speechCollectionInput[0] != null) // In case someone adds an empty dialog, it wont be added now :) :) :) :)
+            if (speechCollectionInput[i] != null)
             {
+                Text speechText = new GameObject("SpeechText" + i).AddComponent<Text>();
                 speechText.text = speechCollectionInput[i];
                 speechCollection.Add(speechText);
+                Debug.Log("Reached: " + i);
             }
         }
     }
