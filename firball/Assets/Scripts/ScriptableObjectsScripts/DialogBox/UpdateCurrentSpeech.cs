@@ -19,6 +19,7 @@ public class UpdateCurrentSpeech : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             dialogBoxDisplay.currentSpeech = dialogBoxDisplay.speechCollection[currentSpeechInContentIndex];
+            // Lista ut hur jag får speechText att visa RÄTT täxt, inte placeholder
         }
     }
 }
