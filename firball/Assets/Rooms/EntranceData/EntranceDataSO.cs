@@ -9,5 +9,5 @@ public class EntranceDataSO : ScriptableObject
 {
     public SceneAsset nextRoom;
     public SceneAsset thisRoom;
-    public GameObject nextEntrance;
+    public string nextEntranceName;
 }

@@ -56,11 +56,13 @@ public class PlayerMovement : MonoBehaviour
 
         if(Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == pointB.transform)
         {
+            flip();
             currentPoint = pointA.transform;
         }
 
         if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == pointA.transform)
         {
+            flip();
             currentPoint = pointB.transform;
         }
     }
@@ -75,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
         return Physics2D.OverlapCircle(Enemy.position, 0.2f, groundLayer);
     }
 
+    // first tutorial
     private void Flip()
     {
         if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
@@ -84,6 +87,14 @@ public class PlayerMovement : MonoBehaviour
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
+    }
+
+    // second tutorial
+    private void flip()
+    {
+        Vector3 localScale = transform.localScale;
+        localScale.x *= -1f;
+        transform.localScale = localScale;
     }
 }
 
