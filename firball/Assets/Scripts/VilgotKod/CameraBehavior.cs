@@ -6,24 +6,18 @@ using UnityEngine;
 public class CameraBehavior : MonoBehaviour
 {
 
-    private Array roomBorders;
+    public Array roomBorders;
     private GameObject player;
     private Camera mainCamera;
     private float cameraWidth;
-    private class ExceedingBorderStatus
+    private class IsBorderInsideCamera
     {
-        public bool left = false;
-        public bool up = false;
-        public bool right = false;
-        public bool down = false;
+        public bool left = true;
+        public bool up = true;
+        public bool right = true;
+        public bool down = true;
     }
-    ExceedingBorderStatus exceedingBorderStatus = new ExceedingBorderStatus();
-
-    public void UpdateRoomBorders()
-    {
-        roomBorders = GameObject.FindGameObjectsWithTag("RoomBorder");
-    }
-
+    IsBorderInsideCamera isBorderInsideCamera = new IsBorderInsideCamera();
 
     // Start is called before the first frame update
     void Start()
@@ -40,39 +34,75 @@ public class CameraBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach(float borderValue in FindExceedingBorders() )
-        {
-            Debug.Log(borderValue);
-        }
+        FindExceedingBorders();
+        MoveCamera();
     }
 
-
-    private List<float> FindExceedingBorders()
+    private void FindExceedingBorders()
     {
-        List<float> exceedingBorderValues = new List<float> ();
-
         foreach (GameObject roomBorder in roomBorders)
         {
             if(roomBorder.transform.position.x > player.transform.position.x)
             {
-                //bordern är höger om spelaren
-                if ((roomBorder.transform.position.x - player.transform.position.x) > cameraWidth / 2)
+                if ((roomBorder.transform.position.x - player.transform.position.x) < cameraWidth / 2)
                 {
-                    //bordern är utanför kamerans kant (åt höger)
+                    isBorderInsideCamera.right = true;
                 } else
                 {
-                    //bordern är innanför kamerans kant (åt höger)
+                    isBorderInsideCamera.right = false;
                 }
             }
 
             if(roomBorder.transform.position.x < player.transform.position.x)
             {
-                //bordern är vänster om spelaren
+                if((player.transform.position.x - roomBorder.transform.position.x) < cameraWidth / 2)
+                {
+                    isBorderInsideCamera.left = true;
+                } else
+                {
+                    isBorderInsideCamera.left = false;
+                }
+            }
+            if (roomBorder.transform.position.y > player.transform.position.y)
+            {
+                if ((roomBorder.transform.position.y - player.transform.position.y) < mainCamera.orthographicSize)
+                {
+                    isBorderInsideCamera.up = true;
+                }
+                else
+                {
+                    isBorderInsideCamera.up = false;
+                }
             }
 
-
+            if (roomBorder.transform.position.y < player.transform.position.y)
+            {
+                if ((player.transform.position.y - roomBorder.transform.position.y) < mainCamera.orthographicSize)
+                {
+                    isBorderInsideCamera.down = true;
+                }
+                else
+                {
+                    isBorderInsideCamera.down = false;
+                }
+            }
         }
+    }
 
-        return exceedingBorderValues;
+    private void MoveCamera()
+    {
+        if(!(isBorderInsideCamera.right || isBorderInsideCamera.left))
+        {
+            mainCamera.transform.position = new Vector3(player.transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z);
+        }
+        if (!(isBorderInsideCamera.up || isBorderInsideCamera.down))
+        {
+            mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, player.transform.position.y, mainCamera.transform.position.z);
+        }
+    }
+
+    public void UpdateRoomBorders()
+    {
+        roomBorders = GameObject.FindGameObjectsWithTag("RoomBorder");
     }
 }
