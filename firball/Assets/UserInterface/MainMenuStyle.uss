@@ -1,7 +1,27 @@
 .header {
-	font-size: 200px;
+    font-size: 200px;
 }
 
-.box{
-	
+.box {
+}
+
+.start-btn {
+    font-size: 100px;
+    padding-bottom: 30px;
+    -unity-font: url("project://database/Assets/TextMesh%20Pro/Examples%20&%20Extras/Fonts/KarmaFuture.ttf?fileID=12800000&guid=f9781ac8a11d20e43895a6613b44c739&type=3#KarmaFuture");
+    -unity-font-definition: initial;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0;
+}
+
+.start-btn:hover {
+    -unity-text-outline-width: 4px;
+    -unity-text-outline-color: rgb(209, 0, 0);
+    scale: 1.15 1.15;
+}
+
+.object-up {
+    translate: 0 -50px;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
 }
