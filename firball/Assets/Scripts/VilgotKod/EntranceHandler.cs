@@ -5,13 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class EntranceHandler : MonoBehaviour
 {
-
+    private Camera mainCamera;
     private GameObject player;
     [SerializeField] private EntranceDataSO entranceDataSO;
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        mainCamera = FindAnyObjectByType<Camera>();
         Debug.Log("loaded");
     }
 
@@ -20,6 +21,14 @@ public class EntranceHandler : MonoBehaviour
         if (InputSystemController.nextEntranceName != string.Empty)
         {
             player.transform.position = transform.position;
+        }
+        if(mainCamera != null)
+        {
+            CameraBehavior cameraBehavior = mainCamera.GetComponent<CameraBehavior>();
+            cameraBehavior.UpdateRoomBorders();
+        } else
+        {
+            Debug.LogWarning("ingen kamera stumpan");
         }
     }
 
