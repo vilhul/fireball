@@ -6,5 +6,5 @@
         <ui:Button text="Options" parse-escape-sequences="true" display-tooltip-when-elided="true" class="start-btn" />
         <ui:Button text="Quit" parse-escape-sequences="true" display-tooltip-when-elided="true" class="start-btn" />
     </ui:VisualElement>
-    <ui:VisualElement name="Fireball" style="flex-grow: 1; border-left-color: rgba(209, 0, 0, 0); border-right-color: rgba(209, 0, 0, 0); border-top-color: rgba(209, 0, 0, 0); border-bottom-color: rgba(209, 0, 0, 0); background-image: url(&quot;project://database/Assets/Sprites/Fireball.png?fileID=21300000&amp;guid=0b6d345902cde2e4abd05775a4658b8f&amp;type=3#Fireball&quot;); width: 600px; height: 600px; position: absolute; top: -20px; left: 1058px;" />
+    <ui:VisualElement name="Fireball" style="flex-grow: 1; border-left-color: rgba(209, 0, 0, 0); border-right-color: rgba(209, 0, 0, 0); border-top-color: rgba(209, 0, 0, 0); border-bottom-color: rgba(209, 0, 0, 0); background-image: url(&quot;project://database/Assets/Sprites/Fireball.png?fileID=21300000&amp;guid=0b6d345902cde2e4abd05775a4658b8f&amp;type=3#Fireball&quot;); width: 600px; height: 600px; position: absolute; top: -20px; left: 1058px; transition-duration: 1s; transition-timing-function: ease-in-out;" />
 </ui:UXML>
