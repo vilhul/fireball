@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 404778113}
   - component: {fileID: 404778112}
   - component: {fileID: 404778115}
+  - component: {fileID: 404778116}
   m_Layer: 5
   m_Name: DialogBox
   m_TagString: Untagged
@@ -283,11 +284,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a92ae5316ce22c54dba60b9a1fdd4bd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogBox: {fileID: 11400000, guid: c95444fcaafd7a044b4aa7f542c34849, type: 2}
+  dialogBox: {fileID: 11400000, guid: 7ff6fd6318efac647a4b9db9f5c72e58, type: 2}
   speechCollection: []
   talkerImage: {fileID: 442935364}
-  currentSpeechInContentIndex: 0
-  currentSpeech: {fileID: 612621202}
+  currentSpeechIndex: 0
+  currentSpeech: 
+--- !u!114 &404778116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404778110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52eda215ce020014489e02923ce00f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogBoxDisplay: {fileID: 404778115}
+  currentSpeechIndex: 0
+  currentSpeech: Leave Empty
+  speechText: {fileID: 0}
+  framesSinceLastSwitch: 0
+  animationSpeed: 0
+  shownCharacters: 0
 --- !u!1 &442935362
 GameObject:
   m_ObjectHideFlags: 0

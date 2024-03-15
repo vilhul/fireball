@@ -10,7 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e728dee97a2a8c747b913ca2f5338c1f, type: 3}
-  m_Name: Dialog Box
+  m_Name: Fungerar
   m_EditorClassIdentifier: 
-  speechCollection: []
-  talkerImage: {fileID: 21300000, guid: 7d618fd1de5dddd43b8e52678b253978, type: 3}
+  speechCollectionInput:
+  - "Detta \xE4r en mening (p\xE5 riktigt)"
+  - "Detta \xE4r ocks\xE5 det"
+  - Genshin Impact
+  talkerImage: {fileID: 21300000, guid: 228e033ae3711c94c95f8a4f8fa012cf, type: 3}

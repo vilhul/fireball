@@ -29,3 +29,4 @@ public class DialogBoxDisplay : MonoBehaviour
         talkerImage.sprite = dialogBox.talkerImage;
     }
 }
+
