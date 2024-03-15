@@ -3,25 +3,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy2BasicMovement : MonoBehaviour
+public class EnemyBasicMovement_Mole : MonoBehaviour
 {
 
-    private float speed = 8f;
-    private bool isFacingRight = true;
+    private float speed = 300f;
+    private float jumpingPower = 20f;
+    private bool isFacingRight = false;
+    Vector3 mousePosition;
+    Vector2 direction;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform frontSideCheck;
-    [SerializeField] private Transform walkableSpace;
     [SerializeField] private LayerMask wall; 
 
-    // Update is called once per frame
     void Update()
     {
-        WallCheck();
-        FloorCheck();
+        //MouseCheck();
+        mousePosition = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+        mousePosition.z = 0f;
+        direction = mousePosition - transform.position;
+        direction.y = 0f;
     }
 
-    private void WallCheck()
+    private void FixedUpdate()
+    {
+        if(!(direction.magnitude < 1))
+        {
+            rb.velocity = direction.normalized * Time.deltaTime * speed;
+        } else { rb.velocity = new Vector2(); }
+    }
+
+    private void MouseCheck()
     {
         if (isFacingRight)
         {
@@ -40,22 +52,11 @@ public class Enemy2BasicMovement : MonoBehaviour
         }
     }
 
-    private void FloorCheck()
-    {
-        if(!IsFloor())
-        {
-            Flip();
-        }
-    }
     private bool IsGrinding ()
     {
         return Physics2D.OverlapCircle(frontSideCheck.position, 0.2f, wall);
     }
 
-    private bool IsFloor()
-    {
-        return Physics2D.OverlapCircle(walkableSpace.position, 0.2f, wall);
-    }
 
     private void Flip()
     {
