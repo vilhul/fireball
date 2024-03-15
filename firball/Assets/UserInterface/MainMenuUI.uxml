@@ -1,10 +1,10 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UserInterface/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=e9060571a4b51794ea6a0ed792476991&amp;type=3#MainMenuStyle" />
-    <ui:VisualElement name="Box" class="box" style="flex-grow: 1; height: 764px; width: 1500px; align-self: center; justify-content: flex-start; align-items: center;">
-        <ui:Label tabindex="-1" text="Fireball" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Header" enable-rich-text="true" focusable="false" class="header" style="align-items: center; width: 75%; height: 25%; -unity-text-align: upper-center; -unity-font: url(&quot;project://database/Assets/TextMesh%20Pro/Examples%20&amp;%20Extras/Fonts/8bitlimo.ttf?fileID=12800000&amp;guid=aebe2436601139b4892489785e3687ad&amp;type=3#8bitlimo&quot;); -unity-font-definition: initial; color: rgb(209, 0, 0); opacity: 1; display: flex; visibility: visible; overflow: visible; -unity-background-image-tint-color: rgb(255, 255, 255); background-color: rgba(56, 56, 56, 0);" />
-        <ui:Button text="Start" parse-escape-sequences="true" display-tooltip-when-elided="true" class="start-btn" style="border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
-        <ui:Button text="Options" parse-escape-sequences="true" display-tooltip-when-elided="true" class="start-btn" />
-        <ui:Button text="Quit" parse-escape-sequences="true" display-tooltip-when-elided="true" class="start-btn" />
+    <ui:VisualElement name="Box" class="box">
+        <ui:Label text="Fireball" name="Header" class="header" />
+        <ui:Button text="Start" class="start-btn" />
+        <ui:Button text="Options" class="start-btn" />
+        <ui:Button text="Quit" class="start-btn" />
     </ui:VisualElement>
-    <ui:VisualElement name="Fireball" style="flex-grow: 1; border-left-color: rgba(209, 0, 0, 0); border-right-color: rgba(209, 0, 0, 0); border-top-color: rgba(209, 0, 0, 0); border-bottom-color: rgba(209, 0, 0, 0); background-image: url(&quot;project://database/Assets/Sprites/Fireball.png?fileID=21300000&amp;guid=0b6d345902cde2e4abd05775a4658b8f&amp;type=3#Fireball&quot;); width: 600px; height: 600px; position: absolute; top: -20px; left: 1058px; transition-duration: 1s; transition-timing-function: ease-in-out;" />
+    <ui:VisualElement name="Fireball" class="fireball" />
 </ui:UXML>
