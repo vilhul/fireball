@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: Fungerar
   m_EditorClassIdentifier: 
   speechCollectionInput:
-  - "Detta \xE4r en mening (p\xE5 riktigt)"
-  - "Detta \xE4r ocks\xE5 det"
-  - Genshin Impact
+  - "Text h\xE4r"
   talkerImage: {fileID: 21300000, guid: 228e033ae3711c94c95f8a4f8fa012cf, type: 3}

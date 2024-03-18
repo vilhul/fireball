@@ -11,19 +11,13 @@ public class DialogBoxDisplay : MonoBehaviour
 
     public List<string> speechCollection;
     public Image talkerImage;
-    public int currentSpeechIndex;
     public string currentSpeech;
-
 
     // Start is called before the first frame update
     void Start()
     {
         // Speech
-        dialogBox.Awake();
-        dialogBox.LogSpeech();
         speechCollection = dialogBox.speechCollectionInput;
-        currentSpeechIndex = 0;
-        currentSpeech = speechCollection[currentSpeechIndex];
 
         // Sprite
         talkerImage.sprite = dialogBox.talkerImage;
