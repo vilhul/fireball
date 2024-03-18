@@ -2,9 +2,9 @@
     <Style src="project://database/Assets/UserInterface/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=e9060571a4b51794ea6a0ed792476991&amp;type=3#MainMenuStyle" />
     <ui:VisualElement name="Box" class="box">
         <ui:Label text="Fireball" name="Header" class="header" />
-        <ui:Button text="Start" class="start-btn" />
-        <ui:Button text="Options" class="start-btn" />
-        <ui:Button text="Quit" class="start-btn" />
+        <ui:Button name="start" text="Start" class="start-btn" />
+        <ui:Button name="options" text="Options" class="start-btn" />
+        <ui:Button name="quit" text="Quit" class="start-btn" />
     </ui:VisualElement>
-    <ui:VisualElement name="Fireball" class="fireball" />
+    <ui:VisualElement name="fireball" class="fireball" />
 </ui:UXML>
