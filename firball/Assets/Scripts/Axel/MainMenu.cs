@@ -20,11 +20,11 @@ public class MainMenu : MonoBehaviour
         startBtn = rootEl.Query<Button>("start");
         optionsBtn = rootEl.Query<Button>("options");
         quitBtn = rootEl.Query<Button>("quit");
-        //animatedFireball = rootEl.Query<VisualElement>("fireball");
+        animatedFireball = rootEl.Query<VisualElement>("fireball");
 
-        //animatedFireball.RegisterCallback<TransitionEndEvent>( (evt) => {
-        //    animatedFireball.ToggleInClassList("object-down");
-        //});
+        setupAnimation();
+
+        rootEl.schedule.Execute(() => animatedFireball.ToggleInClassList("object-up")).StartingIn(100);
 
         startBtn.RegisterCallback<ClickEvent>( (evt) =>
         {
@@ -39,6 +39,15 @@ public class MainMenu : MonoBehaviour
         quitBtn.RegisterCallback<ClickEvent>((evt) =>
         {
             quitBtnClickedMethod();
+        });
+    }
+
+    private void setupAnimation()
+    {
+        animatedFireball.RegisterCallback<TransitionEndEvent>((evt) =>
+        {
+            Debug.Log("Slut på animation");
+            animatedFireball.ToggleInClassList("object-up");
         });
     }
 
