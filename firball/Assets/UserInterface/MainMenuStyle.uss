@@ -43,10 +43,8 @@
     rotate: -7deg;
 }
 
-.object-down {
-    translate: 0 50px;
-    transition-duration: 1s;
-    transition-timing-function: ease-in-out;
+.object-up {
+    scale: 1.5 1.5;
 }
 
 .fireball {
@@ -61,7 +59,5 @@
     position: absolute; 
     top: -20px; 
     left: 1058px; 
-    translate: 0 -100px;
-    transition-duration: 1s; 
-    transition-timing-function: ease-in-out;
+    transition-duration: 10s;
 }
