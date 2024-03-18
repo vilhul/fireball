@@ -148,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 6869337}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.22, y: -1.24, z: 0}
+  m_LocalPosition: {x: 0, y: -1.225, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -179,7 +179,7 @@ Transform:
   m_GameObject: {fileID: 141113060}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.221, y: -0.193, z: 0}
+  m_LocalPosition: {x: -1.19, y: -0.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -699,6 +699,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: 4, y: -9, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: 19, y: -9, z: 0}
     second:
       serializedVersion: 2
@@ -740,6 +750,16 @@ Tilemap:
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
   - first: {x: -15, y: -8, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 5, y: -8, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 0
@@ -1161,13 +1181,13 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 88
+  - m_RefCount: 90
     m_Data: {fileID: 11400000, guid: cf763a1841675bf4396dc36a220c0587, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 88
+  - m_RefCount: 90
     m_Data: {fileID: -1467341761, guid: 0c7162b0691a3f74b8f604c5356ce745, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 88
+  - m_RefCount: 90
     m_Data:
       e00: 1
       e01: 0
@@ -1186,7 +1206,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 88
+  - m_RefCount: 90
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -1269,6 +1289,14 @@ CompositeCollider2D:
         Y: 40000000
       - X: 190000000
         Y: -90000000
+      - X: 50000000
+        Y: -90000000
+      - X: 50000000
+        Y: -80000000
+      - X: 40000000
+        Y: -80000000
+      - X: 40000000
+        Y: -90000000
       - X: -140000000
         Y: -90000000
       - X: -140000000
@@ -1291,6 +1319,14 @@ CompositeCollider2D:
         Y: -100000000
       - X: 200000000
         Y: -100000000
+    - - X: 60000000
+        Y: -70000000
+      - X: 50000000
+        Y: -70000000
+      - X: 50000000
+        Y: -80000000
+      - X: 60000000
+        Y: -80000000
   m_CompositePaths:
     m_Paths:
     - - {x: 19.999971, y: -10}
@@ -1303,6 +1339,10 @@ CompositeCollider2D:
       - {x: 19.999971, y: 4}
       - {x: 19, y: 3.999971}
       - {x: 18.999971, y: -9}
+      - {x: 5, y: -8.99997}
+      - {x: 4.999971, y: -8}
+      - {x: 4, y: -8.00003}
+      - {x: 3.9999704, y: -9}
       - {x: -14, y: -8.99997}
       - {x: -14.000029, y: -4}
       - {x: -15, y: -3.9999704}
@@ -1313,6 +1353,10 @@ CompositeCollider2D:
       - {x: -17.000029, y: -1}
       - {x: -18, y: -1.0000293}
       - {x: -17.999971, y: -10}
+    - - {x: 5.999971, y: -8}
+      - {x: 5.999971, y: -7}
+      - {x: 5, y: -7.0000296}
+      - {x: 5.000029, y: -8}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
@@ -1393,7 +1437,7 @@ GameObject:
   - component: {fileID: 1565107679}
   - component: {fileID: 1565107682}
   m_Layer: 0
-  m_Name: Enemy2
+  m_Name: EnemyMole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1503,6 +1547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1565107679}
   frontSideCheck: {fileID: 141113061}
+  groundCheck: {fileID: 6869338}
   wall:
     serializedVersion: 2
     m_Bits: 8

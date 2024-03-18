@@ -7,31 +7,42 @@ using UnityEngine.UI;
 // Updates which speech to render (input based), as well as animates the speech (frame based)
 public class UpdateSpeech : MonoBehaviour
 {
-    public DialogBoxDisplay dialogBoxDisplay;
+    // This code assumes speeches saved in a dialog are not modefied in any way, ex removed or added
+    private DialogBoxDisplay dialogBoxDisplay;
 
-    public int currentSpeechIndex;
-    public string currentSpeech;
-    public Text speechText;
-    public int framesSinceLastSwitch;
-    public int animationSpeed; // In frames
-    public int shownCharacters;
+    private int currentSpeechIndex;
+    private Text speechText;
+    private int timeSinceLastSwitch; // Relative to time passed, increases by one for every deltaTime
+    private int animationSpeed; // In frames
+    private int shownCharacters;
+    private string currentSpeech; // Features won't work when "currentSpeech" in dialogBoxDisplay is used (removed for now), no idea why (dialogBoxDisplay IS a reference)
 
-    // Start is called before the first frame update
-
-    public void AnimateSpeech()
+    private void UpdateCurrentSpeech()
     {
-        speechText.text = dialogBoxDisplay.speechCollection[dialogBoxDisplay.currentSpeechIndex].Substring(0, shownCharacters);
+        currentSpeech = dialogBoxDisplay.speechCollection[currentSpeechIndex];
+    }
+
+    private void AnimateSpeech()
+    {
+        if (shownCharacters < currentSpeech.Length) 
+        {
+            shownCharacters++;
+        }
+        
+        speechText.text = dialogBoxDisplay.speechCollection[currentSpeechIndex].Substring(0, shownCharacters);
     }
 
     void Start()
     {
-        // Getting relevant DialogBoxDisplay object
+        // Getting relevant DialogBoxDisplay object, MUST BE FIRST
         dialogBoxDisplay = GetComponent<DialogBoxDisplay>();
 
+        currentSpeech = dialogBoxDisplay.currentSpeech;
+
         // Animation
-        animationSpeed = 10;
+        animationSpeed = 5;
         shownCharacters = 0;
-        framesSinceLastSwitch = 0;
+        timeSinceLastSwitch = 0;
 
         // Getting to the correct child (No cops please)
         Transform textBoxTransform = transform.Find("TextBox");
@@ -41,7 +52,7 @@ public class UpdateSpeech : MonoBehaviour
             if (speechTextTransform != null)
             {
                 speechText = speechTextTransform.GetComponent<Text>();
-                speechText.text = dialogBoxDisplay.currentSpeech.Substring(0, shownCharacters);
+                speechText.text = currentSpeech.Substring(0, shownCharacters);
             }
         }
 
@@ -49,28 +60,31 @@ public class UpdateSpeech : MonoBehaviour
         {
             Debug.LogError("dialogBoxDisplay not found!");
         }
+        UpdateCurrentSpeech();
     }
+
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow) && dialogBoxDisplay.currentSpeechIndex < dialogBoxDisplay.speechCollection.Count - 1) 
+        if (Input.GetKeyDown(KeyCode.RightArrow) && currentSpeechIndex < dialogBoxDisplay.speechCollection.Count - 1)
         {
-            dialogBoxDisplay.currentSpeechIndex += 1;
+            currentSpeechIndex += 1;
             shownCharacters = 0;
-            framesSinceLastSwitch = 0;
+            UpdateCurrentSpeech();
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && dialogBoxDisplay.currentSpeechIndex > 0)
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && currentSpeechIndex > 0)
         {
-            dialogBoxDisplay.currentSpeechIndex -= 1;
+            currentSpeechIndex -= 1;
             shownCharacters = 0;
-            framesSinceLastSwitch = 0;
+            UpdateCurrentSpeech();
         }
-        if (framesSinceLastSwitch > animationSpeed)
+    }
+    private void FixedUpdate()
+    {
+        if (timeSinceLastSwitch > animationSpeed) // Time so laggy players don't get stuck in dialog or get slower dialog
         {
             AnimateSpeech();
-            framesSinceLastSwitch = 0;
         }
-        
-        // Run last
-        framesSinceLastSwitch++;
+        timeSinceLastSwitch++;
     }
 }
