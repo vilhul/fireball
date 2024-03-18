@@ -9,13 +9,14 @@ public class EnemyBasicMovement_Mole : MonoBehaviour
 
     private float speed = 10f;
     private float jumpingPower = 15f;
-    Vector3 mousePosition;
+    private float maxSpeed = 4f;
     Vector2 direction;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform frontSideCheck;
     [SerializeField] private Transform groundCheck;
-    [SerializeField] private LayerMask wall; 
+    [SerializeField] private LayerMask wall;
+    [SerializeField] private Transform Player;
 
     void Update()
     {
@@ -28,25 +29,26 @@ public class EnemyBasicMovement_Mole : MonoBehaviour
         {
             rb.velocity += speed * Time.deltaTime * direction.normalized;
         } else { rb.velocity = new Vector2(0, rb.velocity.y); }
+        rb.velocity = new Vector2 (Mathf.Clamp(rb.velocity.x, -maxSpeed, maxSpeed), rb.velocity.y);
     }
 
     private void MouseCheck()
     {
-        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        direction = new Vector2(mousePosition.x - transform.position.x, 0f);
+        direction = new Vector2(Player.position.x - transform.position.x, 0f);
         if (IsGrinding() && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
         if (direction.x < 0)
         {
+            // flips the charachter
             Vector3 localScale = transform.localScale;
-            localScale.x = 1f;
+            localScale.x = 0.6f;
             transform.localScale = localScale;
         } else
         {
             Vector3 localScale = transform.localScale;
-            localScale.x = -1f;
+            localScale.x = -0.6f;
             transform.localScale = localScale;
         }
     }
