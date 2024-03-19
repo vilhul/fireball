@@ -14,7 +14,7 @@ public class DialogBoxDisplay : MonoBehaviour
     public string currentSpeech;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         // Speech
         speechCollection = dialogBox.speechCollectionInput;
