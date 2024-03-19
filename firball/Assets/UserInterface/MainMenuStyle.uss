@@ -40,12 +40,11 @@
     -unity-text-outline-width: 4px;
     -unity-text-outline-color: rgb(209, 0, 0);
     scale: 1.15 1.15;
+    rotate: -7deg;
 }
 
 .object-up {
-    translate: 0 -50px;
-    transition-duration: 1s;
-    transition-timing-function: ease-in-out;
+    scale: 1.5 1.5;
 }
 
 .fireball {
@@ -60,6 +59,5 @@
     position: absolute; 
     top: -20px; 
     left: 1058px; 
-    transition-duration: 1s; 
-    transition-timing-function: ease-in-out;
+    transition-duration: 10s;
 }
