@@ -11,20 +11,17 @@ public class MainMenu : MonoBehaviour
     private Button startBtn;
     private Button optionsBtn;
     private Button quitBtn;
-    private VisualElement animatedFireball;
+    private VisualElement meteor;
 
     private void OnEnable()
     {
+        //definierar rootVisualElement, är som document i html
         rootEl = uiDoc.rootVisualElement;
 
+        //definerar de tre knapparna och säger att när de klickas kör denna funktion
         startBtn = rootEl.Query<Button>("start");
         optionsBtn = rootEl.Query<Button>("options");
         quitBtn = rootEl.Query<Button>("quit");
-        animatedFireball = rootEl.Query<VisualElement>("fireball");
-
-        setupAnimation();
-
-        rootEl.schedule.Execute(() => animatedFireball.ToggleInClassList("object-up")).StartingIn(100);
 
         startBtn.RegisterCallback<ClickEvent>( (evt) =>
         {
@@ -40,15 +37,39 @@ public class MainMenu : MonoBehaviour
         {
             quitBtnClickedMethod();
         });
-    }
 
-    private void setupAnimation()
-    {
-        animatedFireball.RegisterCallback<TransitionEndEvent>((evt) =>
+        //skapar flera fireballs
+        for (int i = 0; i < 5; i++) {
+        Debug.Log("skapade meteor");
+        meteor = new VisualElement();
+        rootEl.Add(meteor);
+        meteor.AddToClassList("meteor");
+        System.Random random = new System.Random();
+        int randomNum = random.Next(200, 701);
+        meteor.style.height = randomNum;
+        meteor.style.width = randomNum;
+        meteor.style.top = -randomNum;
+        meteor.style.right = -randomNum;
+        meteor.ToggleInClassList("animate-meteor");
+        }
+
+        var meteors = rootEl.Query(className: "meteor").ToList();
+
+        foreach (var meteor in meteors)
         {
-            Debug.Log("Slut på animation");
-            animatedFireball.ToggleInClassList("object-up");
-        });
+            System.Random random = new System.Random();
+            int randomNum = random.Next(1, 400);
+            Debug.Log("nåt");
+            rootEl.schedule.Execute(() =>
+            {
+                
+                meteor.ToggleInClassList("animate-meteor");
+                Debug.Log("animeras");
+            }).Every(4000 + randomNum * 4);
+
+        }
+
+
     }
 
     private void startBtnClickedMethod()
