@@ -71,3 +71,6 @@ public class EnemyBasicMovement_Mole : MonoBehaviour
     //    transform.localScale = localScale;
     //}
 }
+
+// använd denna för att göra pathfinding. Men gör en egen Jump grej. 
+// https://www.youtube.com/watch?v=sWqRfygpl4I 
