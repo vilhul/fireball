@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,16 +10,18 @@ using UnityEngine.UI;
 public class UpdateSpeech : MonoBehaviour
 {
     // This code assumes speeches saved in a dialog are not modefied in any way, ex removed or added
-    private DialogBoxDisplay dialogBoxDisplay;
+    public DialogBoxDisplay dialogBoxDisplay;
+    public int currentSpeechIndex;
+    public Text speechText;
+    public int timeSinceLastSwitch; // Relative to time passed, increases by one for every deltaTime
+    public int animationSpeed; // In frames
+    public int shownCharacters;
+    public string currentSpeech; // Features won't work when "currentSpeech" in dialogBoxDisplay is used (removed for now), no idea why (dialogBoxDisplay IS a reference)
 
-    private int currentSpeechIndex;
-    private Text speechText;
-    private int timeSinceLastSwitch; // Relative to time passed, increases by one for every deltaTime
-    private int animationSpeed; // In frames
-    private int shownCharacters;
-    private string currentSpeech; // Features won't work when "currentSpeech" in dialogBoxDisplay is used (removed for now), no idea why (dialogBoxDisplay IS a reference)
+    public List<int> dummyList1;
+    public List<int> dummyList2;
 
-    private void UpdateCurrentSpeech()
+    public void UpdateCurrentSpeech()
     {
         currentSpeech = dialogBoxDisplay.speechCollection[currentSpeechIndex];
     }
@@ -37,12 +41,11 @@ public class UpdateSpeech : MonoBehaviour
         // Getting relevant DialogBoxDisplay object, MUST BE FIRST
         dialogBoxDisplay = GetComponent<DialogBoxDisplay>();
 
-        currentSpeech = dialogBoxDisplay.currentSpeech;
-
         // Animation
-        animationSpeed = 5;
+        animationSpeed = 1;
         shownCharacters = 0;
         timeSinceLastSwitch = 0;
+        currentSpeechIndex = 0;
 
         // Getting to the correct child (No cops please)
         Transform textBoxTransform = transform.Find("TextBox");
@@ -52,19 +55,32 @@ public class UpdateSpeech : MonoBehaviour
             if (speechTextTransform != null)
             {
                 speechText = speechTextTransform.GetComponent<Text>();
-                speechText.text = currentSpeech.Substring(0, shownCharacters);
+                
+                // Then updates speech
+                UpdateCurrentSpeech();
+
+                if (dialogBoxDisplay == null)
+                {
+                    Debug.LogError("dialogBoxDisplay not found");
+                }
+            } 
+            else
+            {
+                Debug.Log("speechTextTransform is empty: " + speechTextTransform );
             }
+        }
+        else
+        {   
+            Debug.Log("speechTextTransform is empty: " + textBoxTransform);
         }
 
         if (dialogBoxDisplay == null) 
         {
             Debug.LogError("dialogBoxDisplay not found!");
         }
-        UpdateCurrentSpeech();
     }
 
-
-    private void Update()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.RightArrow) && currentSpeechIndex < dialogBoxDisplay.speechCollection.Count - 1)
         {
@@ -79,11 +95,12 @@ public class UpdateSpeech : MonoBehaviour
             UpdateCurrentSpeech();
         }
     }
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         if (timeSinceLastSwitch > animationSpeed) // Time so laggy players don't get stuck in dialog or get slower dialog
         {
             AnimateSpeech();
+            timeSinceLastSwitch = 0;
         }
         timeSinceLastSwitch++;
     }
