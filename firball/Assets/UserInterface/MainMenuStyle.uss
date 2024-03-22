@@ -44,7 +44,7 @@
 }
 
 .animate-meteor {
-    translate: -2420px 1280px;
+    translate: -2520px 1480px;
     transition: 3s linear;
 }
 
@@ -58,4 +58,8 @@
     position: absolute; 
     /* width: 1000px; */
     /* height: 1000px; */
+}
+
+.switch-fireball-image {
+background-image: url(./../Sprites/FireballSecondSprite.png); 
 }
