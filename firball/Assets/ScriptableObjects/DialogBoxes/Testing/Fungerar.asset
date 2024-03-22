@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speechCollectionInput:
   - "Text h\xE4r"
+  - "\xC4nnu mer text"
+  - MEEEEER
   talkerImage: {fileID: 21300000, guid: 228e033ae3711c94c95f8a4f8fa012cf, type: 3}

@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e728dee97a2a8c747b913ca2f5338c1f, type: 3}
   m_Name: SampleDialog
   m_EditorClassIdentifier: 
-  speechCollectionInput: []
-  talkerImage: {fileID: 0}
+  speechCollectionInput:
+  - "Denna text \xE4r ett exempel"
+  - "\xC4NNU ett exempel"
+  talkerImage: {fileID: 21300000, guid: 228e033ae3711c94c95f8a4f8fa012cf, type: 3}
