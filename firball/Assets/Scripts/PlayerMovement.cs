@@ -16,7 +16,7 @@ public class InputSystemController : MonoBehaviour
     private float playerMovementSpeed = 5f;
     private float playerMovementDirection;
     [Header("Jumping")]
-    private float playerJumpStrength = 10f;
+    private float playerJumpStrength = 20f;
 
     [Header("GroundCheck")]
     public Transform groundCheckPos;

@@ -43,21 +43,23 @@
     rotate: -7deg;
 }
 
-.object-up {
-    scale: 1.5 1.5;
+.animate-meteor {
+    translate: -2520px 1480px;
+    transition: 3s linear;
 }
 
-.fireball {
+.meteor {
     flex-grow: 1;
     border-left-color: rgba(209, 0, 0, 0); 
     border-right-color: rgba(209, 0, 0, 0); 
     border-top-color: rgba(209, 0, 0, 0); 
     border-bottom-color: rgba(209, 0, 0, 0); 
     background-image: url(./../Sprites/Fireball.png); 
-    width: 600px; 
-    height: 600px; 
     position: absolute; 
-    top: -20px; 
-    left: 1058px; 
-    transition-duration: 10s;
+    /* width: 1000px; */
+    /* height: 1000px; */
+}
+
+.switch-fireball-image {
+background-image: url(./../Sprites/FireballSecondSprite.png); 
 }
