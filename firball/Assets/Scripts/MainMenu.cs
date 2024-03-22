@@ -1,17 +1,27 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] private SceneAsset persistentScene;
+    [SerializeField] private SceneAsset startingRoom;
+
+
+
     [SerializeField] private UIDocument uiDoc;
     private VisualElement rootEl;
     private Button startBtn;
     private Button optionsBtn;
     private Button quitBtn;
     private VisualElement meteor;
+
+
+
 
     private void OnEnable()
     {
@@ -84,6 +94,8 @@ public class MainMenu : MonoBehaviour
     private void startBtnClickedMethod()
     {
         Debug.Log("startknapp klickad");
+        SceneManager.LoadSceneAsync(persistentScene.name, LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync(startingRoom.name, LoadSceneMode.Additive);
     }
 
     private void optionsBtnClickedMethod()
