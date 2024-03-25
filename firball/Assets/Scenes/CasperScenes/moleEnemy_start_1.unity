@@ -1708,6 +1708,10 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 61834098}
+    - target: {fileID: 2306553740143677417, guid: bdd824fa1270ad647ba1d8f1f7b4de0d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4261225572747547027, guid: bdd824fa1270ad647ba1d8f1f7b4de0d, type: 3}
       propertyPath: m_Interpolate
       value: 0
@@ -1725,16 +1729,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 61834098}
     - target: {fileID: 5763706529644108675, guid: bdd824fa1270ad647ba1d8f1f7b4de0d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5763706529644108675, guid: bdd824fa1270ad647ba1d8f1f7b4de0d, type: 3}
       propertyPath: activateDistance
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6072419904692306848, guid: bdd824fa1270ad647ba1d8f1f7b4de0d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.69
+      value: 0.68
       objectReference: {fileID: 0}
     - target: {fileID: 6072419904692306848, guid: bdd824fa1270ad647ba1d8f1f7b4de0d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.2
+      value: -3.61
       objectReference: {fileID: 0}
     - target: {fileID: 6072419904692306848, guid: bdd824fa1270ad647ba1d8f1f7b4de0d, type: 3}
       propertyPath: m_LocalPosition.z
