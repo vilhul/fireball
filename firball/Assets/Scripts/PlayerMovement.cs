@@ -16,7 +16,7 @@ public class InputSystemController : MonoBehaviour
     private float playerMovementSpeed = 5f;
     private float playerMovementDirection;
     [Header("Jumping")]
-    private float playerJumpStrength = 20f;
+    private float playerJumpStrength = 12f;
 
     [Header("GroundCheck")]
     public Transform groundCheckPos;
@@ -45,19 +45,29 @@ public class InputSystemController : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (IsGrounded())
+        if (Input.GetButtonDown("Jump") && IsGrounded())
         {
-            if (context.performed)
-            {
-                //hold down space => full jump power
-                rb.velocity = new Vector2(rb.velocity.x, playerJumpStrength);
-            }
+            rb.velocity = new Vector2(rb.velocity.x, playerJumpStrength);
+        }
+
+        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+        }
+
+        //if (IsGrounded())
+        //{
+        //    if (context.performed)
+        //    {
+        //        //hold down space => full jump power
+        //        rb.velocity = new Vector2(rb.velocity.x, playerJumpStrength);
+        //    }
             //else if (context.canceled)
             //{
             //    //tap space => half jump power
             //    rb.velocity = new Vector2(rb.velocity.x, playerJumpStrength * 0.5f);
             //}
-        }
+        //}
     }
 
     public bool IsGrounded()

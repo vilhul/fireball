@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyBasicMovement_Goomba : MonoBehaviour
 {
 
-    private float speed = 6f;
+    private float speed = 3f;
     private bool isFacingRight = true;
 
     [SerializeField] private Rigidbody2D rb;
