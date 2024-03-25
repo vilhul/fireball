@@ -16,6 +16,7 @@ public class EnemyBasicMovementPathfinding_Mole : MonoBehaviour
     public float jumpNodeHeightRequirement = 0.8f;
     public float jumpModifier = 0.3f;
     public float jumpCheckOffset = 0.1f;
+    Rigidbody2D rb;
 
     [Header("Custom Behavior")]
     public bool followEnabled = true;
@@ -28,7 +29,6 @@ public class EnemyBasicMovementPathfinding_Mole : MonoBehaviour
     private int currentWaypoint = 0;
     [SerializeField] public RaycastHit2D isGrounded;
     Seeker seeker;
-    Rigidbody2D rb;
     private bool isOnCoolDown;
 
     public void Start()
@@ -37,10 +37,19 @@ public class EnemyBasicMovementPathfinding_Mole : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         isJumping = false;
         isInAir = false;
-        isOnCoolDown = false; 
+        isOnCoolDown = false;
 
         InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
     }
+
+    private void FixedUpdate()
+    {
+        if (TargetInDistance() && followEnabled)
+        {
+            PathFollow();
+        }
+    }
+
     private void UpdatePath()
     {
         if (followEnabled && TargetInDistance() && seeker.IsDone())
