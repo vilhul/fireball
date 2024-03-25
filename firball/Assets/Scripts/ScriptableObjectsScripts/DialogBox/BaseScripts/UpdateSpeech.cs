@@ -18,9 +18,6 @@ public class UpdateSpeech : MonoBehaviour
     public int shownCharacters;
     public string currentSpeech; // Features won't work when "currentSpeech" in dialogBoxDisplay is used (removed for now), no idea why (dialogBoxDisplay IS a reference)
 
-    public List<int> dummyList1;
-    public List<int> dummyList2;
-
     public void UpdateCurrentSpeech()
     {
         currentSpeech = dialogBoxDisplay.speechCollection[currentSpeechIndex];
