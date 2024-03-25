@@ -19,6 +19,13 @@ public class CameraBehavior : MonoBehaviour
     }
     IsBorderInsideCamera isBorderInsideCamera = new IsBorderInsideCamera();
 
+    private class IsPlayerInsideCamera
+    {
+        public bool x = true;
+        public bool y = true;
+    }
+    IsPlayerInsideCamera isPlayerInsideCamera = new IsPlayerInsideCamera();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +42,7 @@ public class CameraBehavior : MonoBehaviour
     void Update()
     {
         FindExceedingBorders();
+        FindPlayerInsideCamera();
         MoveCamera();
     }
 
@@ -91,6 +99,32 @@ public class CameraBehavior : MonoBehaviour
 
     private void MoveCamera()
     {
+        if(!isPlayerInsideCamera.x)
+        {
+            if(player.transform.position.x > mainCamera.transform.position.x)
+            {
+                mainCamera.transform.position = new Vector3(player.transform.position.x - cameraWidth/2, mainCamera.transform.position.y, mainCamera.transform.position.z);
+            }
+            if(player.transform.position.x < mainCamera.transform.position.x)
+            {
+                //vänster
+                mainCamera.transform.position = new Vector3(player.transform.position.x + cameraWidth / 2, mainCamera.transform.position.y, mainCamera.transform.position.z);
+            }
+        }
+        if(!isPlayerInsideCamera.y)
+        {
+            if(player.transform.position.y > mainCamera.transform.position.y)
+            {
+                //ovanför
+                mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, player.transform.position.y - mainCamera.orthographicSize, mainCamera.transform.position.z);
+            }
+            if(player.transform.position.y < mainCamera.transform.position.y)
+            {
+                //nedanför
+                mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, player.transform.position.y + mainCamera.orthographicSize, mainCamera.transform.position.z);
+            }
+        }
+
         if(!(isBorderInsideCamera.right || isBorderInsideCamera.left))
         {
             mainCamera.transform.position = new Vector3(player.transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z);
@@ -100,6 +134,25 @@ public class CameraBehavior : MonoBehaviour
             mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, player.transform.position.y, mainCamera.transform.position.z);
         }
     }
+
+    private void FindPlayerInsideCamera()
+    {
+        if(player.transform.position.x < mainCamera.transform.position.x + cameraWidth / 2 && player.transform.position.x > mainCamera.transform.position.x - cameraWidth/2)
+        {
+            isPlayerInsideCamera.x = true;
+        } else
+        {
+            isPlayerInsideCamera.x = false;
+        }
+        if(player.transform.position.y < mainCamera.transform.position.y + mainCamera.orthographicSize && player.transform.position.y > mainCamera.transform.position.y - mainCamera.orthographicSize)
+        {
+            isPlayerInsideCamera.y = true;
+        } else
+        {
+            isPlayerInsideCamera.y = false;
+        }
+    }
+
 
     public void UpdateRoomBorders()
     {
