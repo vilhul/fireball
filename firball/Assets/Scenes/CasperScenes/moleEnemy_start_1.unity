@@ -1472,6 +1472,46 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &1195313949 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6917052532867910276, guid: bdd824fa1270ad647ba1d8f1f7b4de0d, type: 3}
+  m_PrefabInstance: {fileID: 8406324486296158475}
+  m_PrefabAsset: {fileID: 0}
+--- !u!70 &1195313956
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195313949}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.5, y: 1}
+  m_Direction: 0
 --- !u!1 &1606099939
 GameObject:
   m_ObjectHideFlags: 0
@@ -1722,7 +1762,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5763706529644108675, guid: bdd824fa1270ad647ba1d8f1f7b4de0d, type: 3}
       propertyPath: speed
-      value: 500
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5763706529644108675, guid: bdd824fa1270ad647ba1d8f1f7b4de0d, type: 3}
       propertyPath: target
@@ -1784,6 +1824,10 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6851259268232014733, guid: bdd824fa1270ad647ba1d8f1f7b4de0d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6917052532867910276, guid: bdd824fa1270ad647ba1d8f1f7b4de0d, type: 3}
       propertyPath: m_Name
       value: EnemyMole
@@ -1791,7 +1835,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6917052532867910276, guid: bdd824fa1270ad647ba1d8f1f7b4de0d, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 1195313956}
   m_SourcePrefab: {fileID: 100100000, guid: bdd824fa1270ad647ba1d8f1f7b4de0d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

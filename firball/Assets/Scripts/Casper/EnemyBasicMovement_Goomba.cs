@@ -5,19 +5,22 @@ using UnityEngine;
 
 public class EnemyBasicMovement_Goomba : MonoBehaviour
 {
-
+    public Transform player;
     private float speed = 3f;
     private bool isFacingRight = true;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform frontSideCheck;
     [SerializeField] private Transform walkableSpace;
-    [SerializeField] private LayerMask wall; 
+    [SerializeField] private Transform head;
+    [SerializeField] private LayerMask wall;
+    [SerializeField] private LayerMask playerLayer;
 
     void Update()
     {
         WallCheck();
         FloorCheck();
+        KillCheck();
     }
 
     private void WallCheck()
@@ -54,6 +57,18 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
     private bool IsFloor()
     {
         return Physics2D.OverlapCircle(walkableSpace.position, 0.2f, wall);
+    }
+
+    private void KillCheck()
+    {
+        if (IsTouched())
+        {
+            Debug.Log("Du är dööööd!");
+        }
+    }
+    private bool IsTouched()
+    {
+        return Physics2D.OverlapBox(head.position, new Vector2(0.5f, 0.1f), 0f, playerLayer);
     }
 
     private void Flip()
