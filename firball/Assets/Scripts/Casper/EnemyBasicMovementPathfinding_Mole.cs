@@ -11,16 +11,15 @@ public class EnemyBasicMovementPathfinding_Mole : MonoBehaviour
     public float pathUpdateSeconds = 0.5f;
 
     [Header("Physics")]
-    public float speed = 200f, jumpForce = 100f;
+    public float speed = 5f;
+    public float jumpingPower = 15f;
     public float nextWaypointDistance = 3f;
-    public float jumpNodeHeightRequirement = 0.8f;
-    public float jumpModifier = 0.3f;
-    public float jumpCheckOffset = 0.1f;
-    Rigidbody2D rb;
+    [SerializeField] private Transform frontSideCheck;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask wall;
 
     [Header("Custom Behavior")]
     public bool followEnabled = true;
-    public bool jumpEnabled = true, isJumping, isInAir;
     public bool directionLookEnabled = true;
 
     [SerializeField] Vector3 startOffset;
@@ -29,17 +28,22 @@ public class EnemyBasicMovementPathfinding_Mole : MonoBehaviour
     private int currentWaypoint = 0;
     [SerializeField] public RaycastHit2D isGrounded;
     Seeker seeker;
-    private bool isOnCoolDown;
+    Rigidbody2D rb;
 
     public void Start()
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-        isJumping = false;
-        isInAir = false;
-        isOnCoolDown = false;
 
         InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
+    }
+
+    private void Update()
+    {
+        if (IsGrinding() && IsGrounded())
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+        }
     }
 
     private void FixedUpdate()
@@ -72,34 +76,12 @@ public class EnemyBasicMovementPathfinding_Mole : MonoBehaviour
         }
 
         // See if colliding with anything
-        startOffset = transform.position - new Vector3(0f, GetComponent<Collider2D>().bounds.extents.y + jumpCheckOffset, transform.position.z);
+        startOffset = transform.position - new Vector3(0f, GetComponent<Collider2D>().bounds.extents.y, transform.position.z);
         isGrounded = Physics2D.Raycast(startOffset, -Vector3.up, 0.05f);
 
         // Direction Calculation
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         Vector2 force = direction * speed;
-
-        // Jump
-        if (jumpEnabled && isGrounded && !isInAir && !isOnCoolDown)
-        {
-            if (direction.y > jumpNodeHeightRequirement)
-            {
-                if (isInAir) return;
-                isJumping = true;
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-                StartCoroutine(JumpCoolDown());
-
-            }
-        }
-        if (isGrounded)
-        {
-            isJumping = false;
-            isInAir = false;
-        }
-        else
-        {
-            isInAir = true;
-        }
 
         // Movement
         rb.velocity = new Vector2(force.x, rb.velocity.y);
@@ -139,10 +121,12 @@ public class EnemyBasicMovementPathfinding_Mole : MonoBehaviour
         }
     }
 
-    IEnumerator JumpCoolDown()
+    private bool IsGrounded()
     {
-        isOnCoolDown = true;
-        yield return new WaitForSeconds(1f);
-        isOnCoolDown = false;
+        return Physics2D.OverlapBox(groundCheck.position, new Vector2(1f, 0.1f), 0f, wall);
+    }
+    private bool IsGrinding()
+    {
+        return Physics2D.OverlapCircle(frontSideCheck.position, 0.2f, wall);
     }
 }

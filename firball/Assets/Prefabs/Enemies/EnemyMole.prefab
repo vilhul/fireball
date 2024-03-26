@@ -319,15 +319,14 @@ MonoBehaviour:
   target: {fileID: 2526591595291885433, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
   activateDistance: 50
   pathUpdateSeconds: 0.5
-  speed: 200
-  jumpForce: 100
+  speed: 5
+  jumpingPower: 15
   nextWaypointDistance: 3
-  jumpNodeHeightRequirement: 0.8
-  jumpModifier: 0.3
-  jumpCheckOffset: 0.1
+  frontSideCheck: {fileID: 8645538546034320484}
+  groundCheck: {fileID: 1743679184690887708}
+  wall:
+    serializedVersion: 2
+    m_Bits: 8
   followEnabled: 1
-  jumpEnabled: 1
-  isJumping: 0
-  isInAir: 0
   directionLookEnabled: 1
   startOffset: {x: 0, y: 0, z: 0}
