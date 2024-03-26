@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-[CreateAssetMenu(fileName = "Dialog Box", menuName = "Dialog")]
+[CreateAssetMenu(fileName = "DialogBox", menuName = "Dialog")]
 public class DialogBox : ScriptableObject
 {
     // https://www.youtube.com/watch?v=aPXvoWVabPY Bra länk för scriptable objects
