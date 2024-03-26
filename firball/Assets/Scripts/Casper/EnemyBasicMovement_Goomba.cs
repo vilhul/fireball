@@ -8,6 +8,7 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
     public Transform player;
     private float speed = 3f;
     private bool isFacingRight = true;
+    public float hp = 100f;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform frontSideCheck;
@@ -63,7 +64,11 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
     {
         if (IsTouched())
         {
-            Debug.Log("Du är dööööd!");
+            hp = 0f;
+        }
+        if ((hp <= 0f))
+        {
+            Destroy(gameObject);
         }
     }
     private bool IsTouched()
