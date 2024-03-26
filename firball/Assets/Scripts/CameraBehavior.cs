@@ -35,6 +35,7 @@ public class CameraBehavior : MonoBehaviour
 
         player = GameObject.FindGameObjectWithTag("Player");
 
+        UpdateCamera();
         UpdateRoomBorders();
     }
 
@@ -42,7 +43,6 @@ public class CameraBehavior : MonoBehaviour
     void Update()
     {
         FindExceedingBorders();
-        FindPlayerInsideCamera();
         MoveCamera();
     }
 
@@ -99,32 +99,6 @@ public class CameraBehavior : MonoBehaviour
 
     private void MoveCamera()
     {
-        if(!isPlayerInsideCamera.x)
-        {
-            if(player.transform.position.x > mainCamera.transform.position.x)
-            {
-                mainCamera.transform.position = new Vector3(player.transform.position.x - cameraWidth/2, mainCamera.transform.position.y, mainCamera.transform.position.z);
-            }
-            if(player.transform.position.x < mainCamera.transform.position.x)
-            {
-                //vänster
-                mainCamera.transform.position = new Vector3(player.transform.position.x + cameraWidth / 2, mainCamera.transform.position.y, mainCamera.transform.position.z);
-            }
-        }
-        if(!isPlayerInsideCamera.y)
-        {
-            if(player.transform.position.y > mainCamera.transform.position.y)
-            {
-                //ovanför
-                mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, player.transform.position.y - mainCamera.orthographicSize, mainCamera.transform.position.z);
-            }
-            if(player.transform.position.y < mainCamera.transform.position.y)
-            {
-                //nedanför
-                mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, player.transform.position.y + mainCamera.orthographicSize, mainCamera.transform.position.z);
-            }
-        }
-
         if(!(isBorderInsideCamera.right || isBorderInsideCamera.left))
         {
             mainCamera.transform.position = new Vector3(player.transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z);
@@ -135,24 +109,66 @@ public class CameraBehavior : MonoBehaviour
         }
     }
 
-    private void FindPlayerInsideCamera()
+
+    public void UpdateCamera()
     {
-        if(player.transform.position.x < mainCamera.transform.position.x + cameraWidth / 2 && player.transform.position.x > mainCamera.transform.position.x - cameraWidth/2)
+        //kolla om spelaren är utanför kameran och flytta kameran så spelaren är vid kanten av den (funkar bara för x-y nu, vet inte om den ens behövs?)
+        if(player.transform.position.x > mainCamera.transform.position.x)
         {
-            isPlayerInsideCamera.x = true;
-        } else
-        {
-            isPlayerInsideCamera.x = false;
+            //höger på skärmen
+            if(player.transform.position.x > mainCamera.transform.position.x + cameraWidth/2)
+            {
+                mainCamera.transform.position = new Vector3(player.transform.position.x - cameraWidth/2, mainCamera.transform.position.y, mainCamera.transform.position.z);
+            }
         }
-        if(player.transform.position.y < mainCamera.transform.position.y + mainCamera.orthographicSize && player.transform.position.y > mainCamera.transform.position.y - mainCamera.orthographicSize)
+        if(player.transform.position.x < mainCamera.transform.position.x)
         {
-            isPlayerInsideCamera.y = true;
-        } else
+            //vänster på skärmen
+            if(player.transform.position.x < mainCamera.transform.position.x - cameraWidth/2)
+            {
+                mainCamera.transform.position = new Vector3(player.transform.position.x + cameraWidth / 2, mainCamera.transform.position.y, mainCamera.transform.position.z);
+            }
+        }
+
+
+        foreach (GameObject roomBorder in roomBorders)
         {
-            isPlayerInsideCamera.y = false;
+            if (roomBorder.transform.position.x > mainCamera.transform.position.x)
+            {
+                //den här bordern är höger om kameran
+                if (roomBorder.transform.position.x < mainCamera.transform.position.x + cameraWidth / 2)
+                {
+                    mainCamera.transform.position = new Vector3(roomBorder.transform.position.x - cameraWidth / 2, mainCamera.transform.position.y, mainCamera.transform.position.z);
+                }
+            }
+            if (roomBorder.transform.position.x < mainCamera.transform.position.x)
+            {
+                //den här bordern är vänster om kameran
+                if (roomBorder.transform.position.x < mainCamera.transform.position.x - cameraWidth/2)
+                {
+                    mainCamera.transform.position = new Vector3(roomBorder.transform.position.x + cameraWidth / 2, mainCamera.transform.position.y, mainCamera.transform.position.z);
+                }
+            }
+
+
+            if (roomBorder.transform.position.y > mainCamera.transform.position.y)
+            {
+                //den här bordern är ovanför kameran
+                if (roomBorder.transform.position.y < mainCamera.transform.position.y + mainCamera.orthographicSize)
+                {
+                    mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, roomBorder.transform.position.y - mainCamera.orthographicSize, mainCamera.transform.position.z);
+                }
+            }
+            if (roomBorder.transform.position.y < mainCamera.transform.position.y)
+            {
+                //den här bordern är under kameran
+                if (roomBorder.transform.position.y < mainCamera.transform.position.y - mainCamera.orthographicSize)
+                {
+                    mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, roomBorder.transform.position.y + mainCamera.orthographicSize, mainCamera.transform.position.z);
+                }
+            }
         }
     }
-
 
     public void UpdateRoomBorders()
     {
