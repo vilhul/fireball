@@ -26,15 +26,16 @@ public class EntranceHandler : MonoBehaviour
         {
             CameraBehavior cameraBehavior = mainCamera.GetComponent<CameraBehavior>();
             cameraBehavior.UpdateRoomBorders();
+            cameraBehavior.UpdateCamera();
         } else
         {
             Debug.LogWarning("ingen kamera stumpan");
         }
     }
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if(!InputSystemController.isInEntrance)
         {
 

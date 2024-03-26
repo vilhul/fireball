@@ -74,10 +74,10 @@ public class InputSystemController : MonoBehaviour
     {
         if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer))
         {
-            Debug.Log("På marken");
+            //Debug.Log("På marken");
             return true;
         }
-        Debug.Log("Funktionen kallas");
+        //Debug.Log("Funktionen kallas");
         return false;
 
     }
