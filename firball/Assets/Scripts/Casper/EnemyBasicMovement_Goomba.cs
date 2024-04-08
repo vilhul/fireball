@@ -8,7 +8,7 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
     public Transform player;
     private float speed = 3f;
     private bool isFacingRight = true;
-    public float hp = 100f;
+    public float hp, maxHp = 100f;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform frontSideCheck;
@@ -16,12 +16,19 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
     [SerializeField] private Transform head;
     [SerializeField] private LayerMask wall;
     [SerializeField] private LayerMask playerLayer;
+    [SerializeField] FloatingHealthbar healthbar;
+
+    private void Start()
+    {
+        healthbar.UpdateHealthbar(hp, maxHp);
+    }
 
     void Update()
     {
         WallCheck();
         FloorCheck();
         KillCheck();
+        healthbar = GetComponentInChildren<FloatingHealthbar>();
     }
 
     private void WallCheck()
@@ -62,7 +69,8 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
 
     private void KillCheck()
     {
-        if (IsTouched())
+        healthbar.UpdateHealthbar(hp, maxHp);
+        if (HeadIsTouched())
         {
             hp = 0f;
         }
@@ -71,7 +79,7 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    private bool IsTouched()
+    private bool HeadIsTouched()
     {
         return Physics2D.OverlapBox(head.position, new Vector2(0.5f, 0.1f), 0f, playerLayer);
     }

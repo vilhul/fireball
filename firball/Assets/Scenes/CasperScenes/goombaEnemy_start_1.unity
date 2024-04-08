@@ -1520,6 +1520,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 948737163406937471, guid: 7a0452656b411ec42971b1034fdba12c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 948737163406937471, guid: 7a0452656b411ec42971b1034fdba12c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3573196271731153968, guid: 7a0452656b411ec42971b1034fdba12c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.516
@@ -1563,6 +1571,10 @@ PrefabInstance:
     - target: {fileID: 6209754562671665882, guid: 7a0452656b411ec42971b1034fdba12c, type: 3}
       propertyPath: m_Name
       value: EnemyGoomba
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965811363304057497, guid: 7a0452656b411ec42971b1034fdba12c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
