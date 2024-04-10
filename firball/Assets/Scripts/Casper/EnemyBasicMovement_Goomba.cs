@@ -17,6 +17,7 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
     [SerializeField] private LayerMask wall;
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] FloatingHealthbar healthbar;
+    [SerializeField] private Transform healthCanvas;
 
     private void Start()
     {
@@ -72,7 +73,7 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
         healthbar.UpdateHealthbar(hp, maxHp);
         if (HeadIsTouched())
         {
-            hp = 0f;
+            hp = 50f;
         }
         if ((hp <= 0f))
         {
@@ -89,6 +90,9 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
         isFacingRight = !isFacingRight;
         Vector3 localScale = transform.localScale;
         localScale.x *= -1f;
+        Vector3 healtbarScale = healthCanvas.localScale;
+        healtbarScale.x *= -1f;
         transform.localScale = localScale;
+        healthCanvas.localScale = healtbarScale;
     }
 }

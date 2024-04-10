@@ -241,6 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 8925632647184103770}
+  target: {fileID: 3573196271731153968}
 --- !u!1 &3677366454227276468
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,7 +568,8 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
-  healthbar: {fileID: 0}
+  healthbar: {fileID: 1978875584870460681}
+  healthCanvas: {fileID: 8738046936478315705}
 --- !u!1 &6794782221131901585
 GameObject:
   m_ObjectHideFlags: 0
