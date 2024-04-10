@@ -10,13 +10,21 @@ public class InputSystemController : MonoBehaviour
     public static bool hasExitedOnce = false;
     public static string nextEntranceName = string.Empty;
 
-
+    //casper 
+    private bool isFacingRight = true;
 
     [Header("Movement")]
     private float playerMovementSpeed = 5f;
     private float playerMovementDirection;
     [Header("Jumping")]
     private float playerJumpStrength = 12f;
+
+    //casper
+    [Header("Health")]
+    public float hp = 100f;
+    public float maxHp = 100f;
+    [SerializeField] FloatingHealthbar healthbar;
+    [SerializeField] private Transform healthCanvas;
 
     [Header("GroundCheck")]
     public Transform groundCheckPos;
@@ -28,14 +36,14 @@ public class InputSystemController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        healthbar.UpdateHealthbar(hp, maxHp);
     }
 
     // Update is called once per frame
     void Update()
     {
         rb.velocity = new Vector2(playerMovementDirection * playerMovementSpeed, rb.velocity.y);
-
+        KillCheck();
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -86,5 +94,26 @@ public class InputSystemController : MonoBehaviour
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireCube(groundCheckPos.position, groundCheckSize);
+    }
+
+    // denna gör ingenting just nu men när i har en sprite som behöver flippas kan vi använda denhär:
+    private void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        Vector3 localScale = transform.localScale;
+        localScale.x *= -1f;
+        Vector3 healtbarScale = healthCanvas.localScale;
+        healtbarScale.x *= -1f;
+        transform.localScale = localScale;
+        healthCanvas.localScale = healtbarScale;
+    }
+
+    private void KillCheck()
+    {
+        healthbar.UpdateHealthbar(hp, maxHp);
+        if ((hp <= 0f))
+        {
+            Destroy(gameObject);
+        }
     }
 }

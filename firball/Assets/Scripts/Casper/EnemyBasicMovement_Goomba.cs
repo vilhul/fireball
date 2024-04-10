@@ -51,6 +51,14 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
         }
     }
 
+    private void PlayerCheck ()
+    {
+        if (HitPlayer() && isFacingRight)
+        {
+             //add force here
+        }
+    }
+
     private void FloorCheck()
     {
         if(!IsFloor())
@@ -58,9 +66,14 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
             Flip();
         }
     }
-    private bool IsGrinding ()
+    private bool IsGrinding()
     {
         return Physics2D.OverlapCircle(frontSideCheck.position, 0.2f, wall);
+    }
+
+    public bool HitPlayer()
+    {
+        return Physics2D.OverlapCircle(frontSideCheck.position, 0.2f, playerLayer);
     }
 
     private bool IsFloor()
