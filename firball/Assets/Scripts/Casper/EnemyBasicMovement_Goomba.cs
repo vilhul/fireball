@@ -9,6 +9,7 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
     private float speed = 3f;
     private bool isFacingRight = true;
     public float hp, maxHp = 100f;
+    private float pushForce = 1000f;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform frontSideCheck;
@@ -21,6 +22,7 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
 
     private void Start()
     {
+        healthCanvas.GetComponent<Canvas>().enabled=false;
         healthbar.UpdateHealthbar(hp, maxHp);
     }
 
@@ -29,6 +31,7 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
         WallCheck();
         FloorCheck();
         KillCheck();
+        PlayerCheck();
         healthbar = GetComponentInChildren<FloatingHealthbar>();
     }
 
@@ -51,11 +54,15 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
         }
     }
 
-    private void PlayerCheck ()
+    private void PlayerCheck()
     {
+        
         if (HitPlayer() && isFacingRight)
         {
-             //add force here
+            rb.velocity = new Vector2(0f, 0f);
+            rb.AddForce(new Vector2(-pushForce,0));
+            //Vänta
+            Debug.Log("jag har väntat?");
         }
     }
 
@@ -86,6 +93,7 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
         healthbar.UpdateHealthbar(hp, maxHp);
         if (HeadIsTouched())
         {
+            ShowHealtbar();
             hp = 50f;
         }
         if ((hp <= 0f))
@@ -96,6 +104,11 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
     private bool HeadIsTouched()
     {
         return Physics2D.OverlapBox(head.position, new Vector2(0.5f, 0.1f), 0f, playerLayer);
+    }
+
+    private void ShowHealtbar()
+    {
+        healthCanvas.GetComponent<Canvas>().enabled = true;
     }
 
     private void Flip()

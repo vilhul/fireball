@@ -11,7 +11,8 @@ public class ListenBox : ScriptableObject
 {
     public string textContent;
     public Sprite sprite;
-    public GameObject nextNode; // GameObject?
+    public ListenBox nextListen; // GameObject?
+    public AnswerBox nextAnswer;
 
     public void LogAttribs()
     {
