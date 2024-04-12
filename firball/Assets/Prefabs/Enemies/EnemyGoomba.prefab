@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 7991120516084783004}
   - component: {fileID: 380927982087143108}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: HealthbarCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,6 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 8925632647184103770}
   target: {fileID: 3573196271731153968}
+  offset: {x: 0, y: 1, z: 0}
 --- !u!1 &3677366454227276468
 GameObject:
   m_ObjectHideFlags: 0
