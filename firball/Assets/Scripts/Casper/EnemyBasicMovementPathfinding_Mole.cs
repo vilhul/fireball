@@ -12,11 +12,16 @@ public class EnemyBasicMovementPathfinding_Mole : MonoBehaviour
 
     [Header("Physics")]
     public float speed = 5f;
+    public float hp, maxHp = 100f;
     public float jumpingPower = 15f;
     public float nextWaypointDistance = 3f;
     [SerializeField] private Transform frontSideCheck;
     [SerializeField] private Transform groundCheck;
+    [SerializeField] private Transform head;
     [SerializeField] private LayerMask wall;
+    [SerializeField] private LayerMask playerLayer;
+    [SerializeField] FloatingHealthbar healthbar;
+    [SerializeField] private Transform healthCanvas;
 
     [Header("Custom Behavior")]
     public bool followEnabled = true;
@@ -30,6 +35,17 @@ public class EnemyBasicMovementPathfinding_Mole : MonoBehaviour
     Seeker seeker;
     Rigidbody2D rb;
 
+    private void Update()
+    {
+        if (IsGrinding() && IsGrounded())
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+        }
+
+        KillCheck();
+    }
+
+    // början på kopierad kod
     public void Start()
     {
         seeker = GetComponent<Seeker>();
@@ -37,15 +53,6 @@ public class EnemyBasicMovementPathfinding_Mole : MonoBehaviour
 
         InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
     }
-
-    private void Update()
-    {
-        if (IsGrinding() && IsGrounded())
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-        }
-    }
-
     private void FixedUpdate()
     {
         if (TargetInDistance() && followEnabled)
@@ -99,10 +106,12 @@ public class EnemyBasicMovementPathfinding_Mole : MonoBehaviour
             if (rb.velocity.x > 0.05f)
             {
                 transform.localScale = new Vector3(-1f * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+                healthCanvas.localScale = new Vector3(-1f * Mathf.Abs(healthCanvas.localScale.x), healthCanvas.localScale.y, healthCanvas.localScale.z);
             }
             else if (rb.velocity.x < -0.05f)
             {
                 transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+                healthCanvas.localScale = new Vector3(Mathf.Abs(healthCanvas.localScale.x), healthCanvas.localScale.y, healthCanvas.localScale.z);
             }
         }
     }
@@ -120,7 +129,26 @@ public class EnemyBasicMovementPathfinding_Mole : MonoBehaviour
             currentWaypoint = 0;
         }
     }
+    //slut på kopierad kod
+    //Killing the Enemy
+    private void KillCheck()
+    {
+        healthbar.UpdateHealthbar(hp, maxHp);
+        if (IsTouched())
+        {
+            hp = 50f;
+        }
+        if ((hp <= 0f))
+        {
+            Destroy(gameObject);
+        }
+    }
+    private bool IsTouched()
+    {
+        return Physics2D.OverlapBox(head.position, new Vector2(0.6f, 0.1f), 0f, playerLayer);
+    }
 
+    //Jump 
     private bool IsGrounded()
     {
         return Physics2D.OverlapBox(groundCheck.position, new Vector2(1f, 0.1f), 0f, wall);

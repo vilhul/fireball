@@ -8,6 +8,8 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
     public Transform player;
     private float speed = 3f;
     private bool isFacingRight = true;
+    public float hp, maxHp = 100f;
+    private float pushForce = 1000f;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform frontSideCheck;
@@ -15,12 +17,22 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
     [SerializeField] private Transform head;
     [SerializeField] private LayerMask wall;
     [SerializeField] private LayerMask playerLayer;
+    [SerializeField] FloatingHealthbar healthbar;
+    [SerializeField] private Transform healthCanvas;
+
+    private void Start()
+    {
+        healthCanvas.GetComponent<Canvas>().enabled=false;
+        healthbar.UpdateHealthbar(hp, maxHp);
+    }
 
     void Update()
     {
         WallCheck();
         FloorCheck();
         KillCheck();
+        PlayerCheck();
+        healthbar = GetComponentInChildren<FloatingHealthbar>();
     }
 
     private void WallCheck()
@@ -42,6 +54,18 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
         }
     }
 
+    private void PlayerCheck()
+    {
+        
+        if (HitPlayer() && isFacingRight)
+        {
+            rb.velocity = new Vector2(0f, 0f);
+            rb.AddForce(new Vector2(-pushForce,0));
+            //Vänta
+            Debug.Log("jag har väntat?");
+        }
+    }
+
     private void FloorCheck()
     {
         if(!IsFloor())
@@ -49,9 +73,14 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
             Flip();
         }
     }
-    private bool IsGrinding ()
+    private bool IsGrinding()
     {
         return Physics2D.OverlapCircle(frontSideCheck.position, 0.2f, wall);
+    }
+
+    public bool HitPlayer()
+    {
+        return Physics2D.OverlapCircle(frontSideCheck.position, 0.2f, playerLayer);
     }
 
     private bool IsFloor()
@@ -61,14 +90,25 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
 
     private void KillCheck()
     {
-        if (IsTouched())
+        healthbar.UpdateHealthbar(hp, maxHp);
+        if (HeadIsTouched())
         {
-            Debug.Log("Du är dööööd!");
+            ShowHealtbar();
+            hp = 50f;
+        }
+        if ((hp <= 0f))
+        {
+            Destroy(gameObject);
         }
     }
-    private bool IsTouched()
+    private bool HeadIsTouched()
     {
         return Physics2D.OverlapBox(head.position, new Vector2(0.5f, 0.1f), 0f, playerLayer);
+    }
+
+    private void ShowHealtbar()
+    {
+        healthCanvas.GetComponent<Canvas>().enabled = true;
     }
 
     private void Flip()
@@ -76,6 +116,9 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
         isFacingRight = !isFacingRight;
         Vector3 localScale = transform.localScale;
         localScale.x *= -1f;
+        Vector3 healtbarScale = healthCanvas.localScale;
+        healtbarScale.x *= -1f;
         transform.localScale = localScale;
+        healthCanvas.localScale = healtbarScale;
     }
 }
