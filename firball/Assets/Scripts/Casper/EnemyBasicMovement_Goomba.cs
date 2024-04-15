@@ -9,7 +9,8 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
     private float speed = 3f;
     private bool isFacingRight = true;
     public float hp, maxHp = 100f;
-    private float pushForce = 1000f;
+    private float pushForceX = 80f;
+    private float pushForceY = 100f;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform frontSideCheck;
@@ -61,7 +62,7 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
         if (HitPlayer() && isFacingRight)
         {
             rb.velocity = new Vector2(0f, 0f);
-            rb.AddForce(new Vector2(-pushForce,0));
+            rb.AddForce(new Vector2(-pushForceX,pushForceY));
             //Vänta
             Debug.Log("jag har väntat?");
         }
@@ -83,6 +84,9 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
     public bool HitPlayer()
     {
         return Physics2D.OverlapCircle(frontSideCheck.position, 0.2f, playerLayer);
+        //return ( nånting || nånting)
+        // returna antingen nånting eller nånting
+        //gör en ny colider som är större än enemy och kolla om de rör player layer typ
     }
 
     private bool IsFloorFront()
