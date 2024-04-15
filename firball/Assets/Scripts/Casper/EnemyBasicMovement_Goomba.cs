@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class EnemyBasicMovement_Goomba : MonoBehaviour
 {
-    public Transform player;
     private float speed = 3f;
     private bool isFacingRight = true;
     public float hp, maxHp = 100f;
     private float pushForceX = 80f;
     private float pushForceY = 100f;
+    private bool isBeinghit = false;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform frontSideCheck;
@@ -19,7 +19,7 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
     [SerializeField] private Transform head;
     [SerializeField] private LayerMask wall;
     [SerializeField] private LayerMask playerLayer;
-    [SerializeField] FloatingHealthbar healthbar;
+    [SerializeField] private FloatingHealthbar healthbar;
     [SerializeField] private Transform healthCanvas;
 
     private void Start()
@@ -30,10 +30,13 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
 
     void Update()
     {
-        WallCheck();
+        if (!isBeinghit)
+        {
+            WallCheck();
+        }
         FloorCheck();
         KillCheck();
-        PlayerCheck();
+        //PlayerCheck();
         healthbar = GetComponentInChildren<FloatingHealthbar>();
     }
 
@@ -58,6 +61,11 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
 
     private void PlayerCheck()
     {
+        if (HitPlayer() || !IsFloorFront() || !IsFloorBack())
+        {
+            isBeinghit = true;
+        } else { isBeinghit = false; }
+
         
         if (HitPlayer() && isFacingRight)
         {
@@ -83,10 +91,8 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
 
     public bool HitPlayer()
     {
-        return Physics2D.OverlapCircle(frontSideCheck.position, 0.2f, playerLayer);
-        //return ( nånting || nånting)
-        // returna antingen nånting eller nånting
-        //gör en ny colider som är större än enemy och kolla om de rör player layer typ
+        return Physics2D.OverlapBox(transform.position, new Vector2(0.8f, 1.7f), 0f, playerLayer);
+        //return ( nånting || nånting
     }
 
     private bool IsFloorFront()

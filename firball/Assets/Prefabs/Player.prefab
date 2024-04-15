@@ -212,6 +212,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 4961659746470146123}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 512
   hp: 100
   maxHp: 100
   healthbar: {fileID: 0}
