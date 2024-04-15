@@ -17,11 +17,20 @@ public class UpdateListenBoxText : MonoBehaviour
     public int shownCharacters;
     public string fullDialogText;
 
+    public void UpdateCurrentSpeech()
+    {
+        fullDialogText = listenBoxDisplay.speech;
+        shownCharacters = 0;
+    }
     private void AnimateSpeech()
     {
         if (shownCharacters < fullDialogText.Length)
         {
             shownCharacters++;
+        }
+        if (shownCharacters > fullDialogText.Length)
+        {
+            shownCharacters = fullDialogText.Length;
         }
         speechText.text = fullDialogText.Substring(0, shownCharacters);
     }
@@ -37,8 +46,6 @@ public class UpdateListenBoxText : MonoBehaviour
         timeSinceLastSwitch = 0;
 
         fullDialogText = listenBoxDisplay.speech;
-
-        Debug.Log("ListenBoxDisplay: " + listenBoxDisplay);
 
         // Getting to the correct child (No cops please)
         Transform textBoxTransform = transform.Find("TextBox");
@@ -68,11 +75,6 @@ public class UpdateListenBoxText : MonoBehaviour
         {
             Debug.LogError("listenBoxDisplay not found!");
         }
-    }
-
-    void Update()
-    {
-
     }
 
     void FixedUpdate()
