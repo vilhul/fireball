@@ -13,7 +13,8 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform frontSideCheck;
-    [SerializeField] private Transform walkableSpace;
+    [SerializeField] private Transform walkableSpaceFront;
+    [SerializeField] private Transform walkableSpaceBack;
     [SerializeField] private Transform head;
     [SerializeField] private LayerMask wall;
     [SerializeField] private LayerMask playerLayer;
@@ -39,7 +40,7 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
     {
         if (isFacingRight)
         {
-            rb.velocity = new Vector2(speed, 0f);
+            rb.velocity = new Vector2(speed, rb.velocity.y);
         }
 
         if (IsGrinding())
@@ -50,7 +51,7 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
 
         if (!isFacingRight)
         {
-            rb.velocity = new Vector2(-speed, 0f);
+            rb.velocity = new Vector2(-speed, rb.velocity.y);
         }
     }
 
@@ -68,11 +69,12 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
 
     private void FloorCheck()
     {
-        if(!IsFloor())
+        if(!IsFloorFront() && IsFloorBack())
         {
             Flip();
         }
     }
+
     private bool IsGrinding()
     {
         return Physics2D.OverlapCircle(frontSideCheck.position, 0.2f, wall);
@@ -83,9 +85,14 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
         return Physics2D.OverlapCircle(frontSideCheck.position, 0.2f, playerLayer);
     }
 
-    private bool IsFloor()
+    private bool IsFloorFront()
     {
-        return Physics2D.OverlapCircle(walkableSpace.position, 0.2f, wall);
+        return Physics2D.OverlapCircle(walkableSpaceFront.position, 0.2f, wall);
+    }
+
+    private bool IsFloorBack()
+    {
+        return Physics2D.OverlapCircle(walkableSpaceBack.position, 0.2f, wall);
     }
 
     private void KillCheck()
