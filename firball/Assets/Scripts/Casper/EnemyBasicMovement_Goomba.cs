@@ -53,11 +53,6 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
         {
             rb.velocity = new Vector2(-speed, rb.velocity.y);
         }
-
-        if(!IsFloorBack() && !IsFloorFront())
-        {
-            //rb.velocity = 0f;
-        }
     }
 
     private void PlayerCheck()
