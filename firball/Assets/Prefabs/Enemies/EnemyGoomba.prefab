@@ -466,9 +466,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4868245181596454035}
+  - {fileID: 9149700932989344018}
   - {fileID: 2566480469045289842}
   - {fileID: 3406718165740800310}
-  - {fileID: 9149700932989344018}
+  - {fileID: 1007674457681433285}
   - {fileID: 8738046936478315705}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -561,7 +562,8 @@ MonoBehaviour:
   maxHp: 100
   rb: {fileID: 2038159331629848632}
   frontSideCheck: {fileID: 2566480469045289842}
-  walkableSpace: {fileID: 3406718165740800310}
+  walkableSpaceFront: {fileID: 3406718165740800310}
+  walkableSpaceBack: {fileID: 1007674457681433285}
   head: {fileID: 9149700932989344018}
   wall:
     serializedVersion: 2
@@ -602,6 +604,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3573196271731153968}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7324350134648983894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1007674457681433285}
+  m_Layer: 0
+  m_Name: Back Floor Check
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1007674457681433285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7324350134648983894}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.35, y: -0.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3573196271731153968}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7932719788962720486
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,7 +645,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3406718165740800310}
   m_Layer: 0
-  m_Name: Floor Check
+  m_Name: Front Floor Check
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
