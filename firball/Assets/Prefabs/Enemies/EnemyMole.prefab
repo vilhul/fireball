@@ -242,6 +242,7 @@ MonoBehaviour:
   slider: {fileID: 8765369292413193279}
   target: {fileID: 6072419904692306848}
   offset: {x: 0, y: 1, z: 0}
+  isThisPlayer: 0
 --- !u!1 &5859394537682224129
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,7 +372,7 @@ GameObject:
   - component: {fileID: 2306553740143677417}
   - component: {fileID: 1527383912939355408}
   - component: {fileID: 5763706529644108675}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EnemyMole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,7 +459,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

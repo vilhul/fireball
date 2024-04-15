@@ -12,6 +12,9 @@ public class InputSystemController : MonoBehaviour
 
     //casper 
     private bool isFacingRight = true;
+    private float pushForceX = 80f;
+    private float pushForceY = 100f;
+    [SerializeField] private LayerMask enemyLayer;
 
     [Header("Movement")]
     private float playerMovementSpeed = 5f;
@@ -90,6 +93,12 @@ public class InputSystemController : MonoBehaviour
 
     }
 
+    public bool HitEnemy()
+    {
+        return Physics2D.OverlapBox(transform.position, new Vector2(5f, 5f), 0f, enemyLayer);
+        //return ( nånting || nånting
+    }
+
     public void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;
@@ -106,6 +115,15 @@ public class InputSystemController : MonoBehaviour
         healtbarScale.x *= -1f;
         transform.localScale = localScale;
         healthCanvas.localScale = healtbarScale;
+    }
+
+    private void EnemyCheck()
+    {
+        if (HitEnemy())
+        {
+            rb.AddForce(new Vector2(-pushForceX, pushForceY));
+            Debug.Log("träffad");
+        }
     }
 
     private void KillCheck()

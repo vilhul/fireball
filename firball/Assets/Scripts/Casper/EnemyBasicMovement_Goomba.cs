@@ -5,19 +5,21 @@ using UnityEngine;
 
 public class EnemyBasicMovement_Goomba : MonoBehaviour
 {
-    public Transform player;
     private float speed = 3f;
     private bool isFacingRight = true;
     public float hp, maxHp = 100f;
-    private float pushForce = 1000f;
+    private float pushForceX = 80f;
+    private float pushForceY = 100f;
+    private bool isBeinghit = false;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform frontSideCheck;
-    [SerializeField] private Transform walkableSpace;
+    [SerializeField] private Transform walkableSpaceFront;
+    [SerializeField] private Transform walkableSpaceBack;
     [SerializeField] private Transform head;
     [SerializeField] private LayerMask wall;
     [SerializeField] private LayerMask playerLayer;
-    [SerializeField] FloatingHealthbar healthbar;
+    [SerializeField] private FloatingHealthbar healthbar;
     [SerializeField] private Transform healthCanvas;
 
     private void Start()
@@ -28,10 +30,13 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
 
     void Update()
     {
-        WallCheck();
+        if (!isBeinghit)
+        {
+            WallCheck();
+        }
         FloorCheck();
         KillCheck();
-        PlayerCheck();
+        //PlayerCheck();
         healthbar = GetComponentInChildren<FloatingHealthbar>();
     }
 
@@ -39,7 +44,7 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
     {
         if (isFacingRight)
         {
-            rb.velocity = new Vector2(speed, 0f);
+            rb.velocity = new Vector2(speed, rb.velocity.y);
         }
 
         if (IsGrinding())
@@ -50,17 +55,22 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
 
         if (!isFacingRight)
         {
-            rb.velocity = new Vector2(-speed, 0f);
+            rb.velocity = new Vector2(-speed, rb.velocity.y);
         }
     }
 
     private void PlayerCheck()
     {
+        if (HitPlayer() || !IsFloorFront() || !IsFloorBack())
+        {
+            isBeinghit = true;
+        } else { isBeinghit = false; }
+
         
         if (HitPlayer() && isFacingRight)
         {
             rb.velocity = new Vector2(0f, 0f);
-            rb.AddForce(new Vector2(-pushForce,0));
+            rb.AddForce(new Vector2(-pushForceX,pushForceY));
             //Vänta
             Debug.Log("jag har väntat?");
         }
@@ -68,11 +78,12 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
 
     private void FloorCheck()
     {
-        if(!IsFloor())
+        if(!IsFloorFront() && IsFloorBack())
         {
             Flip();
         }
     }
+
     private bool IsGrinding()
     {
         return Physics2D.OverlapCircle(frontSideCheck.position, 0.2f, wall);
@@ -80,12 +91,18 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
 
     public bool HitPlayer()
     {
-        return Physics2D.OverlapCircle(frontSideCheck.position, 0.2f, playerLayer);
+        return Physics2D.OverlapBox(transform.position, new Vector2(0.8f, 1.7f), 0f, playerLayer);
+        //return ( nånting || nånting
     }
 
-    private bool IsFloor()
+    private bool IsFloorFront()
     {
-        return Physics2D.OverlapCircle(walkableSpace.position, 0.2f, wall);
+        return Physics2D.OverlapCircle(walkableSpaceFront.position, 0.2f, wall);
+    }
+
+    private bool IsFloorBack()
+    {
+        return Physics2D.OverlapCircle(walkableSpaceBack.position, 0.2f, wall);
     }
 
     private void KillCheck()
