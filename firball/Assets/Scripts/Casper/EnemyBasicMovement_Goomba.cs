@@ -8,9 +8,9 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
     private float speed = 3f;
     private bool isFacingRight = true;
     public float hp, maxHp = 100f;
-    private float pushForceX = 80f;
-    private float pushForceY = 100f;
-    private bool isBeinghit = false;
+    private float pushForceX = 50f;
+    private float pushForceY = 150f;
+    private bool isBeingHit = false;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform frontSideCheck;
@@ -30,13 +30,13 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
 
     void Update()
     {
-        if (!isBeinghit)
+        if (!isBeingHit)
         {
             WallCheck();
         }
         FloorCheck();
         KillCheck();
-        //PlayerCheck();
+        PlayerCheck();
         healthbar = GetComponentInChildren<FloatingHealthbar>();
     }
 
@@ -59,20 +59,33 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
         }
     }
 
+    private IEnumerator HitTime()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Debug.Log("väntat");
+        isBeingHit = false;
+    }
+
     private void PlayerCheck()
     {
-        if (HitPlayer() || !IsFloorFront() || !IsFloorBack())
+        // träffad från vänster
+        if (HitPlayer() && !isFacingRight && !isBeingHit)
         {
-            isBeinghit = true;
-        } else { isBeinghit = false; }
-
-        
-        if (HitPlayer() && isFacingRight)
-        {
+            isBeingHit = true;
             rb.velocity = new Vector2(0f, 0f);
-            rb.AddForce(new Vector2(-pushForceX,pushForceY));
-            //Vänta
-            Debug.Log("jag har väntat?");
+            rb.AddForce(new Vector2(pushForceX,pushForceY));
+            StartCoroutine(HitTime());
+            Debug.Log("Enemy träffad vänster");
+        }
+
+        // träffad från höger
+        if (HitPlayer() && isFacingRight && !isBeingHit)
+        {
+            isBeingHit = true;
+            rb.velocity = new Vector2(0f, 0f);
+            rb.AddForce(new Vector2(pushForceX, pushForceY));
+            StartCoroutine(HitTime());
+            Debug.Log("Enemy träffad höger");
         }
     }
 

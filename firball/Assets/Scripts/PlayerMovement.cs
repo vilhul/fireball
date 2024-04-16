@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,9 +13,12 @@ public class InputSystemController : MonoBehaviour
 
     //casper 
     private bool isFacingRight = true;
-    private float pushForceX = 80f;
-    private float pushForceY = 100f;
+    private float pushForceX = 300f;
+    private float pushForceY = 250f;
+    private bool isBeingHit = false;
     [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private Transform RightSide;
+    [SerializeField] private Transform LeftSide;
 
     [Header("Movement")]
     private float playerMovementSpeed = 5f;
@@ -45,8 +49,13 @@ public class InputSystemController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector2(playerMovementDirection * playerMovementSpeed, rb.velocity.y);
+        if (!isBeingHit)
+        {
+            rb.velocity = new Vector2(playerMovementDirection * playerMovementSpeed, rb.velocity.y);
+        }
+         
         KillCheck();
+        EnemyCheck();
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -95,7 +104,7 @@ public class InputSystemController : MonoBehaviour
 
     public bool HitEnemy()
     {
-        return Physics2D.OverlapBox(transform.position, new Vector2(5f, 5f), 0f, enemyLayer);
+        return Physics2D.OverlapBox(transform.position, new Vector2(1f, 2f), 0f, enemyLayer);
         //return ( nånting || nånting
     }
 
@@ -111,19 +120,23 @@ public class InputSystemController : MonoBehaviour
         isFacingRight = !isFacingRight;
         Vector3 localScale = transform.localScale;
         localScale.x *= -1f;
-        Vector3 healtbarScale = healthCanvas.localScale;
-        healtbarScale.x *= -1f;
-        transform.localScale = localScale;
-        healthCanvas.localScale = healtbarScale;
     }
 
+    private IEnumerator HitTime()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Debug.Log("väntat");
+        isBeingHit = false;
+    }
     private void EnemyCheck()
     {
-        if (HitEnemy())
+        if (HitEnemy() && !isBeingHit)
         {
+            isBeingHit = true;
             rb.AddForce(new Vector2(-pushForceX, pushForceY));
-            Debug.Log("träffad");
-        }
+            Debug.Log("Player träffad höger");
+            StartCoroutine(HitTime());
+        } 
     }
 
     private void KillCheck()
