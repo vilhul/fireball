@@ -12,7 +12,7 @@ public class ListenBox : ScriptableObject
     public string textContent;
     public Sprite sprite;
     public ListenBox nextListen;
-    public AnswerBox nextAnswer;
+    public AnswerList nextAnswer;
 
     public void LogAttribs()
     {

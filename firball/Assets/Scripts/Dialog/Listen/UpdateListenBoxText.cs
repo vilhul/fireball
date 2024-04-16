@@ -41,39 +41,55 @@ public class UpdateListenBoxText : MonoBehaviour
         listenBoxDisplay = GetComponent<ListenBoxDisplay>();
 
         // Animation
-        animationSpeed = 3;
+        animationSpeed = 1;
         shownCharacters = 0;
         timeSinceLastSwitch = 0;
 
         fullDialogText = listenBoxDisplay.speech;
 
         // Getting to the correct child (No cops please)
-        Transform textBoxTransform = transform.Find("TextBox");
-        if (textBoxTransform != null)
+        // Vet genuint inte varför jag inte bara la skriptet PÅ textObjektet direkt, men pallar inte göra om
+        Transform listen = transform.Find("Listen");
+        if (listen != null)
         {
-            Transform listenTextTransform = textBoxTransform.Find("ListenBox");
-            if (listenTextTransform != null)
+            Transform textBoxTransform = listen.Find("TextBox");
+            if (textBoxTransform != null)
             {
-                speechText = listenTextTransform.GetComponent<Text>();
-
-                if (listenBoxDisplay == null)
+                Transform listenTextTransform = textBoxTransform.Find("ListenBox");
+                if (listenTextTransform != null)
                 {
-                    Debug.LogError("listenBoxDisplay not found");
+                    speechText = listenTextTransform.GetComponent<Text>();
+
+                    if (listenBoxDisplay == null)
+                    {
+                        Debug.LogError("listenBoxDisplay not found");
+                    }
+                }
+                else
+                {
+                    Debug.Log("speechTextTransform is empty: " + listenTextTransform);
                 }
             }
             else
             {
-                Debug.Log("speechTextTransform is empty: " + listenTextTransform);
+                Debug.Log("TextTransform is empty: " + textBoxTransform);
             }
         }
         else
         {
-            Debug.Log("TextTransform is empty: " + textBoxTransform);
+            Debug.Log("Listen does not exist: " + listen);
         }
-
         if (listenBoxDisplay == null)
         {
             Debug.LogError("listenBoxDisplay not found!");
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            shownCharacters = fullDialogText.Length;
         }
     }
 

@@ -8,7 +8,7 @@ public class ListenBoxDisplay : MonoBehaviour
     public ListenBox listenBox;
 
     public ListenBox nextListen;
-    public AnswerBox nextAnswer;
+    public AnswerList nextAnswer;
     public Sprite sprite;
     public string speech;
 

@@ -20,23 +20,29 @@ public class UpdateListenSprite : MonoBehaviour
     {
         listenBoxDisplay = GetComponent<ListenBoxDisplay>();
         // Getting to correct child
-        Transform imageBoxTransform = transform.Find("ImageBox");
-        if (imageBoxTransform != null)
+        // Vet genuint inte varför jag inte bara la skriptet PÅ spriten direkt, men pallar inte göra om
+        Transform listen = transform.Find("Listen");
+        if (listen != null)
         {
-            Transform talkerImageTransform = imageBoxTransform.Find("TalkerImage");
-            if (talkerImageTransform != null)
+            Transform imageBoxTransform = listen.Find("ImageBox");
+            if (imageBoxTransform != null)
             {
-                spriteContainer = talkerImageTransform.GetComponent<Image>();
+                Transform talkerImageTransform = imageBoxTransform.Find("TalkerImage");
+                if (talkerImageTransform != null)
+                {
+                    spriteContainer = talkerImageTransform.GetComponent<Image>();
+                }
+                else
+                {
+                    Debug.Log("talkerImageTransform is empty: " + talkerImageTransform);
+                }
             }
             else
             {
-                Debug.Log("talkerImageTransform is empty: " + talkerImageTransform);
+                Debug.Log("imageBoxTransform is empty: " + imageBoxTransform);
             }
         }
-        else
-        {
-            Debug.Log("imageBoxTransform is empty: " + imageBoxTransform);
-        }
+            
 
         if (listenBoxDisplay == null)
         {
