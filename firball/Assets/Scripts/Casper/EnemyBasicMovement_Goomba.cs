@@ -8,17 +8,27 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
     private float speed = 3f;
     private bool isFacingRight = true;
     public float hp, maxHp = 100f;
-    private float pushForceX = 50f;
-    private float pushForceY = 150f;
+    private float pushForceX = 150f;
+    private float pushForceY = 250f;
     private bool isBeingHit = false;
 
+
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Transform frontSideCheck;
+
+    [Header("Sides")]
+    [SerializeField] private Transform head;
+    [SerializeField] private Transform frontSide;
+    [SerializeField] private Transform rightSide;
+    [SerializeField] private Transform leftSide;
     [SerializeField] private Transform walkableSpaceFront;
     [SerializeField] private Transform walkableSpaceBack;
-    [SerializeField] private Transform head;
+    
+
+    [Header("Layers")]
     [SerializeField] private LayerMask wall;
     [SerializeField] private LayerMask playerLayer;
+
+    [Header("Healthbar")]
     [SerializeField] private FloatingHealthbar healthbar;
     [SerializeField] private Transform healthCanvas;
 
@@ -36,7 +46,6 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
         }
         FloorCheck();
         KillCheck();
-        PlayerCheck();
         healthbar = GetComponentInChildren<FloatingHealthbar>();
     }
 
@@ -47,7 +56,7 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
             rb.velocity = new Vector2(speed, rb.velocity.y);
         }
 
-        if (IsGrinding())
+        if (IsFrontSide())
         {
             Flip();
             rb.velocity = new Vector2(0f, 0f);
@@ -62,31 +71,7 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
     private IEnumerator HitTime()
     {
         yield return new WaitForSeconds(0.5f);
-        Debug.Log("väntat");
         isBeingHit = false;
-    }
-
-    private void PlayerCheck()
-    {
-        // träffad från vänster
-        if (HitPlayer() && !isFacingRight && !isBeingHit)
-        {
-            isBeingHit = true;
-            rb.velocity = new Vector2(0f, 0f);
-            rb.AddForce(new Vector2(pushForceX,pushForceY));
-            StartCoroutine(HitTime());
-            Debug.Log("Enemy träffad vänster");
-        }
-
-        // träffad från höger
-        if (HitPlayer() && isFacingRight && !isBeingHit)
-        {
-            isBeingHit = true;
-            rb.velocity = new Vector2(0f, 0f);
-            rb.AddForce(new Vector2(pushForceX, pushForceY));
-            StartCoroutine(HitTime());
-            Debug.Log("Enemy träffad höger");
-        }
     }
 
     private void FloorCheck()
@@ -97,15 +82,24 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
         }
     }
 
-    private bool IsGrinding()
+    private bool IsFrontSide()
     {
-        return Physics2D.OverlapCircle(frontSideCheck.position, 0.2f, wall);
+        return Physics2D.OverlapCircle(frontSide.position, 0.2f, wall);
+    }
+
+    private bool IsRightSide()
+    {
+        return Physics2D.OverlapBox(rightSide.position, new Vector2(0.1f, 1.6f), 0f, playerLayer);
+    }
+
+    private bool IsLeftSide()
+    {
+        return Physics2D.OverlapBox(leftSide.position, new Vector2(-0.1f, 1.6f), 0f, playerLayer);
     }
 
     public bool HitPlayer()
     {
         return Physics2D.OverlapBox(transform.position, new Vector2(0.8f, 1.7f), 0f, playerLayer);
-        //return ( nånting || nånting
     }
 
     private bool IsFloorFront()
@@ -121,10 +115,28 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
     private void KillCheck()
     {
         healthbar.UpdateHealthbar(hp, maxHp);
-        if (HeadIsTouched())
+
+        // träffad från vänster
+        if (HitPlayer() && IsLeftSide() && !isBeingHit)
+        {
+            isBeingHit = true;
+            rb.velocity = new Vector2(0f, 0f);
+            rb.AddForce(new Vector2(pushForceX, pushForceY));
+            StartCoroutine(HitTime());
+        }
+
+        // träffad från höger
+        if (HitPlayer() && IsRightSide() && !isBeingHit)
+        {
+            isBeingHit = true;
+            rb.velocity = new Vector2(0f, 0f);
+            rb.AddForce(new Vector2(-pushForceX, pushForceY));
+            StartCoroutine(HitTime());
+        }
+
+        if (HitPlayer())
         {
             ShowHealtbar();
-            hp = 50f;
         }
         if ((hp <= 0f))
         {
@@ -146,9 +158,14 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
         isFacingRight = !isFacingRight;
         Vector3 localScale = transform.localScale;
         localScale.x *= -1f;
+        transform.localScale = localScale;
+
         Vector3 healtbarScale = healthCanvas.localScale;
         healtbarScale.x *= -1f;
-        transform.localScale = localScale;
         healthCanvas.localScale = healtbarScale;
+
+        rightSide.position = new Vector3((rightSide.position.x - transform.position.x) * -1f + transform.position.x, rightSide.position.y, 0f);
+
+        leftSide.position = new Vector3((leftSide.position.x - transform.position.x) * -1f + transform.position.x, leftSide.position.y, 0f);
     }
 }
