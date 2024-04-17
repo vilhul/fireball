@@ -217,8 +217,8 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512
-  RightSide: {fileID: 2894155549678420651}
-  LeftSide: {fileID: 6581059023826913274}
+  rightSide: {fileID: 2894155549678420651}
+  leftSide: {fileID: 6581059023826913274}
   hp: 100
   maxHp: 100
   healthbar: {fileID: 0}

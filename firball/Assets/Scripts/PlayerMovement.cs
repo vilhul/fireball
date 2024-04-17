@@ -13,12 +13,12 @@ public class InputSystemController : MonoBehaviour
 
     //casper 
     private bool isFacingRight = true;
-    private float pushForceX = 300f;
+    private float pushForceX = 200f;
     private float pushForceY = 250f;
     private bool isBeingHit = false;
     [SerializeField] private LayerMask enemyLayer;
-    [SerializeField] private Transform RightSide;
-    [SerializeField] private Transform LeftSide;
+    [SerializeField] private Transform rightSide;
+    [SerializeField] private Transform leftSide;
 
     [Header("Movement")]
     private float playerMovementSpeed = 5f;
@@ -55,7 +55,6 @@ public class InputSystemController : MonoBehaviour
         }
          
         KillCheck();
-        EnemyCheck();
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -105,7 +104,16 @@ public class InputSystemController : MonoBehaviour
     public bool HitEnemy()
     {
         return Physics2D.OverlapBox(transform.position, new Vector2(1f, 2f), 0f, enemyLayer);
-        //return ( nånting || nånting
+    }
+
+    private bool IsRightSide()
+    {
+        return Physics2D.OverlapBox(rightSide.position, new Vector2(0.1f, 1f), 0f, enemyLayer);
+    }
+
+    private bool IsLeftSide()
+    {
+        return Physics2D.OverlapBox(leftSide.position, new Vector2(-0.1f, 1f), 0f, enemyLayer);
     }
 
     public void OnDrawGizmosSelected()
@@ -125,22 +133,29 @@ public class InputSystemController : MonoBehaviour
     private IEnumerator HitTime()
     {
         yield return new WaitForSeconds(0.5f);
-        Debug.Log("väntat");
         isBeingHit = false;
-    }
-    private void EnemyCheck()
-    {
-        if (HitEnemy() && !isBeingHit)
-        {
-            isBeingHit = true;
-            rb.AddForce(new Vector2(-pushForceX, pushForceY));
-            Debug.Log("Player träffad höger");
-            StartCoroutine(HitTime());
-        } 
     }
 
     private void KillCheck()
     {
+        if (HitEnemy() && !isBeingHit && IsRightSide())
+        {
+            isBeingHit = true;
+            hp = hp - 25f;
+            rb.velocity = new Vector2(0f, 0f);
+            rb.AddForce(new Vector2(-pushForceX, pushForceY));
+            StartCoroutine(HitTime());
+        }
+
+        if (HitEnemy() && !isBeingHit && IsLeftSide())
+        {
+            isBeingHit = true;
+            hp = hp - 25f;
+            rb.velocity = new Vector2(0f, 0f);
+            rb.AddForce(new Vector2(pushForceX, pushForceY));
+            StartCoroutine(HitTime());
+        }
+
         healthbar.UpdateHealthbar(hp, maxHp);
         if ((hp <= 0f))
         {
