@@ -13,11 +13,15 @@ public class InputSystemController : MonoBehaviour
     //casper 
     private bool isFacingRight = true;
 
+    //Axel
     [Header("Movement")]
     private float playerMovementSpeed = 5f;
     private float playerMovementDirection;
     [Header("Jumping")]
     private float playerJumpStrength = 12f;
+    [SerializeField] Animator animator;
+    [SerializeField] AudioSource source;
+    [SerializeField] AudioClip clip;
 
     //casper
     [Header("Health")]
@@ -37,6 +41,7 @@ public class InputSystemController : MonoBehaviour
     void Start()
     {
         healthbar.UpdateHealthbar(hp, maxHp);
+        source.PlayOneShot(clip);
     }
 
     // Update is called once per frame
@@ -44,11 +49,29 @@ public class InputSystemController : MonoBehaviour
     {
         rb.velocity = new Vector2(playerMovementDirection * playerMovementSpeed, rb.velocity.y);
         KillCheck();
+        if (playerMovementDirection >= 0)
+        {
+            source.volume = 0;
+        }
     }
 
     public void Move(InputAction.CallbackContext context)
     {
         playerMovementDirection = context.ReadValue<Vector2>().x;
+        animator.SetFloat("PlayerSpeed", Mathf.Abs(playerMovementDirection));
+        MoonWalk(playerMovementDirection);
+
+    }
+
+    public void MoonWalk( float playerMovementDirection)
+    {
+
+        if (playerMovementDirection < 0 && Keyboard.current.zKey.isPressed)
+        {
+            Debug.Log("spelar ljud");
+            source.volume = 1;
+        }
+
     }
 
     public void Jump(InputAction.CallbackContext context)
