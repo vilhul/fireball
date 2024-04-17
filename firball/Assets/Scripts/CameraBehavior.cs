@@ -36,12 +36,12 @@ public class CameraBehavior : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
 
         UpdateCamera();
-        UpdateRoomBorders();
     }
 
     // Update is called once per frame
     void Update()
     {
+        UpdateRoomBorders();
         FindExceedingBorders();
         MoveCamera();
     }
@@ -172,6 +172,7 @@ public class CameraBehavior : MonoBehaviour
 
     public void UpdateRoomBorders()
     {
+        Debug.Log("updaterar room borders");
         roomBorders = GameObject.FindGameObjectsWithTag("RoomBorder");
     }
 }
