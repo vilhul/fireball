@@ -40,7 +40,7 @@ public class UpdateListenBox : MonoBehaviour
             }
             else if (listenBoxDisplay.nextAnswer == null && listenBoxDisplay.nextListen == null)
             {
-                // End dialog
+                Destroy(gameObject); // End dialog
             }
         }
     }
