@@ -97,7 +97,7 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
         return Physics2D.OverlapBox(leftSide.position, new Vector2(-0.1f, 1.6f), 0f, playerLayer);
     }
 
-    public bool HitPlayer()
+    private bool HitPlayer()
     {
         return Physics2D.OverlapBox(transform.position, new Vector2(0.8f, 1.7f), 0f, playerLayer);
     }

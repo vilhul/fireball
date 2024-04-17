@@ -15,7 +15,7 @@ public class InputSystemController : MonoBehaviour
     private bool isFacingRight = true;
     private float pushForceX = 200f;
     private float pushForceY = 250f;
-    private bool isBeingHit = false;
+    [SerializeField] private bool isBeingHit = false;
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private Transform rightSide;
     [SerializeField] private Transform leftSide;
@@ -101,18 +101,20 @@ public class InputSystemController : MonoBehaviour
 
     }
 
-    public bool HitEnemy()
+    private bool IsEnemyHit()
     {
+        Debug.Log("HitEnemy triggerd");
         return Physics2D.OverlapBox(transform.position, new Vector2(1f, 2f), 0f, enemyLayer);
     }
 
-    private bool IsRightSide()
+    private bool IsRighthandSide()
     {
         return Physics2D.OverlapBox(rightSide.position, new Vector2(0.1f, 1f), 0f, enemyLayer);
     }
 
-    private bool IsLeftSide()
+    private bool IsLefthandSide()
     {
+        Debug.Log("LefthandSide triggerd");
         return Physics2D.OverlapBox(leftSide.position, new Vector2(-0.1f, 1f), 0f, enemyLayer);
     }
 
@@ -138,19 +140,19 @@ public class InputSystemController : MonoBehaviour
 
     private void KillCheck()
     {
-        if (HitEnemy() && !isBeingHit && IsRightSide())
+        if (IsEnemyHit() && !isBeingHit && IsRighthandSide())
         {
             isBeingHit = true;
-            hp = hp - 25f;
+            //hp = hp - 25f;
             rb.velocity = new Vector2(0f, 0f);
             rb.AddForce(new Vector2(-pushForceX, pushForceY));
             StartCoroutine(HitTime());
         }
 
-        if (HitEnemy() && !isBeingHit && IsLeftSide())
+        if (IsEnemyHit() && !isBeingHit && IsLefthandSide())
         {
             isBeingHit = true;
-            hp = hp - 25f;
+            //hp = hp - 25f;
             rb.velocity = new Vector2(0f, 0f);
             rb.AddForce(new Vector2(pushForceX, pushForceY));
             StartCoroutine(HitTime());
