@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -74,9 +75,9 @@ public class InputSystemController : MonoBehaviour
 
     }
 
-    public void MoonWalk( float playerMovementDirection)
+    public void MoonWalk(float playerMovementDirection)
     {
-
+        Debug.Log("moonwalk på g");
         if (playerMovementDirection < 0 && Keyboard.current.zKey.isPressed)
         {
             Debug.Log("spelar ljud");

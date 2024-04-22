@@ -172,7 +172,7 @@ public class CameraBehavior : MonoBehaviour
 
     public void UpdateRoomBorders()
     {
-        Debug.Log("updaterar room borders");
+        //Debug.Log("updaterar room borders");
         roomBorders = GameObject.FindGameObjectsWithTag("RoomBorder");
     }
 }
