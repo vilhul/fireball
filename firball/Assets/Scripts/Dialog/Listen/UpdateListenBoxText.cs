@@ -12,9 +12,9 @@ public class UpdateListenBoxText : MonoBehaviour
     // This code assumes speeches saved in a dialog are not modefied in any way, ex removed or added
     public ListenBoxDisplay listenBoxDisplay;
     public Text speechText;
-    public int timeSinceLastSwitch; // Relative to time passed, increases by one for every deltaTime
-    public int animationSpeed; // In frames
-    public int shownCharacters;
+    int timeSinceLastSwitch; // Relative to time passed, increases by one for every deltaTime
+    int animationSpeed; // In frames
+    int shownCharacters;
     public string fullDialogText;
 
     public void UpdateCurrentSpeech()

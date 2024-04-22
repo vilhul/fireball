@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "AnswerList", menuName = "AnswerList")]
 public class AnswerList : ScriptableObject
 {
-    public List<AnswerBox> answersList = new List<AnswerBox>();
+    public AnswerBox[] answers;
     // Work here next time, 
     // Update 
 }
