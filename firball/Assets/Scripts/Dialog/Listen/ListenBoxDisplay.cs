@@ -8,9 +8,17 @@ public class ListenBoxDisplay : MonoBehaviour
     public ListenBox listenBox;
 
     public ListenBox nextListen;
-    public AnswerBox nextAnswer;
+    public AnswerList nextAnswer;
     public Sprite sprite;
     public string speech;
+
+    public void UpdateAttribs()
+    {
+        speech = listenBox.textContent;
+
+        // Sprite
+        sprite = listenBox.sprite;
+    }
 
     // Start is called before the first frame update
     void Awake()
@@ -21,7 +29,7 @@ public class ListenBoxDisplay : MonoBehaviour
         // Sprite
         sprite = listenBox.sprite;
 
-        listenBox.LogAttribs();
+        //listenBox.LogAttribs();
 
         nextListen = listenBox.nextListen;
         nextAnswer = listenBox.nextAnswer;

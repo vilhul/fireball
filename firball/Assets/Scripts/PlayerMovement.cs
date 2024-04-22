@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,6 +13,12 @@ public class InputSystemController : MonoBehaviour
 
     //casper 
     private bool isFacingRight = true;
+    private float pushForceX = 200f;
+    private float pushForceY = 250f;
+    private bool isBeingHit = false;
+    [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private Transform rightSide;
+    [SerializeField] private Transform leftSide;
 
     //Axel
     [Header("Movement")]
@@ -47,7 +54,11 @@ public class InputSystemController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector2(playerMovementDirection * playerMovementSpeed, rb.velocity.y);
+        if (!isBeingHit)
+        {
+            rb.velocity = new Vector2(playerMovementDirection * playerMovementSpeed, rb.velocity.y);
+        }
+         
         KillCheck();
         if (playerMovementDirection >= 0)
         {
@@ -113,6 +124,21 @@ public class InputSystemController : MonoBehaviour
 
     }
 
+    public bool HitEnemy()
+    {
+        return Physics2D.OverlapBox(transform.position, new Vector2(1f, 2f), 0f, enemyLayer);
+    }
+
+    private bool IsRightSide()
+    {
+        return Physics2D.OverlapBox(rightSide.position, new Vector2(0.1f, 1f), 0f, enemyLayer);
+    }
+
+    private bool IsLeftSide()
+    {
+        return Physics2D.OverlapBox(leftSide.position, new Vector2(-0.1f, 1f), 0f, enemyLayer);
+    }
+
     public void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;
@@ -125,14 +151,34 @@ public class InputSystemController : MonoBehaviour
         isFacingRight = !isFacingRight;
         Vector3 localScale = transform.localScale;
         localScale.x *= -1f;
-        Vector3 healtbarScale = healthCanvas.localScale;
-        healtbarScale.x *= -1f;
-        transform.localScale = localScale;
-        healthCanvas.localScale = healtbarScale;
+    }
+
+    private IEnumerator HitTime()
+    {
+        yield return new WaitForSeconds(0.5f);
+        isBeingHit = false;
     }
 
     private void KillCheck()
     {
+        if (HitEnemy() && !isBeingHit && IsRightSide())
+        {
+            isBeingHit = true;
+            hp = hp - 25f;
+            rb.velocity = new Vector2(0f, 0f);
+            rb.AddForce(new Vector2(-pushForceX, pushForceY));
+            StartCoroutine(HitTime());
+        }
+
+        if (HitEnemy() && !isBeingHit && IsLeftSide())
+        {
+            isBeingHit = true;
+            hp = hp - 25f;
+            rb.velocity = new Vector2(0f, 0f);
+            rb.AddForce(new Vector2(pushForceX, pushForceY));
+            StartCoroutine(HitTime());
+        }
+
         healthbar.UpdateHealthbar(hp, maxHp);
         if ((hp <= 0f))
         {

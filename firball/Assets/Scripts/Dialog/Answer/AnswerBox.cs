@@ -10,5 +10,6 @@ using UnityEngine.UI;
 public class AnswerBox : ScriptableObject
 {
     public string desc; // "Choose your weapon!"
-    public List<Object> Options; // VILKEN TYP SKA LISTAN HA??!?!?
+    public AnswerBox nextAnswer;
+    public ListenBox nextListen;
 }

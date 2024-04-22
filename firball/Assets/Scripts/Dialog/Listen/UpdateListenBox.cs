@@ -6,6 +6,8 @@ using UnityEngine;
 public class UpdateListenBox : MonoBehaviour
 {
     public ListenBoxDisplay listenBoxDisplay;
+    public UpdateListenBoxText listenBoxText;
+    public UpdateListenSprite listenSprite;
 
     public ListenBox listenBox;
     public ListenBox nextListen;
@@ -14,6 +16,8 @@ public class UpdateListenBox : MonoBehaviour
     void Start()
     {
         listenBoxDisplay = GetComponent<ListenBoxDisplay>();
+        listenBoxText = GetComponent<UpdateListenBoxText>();
+        listenSprite = GetComponent<UpdateListenSprite>();
     }
 
     // Update is called once per frame
@@ -21,10 +25,14 @@ public class UpdateListenBox : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
+            Debug.Log("Dialog updated to next stage");
             listenBoxDisplay.listenBox = listenBoxDisplay.nextListen;
             if (listenBoxDisplay.nextListen != null )
             {
                 listenBoxDisplay.nextListen = listenBoxDisplay.listenBox.nextListen;
+                listenBoxDisplay.UpdateAttribs();
+                listenBoxText.UpdateCurrentSpeech();
+                listenSprite.UpdateSprite();
             }
             else if (listenBoxDisplay.nextAnswer != null)
             {
