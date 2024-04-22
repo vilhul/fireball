@@ -32,11 +32,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2526591595291885433}
-  m_Children:
-  - {fileID: 2894155549678420651}
-  - {fileID: 6581059023826913274}
-  - {fileID: 6153679429556408790}
-  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8492478647697703708
 SpriteRenderer:
@@ -147,6 +142,8 @@ Transform:
   m_Children:
   - {fileID: 6153679429556408790}
   - {fileID: 8047950260791414976}
+  - {fileID: 2894155549678420651}
+  - {fileID: 6581059023826913274}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2525945559299255710
@@ -187,8 +184,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1925118753
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 1547633295, guid: 4e07f686211fc6944a258f24eff00f90, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -340,15 +337,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 4961659746470146123}
-  animator: {fileID: 5257434656448142597}
-  source: {fileID: 0}
-  clip: {fileID: 8300000, guid: 2085eed068c0eb34c8bdcfae6addc1db, type: 3}
   isBeingHit: 0
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512
   rightSide: {fileID: 2894155549678420651}
   leftSide: {fileID: 6581059023826913274}
+  animator: {fileID: 5257434656448142597}
+  source: {fileID: 0}
+  clip: {fileID: 8300000, guid: 2085eed068c0eb34c8bdcfae6addc1db, type: 3}
   hp: 100
   maxHp: 100
   healthbar: {fileID: 0}
