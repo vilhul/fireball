@@ -71,14 +71,6 @@ public class InputSystemController : MonoBehaviour
     {
         playerMovementDirection = context.ReadValue<Vector2>().x;
         animator.SetFloat("PlayerSpeed", Mathf.Abs(playerMovementDirection));
-        if (Keyboard.current.dKey.isPressed && !isFacingRight)
-        {
-            Flip();
-        }
-        else if (Keyboard.current.aKey.isPressed && isFacingRight) 
-        {
-            Flip(); 
-        }
         MoonWalk(playerMovementDirection);
 
     }
@@ -162,7 +154,6 @@ public class InputSystemController : MonoBehaviour
         isFacingRight = !isFacingRight;
         Vector3 localScale = transform.localScale;
         localScale.x *= -1f;
-        transform.localScale = localScale;
     }
 
     private IEnumerator HitTime()
