@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -118,5 +119,23 @@ public class InputSystemController : MonoBehaviour
         transform.localScale = localScale;
     }
 
-    
+    public float GetPlayerMovementSpeed()
+    {
+        return playerMovementSpeed;
+    }
+
+    public void SetPlayerMovementSpeed(float speed)
+    {
+        playerMovementSpeed = speed;
+    }
+
+    public float GetPlayerMovementDirection()
+    {
+        return playerMovementDirection;
+    }
+
+    public bool GetIsFacingRight()
+    {
+        return isFacingRight;
+    }
 }

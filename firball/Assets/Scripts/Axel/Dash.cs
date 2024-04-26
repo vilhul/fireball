@@ -13,25 +13,29 @@ public class Dash : Ability
         Debug.Log("dash påbörjas");
         InputSystemController movement = parent.GetComponent<InputSystemController>();
         
-        float movementSpeed = movement.playerMovementSpeed;
-        float movementDirection = movement.playerMovementDirection;
+        float movementSpeed = movement.GetPlayerMovementSpeed();
+        float movementDirection = movement.GetPlayerMovementDirection();
+        bool isFacingRight = movement.GetIsFacingRight();
         
-        
-        
+
 
 
         AbilityHolder abilityHolder = parent.GetComponent<AbilityHolder>();
-        float activeTime = abilityHolder.activeTime;
+        float activeTime = abilityHolder.GetActiveTime();
         //AbilityHolder.AbilityState abilityState = abilityHolder.state;
 
-
+        Debug.Log("mspeed " + movementSpeed + " mdirection " + movementDirection + " time " + activeTime);
         if (activeTime > 0 )
         {
-            movement.playerMovementSpeed = movementDirection * dashVelocity;
+            movement.SetPlayerMovementSpeed(dashVelocity * movementSpeed);
+            //if (movementDirection == 0)
+            //{
+            //tänker att här får jag göra så att den kan dasha även om man står still.
+            //}
         }
         else
         {
-            //movement.playerMovementSpeed = movementSpeed/dashVelocity;
+            movement.SetPlayerMovementSpeed(movementSpeed / dashVelocity);
         }
         
             
