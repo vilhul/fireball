@@ -117,22 +117,22 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
         healthbar.UpdateHealthbar(hp, maxHp);
 
         // träffad från vänster
-        if (HitPlayer() && IsLeftSide() && !isBeingHit)
-        {
-            isBeingHit = true;
-            rb.velocity = new Vector2(0f, 0f);
-            rb.AddForce(new Vector2(pushForceX, pushForceY));
-            StartCoroutine(HitTime());
-        }
+        //if (HitPlayer() && IsLeftSide() && !isBeingHit)
+        //{
+        //    isBeingHit = true;
+        //    rb.velocity = new Vector2(0f, 0f);
+        //    rb.AddForce(new Vector2(pushForceX, pushForceY));
+        //    StartCoroutine(HitTime());
+        //}
 
-        // träffad från höger
-        if (HitPlayer() && IsRightSide() && !isBeingHit)
-        {
-            isBeingHit = true;
-            rb.velocity = new Vector2(0f, 0f);
-            rb.AddForce(new Vector2(-pushForceX, pushForceY));
-            StartCoroutine(HitTime());
-        }
+        //// träffad från höger
+        //if (HitPlayer() && IsRightSide() && !isBeingHit)
+        //{
+        //    isBeingHit = true;
+        //    rb.velocity = new Vector2(0f, 0f);
+        //    rb.AddForce(new Vector2(-pushForceX, pushForceY));
+        //    StartCoroutine(HitTime());
+        //}
 
         if (HitPlayer())
         {
