@@ -7,7 +7,7 @@ public class PlayerInteractions : MonoBehaviour
 
     [SerializeField] private Collider2D playerCollider;
     [SerializeField] private LayerMask enemyLayer;
-    //[SerializeField] private bool isBeingHit = false;
+    [SerializeField] private bool isBeingHit = false;
 
 
     void Update()
@@ -23,13 +23,19 @@ public class PlayerInteractions : MonoBehaviour
     private IEnumerator HitTime()
     {
         yield return new WaitForSeconds(0.5f);
-        //isBeingHit = false;
+        isBeingHit = false;
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("GameObject2 collided with " + col.name);
+        Debug.Log("Player collided with " + col.name);
+        isBeingHit = true;
+    }
 
+    void OnTriggerExit2D (Collider2D col)
+    {
+        Debug.Log("Player stopped coliding with " + col.name);
+        isBeingHit = false;
     }
 
     //private bool IsRighthandSide()
