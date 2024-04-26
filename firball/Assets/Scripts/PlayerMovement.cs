@@ -23,8 +23,8 @@ public class InputSystemController : MonoBehaviour
 
     //Axel
     [Header("Movement")]
-    private float playerMovementSpeed = 5f;
-    private float playerMovementDirection;
+    public float playerMovementSpeed = 5f;
+    public float playerMovementDirection;
     [Header("Jumping")]
     private float playerJumpStrength = 12f;
     [SerializeField] Animator animator;
