@@ -25,8 +25,6 @@ public class InputSystemController : MonoBehaviour
     [SerializeField] AudioSource source;
     [SerializeField] AudioClip clip;
 
-    //casper
-
 
     [Header("GroundCheck")]
     public Transform groundCheckPos;
