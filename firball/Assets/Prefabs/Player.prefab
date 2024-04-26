@@ -336,10 +336,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a23d723bf4b04d49892549f1d85f8f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerRb: {fileID: 0}
+  PlayerRb: {fileID: 4961659746470146123}
   animator: {fileID: 5257434656448142597}
   source: {fileID: 0}
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 2085eed068c0eb34c8bdcfae6addc1db, type: 3}
   groundCheckPos: {fileID: 6153679429556408790}
   groundCheckSize: {x: 0.5, y: 0.5}
   groundLayer:
@@ -357,6 +357,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 246d709a3cbeb7d4e831f9ecb96604dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 100
+  maxHp: 100
 --- !u!50 &4961659746470146123
 Rigidbody2D:
   serializedVersion: 4

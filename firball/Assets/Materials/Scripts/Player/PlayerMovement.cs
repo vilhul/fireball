@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,23 +13,18 @@ public class InputSystemController : MonoBehaviour
     public static bool hasExitedOnce = false;
     public static string nextEntranceName = string.Empty;
 
-    //casper 
-    private bool isFacingRight = true;
-    //private float pushForceX = 200f;
-    //private float pushForceY = 250f;
-
 
     //Axel
     [Header("Movement")]
     private float playerMovementSpeed = 5f;
     private float playerMovementDirection;
+    private bool isFacingRight = true;
+    
     [Header("Jumping")]
     private float playerJumpStrength = 12f;
     [SerializeField] Animator animator;
     [SerializeField] AudioSource source;
     [SerializeField] AudioClip clip;
-
-    //casper
 
 
     [Header("GroundCheck")]
@@ -95,19 +91,6 @@ public class InputSystemController : MonoBehaviour
             PlayerRb.velocity = new Vector2(PlayerRb.velocity.x, PlayerRb.velocity.y * 0.5f);
         }
 
-        //if (IsGrounded())
-        //{
-        //    if (context.performed)
-        //    {
-        //        //hold down space => full jump power
-        //        rb.velocity = new Vector2(rb.velocity.x, playerJumpStrength);
-        //    }
-            //else if (context.canceled)
-            //{
-            //    //tap space => half jump power
-            //    rb.velocity = new Vector2(rb.velocity.x, playerJumpStrength * 0.5f);
-            //}
-        //}
     }
 
     public bool IsGrounded()
@@ -122,15 +105,12 @@ public class InputSystemController : MonoBehaviour
 
     }
 
-    
-
     public void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireCube(groundCheckPos.position, groundCheckSize);
     }
 
-    // denna gör ingenting just nu men när i har en sprite som behöver flippas kan vi använda denhär:
     private void Flip()
     {
         isFacingRight = !isFacingRight;
@@ -139,5 +119,23 @@ public class InputSystemController : MonoBehaviour
         transform.localScale = localScale;
     }
 
-    
+    public float GetPlayerMovementSpeed()
+    {
+        return playerMovementSpeed;
+    }
+
+    public void SetPlayerMovementSpeed(float speed)
+    {
+        playerMovementSpeed = speed;
+    }
+
+    public float GetPlayerMovementDirection()
+    {
+        return playerMovementDirection;
+    }
+
+    public bool GetIsFacingRight()
+    {
+        return isFacingRight;
+    }
 }
