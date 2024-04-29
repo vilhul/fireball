@@ -19,6 +19,7 @@ public class CameraBehavior : MonoBehaviour
 
 
     //OKEJ IMORN SÅ SKA DU GÖRA EN FUNKTION HÄR SOM HANTERAR ALLT SOM HÄNDER NÄR ETT NYTT RUM LADDAS OCH PÅ SÅ SÄTT KAN DU FÅ DEN ATT BERÄKNA VAR KAMERAN BORDE SPAWNAS SÅ ATT DET BLIR RÄTT OCH LÄTT SOM EN PLÄTT!!!
+    //DU ÄNDRADE DET FUNKAR TYP MEN INTE RIKTIGT DU LÖSER DET IMORN STUMPAN <3
     private void Start()
     {
         mainCamera = GetComponent<Camera>();
@@ -59,10 +60,36 @@ public class CameraBehavior : MonoBehaviour
         if(!IsPlayerNearLeftBorder() && !IsPlayerNearRightBorder())
         {
             FollowPlayerX();
+        } else
+        {
+            if(IsPlayerNearLeftBorder())
+            {
+                transform.position = new Vector3(leftBottomBorder.transform.position.x - leftSideDistance, transform.position.y, transform.position.z);
+            } else
+            {
+                if(IsPlayerNearRightBorder())
+                {
+                    transform.position = new Vector3(rightTopBorder.transform.position.x - rightSideDistance, transform.position.y, transform.position.z);
+                }
+            }
         }
         if(!IsPlayerNearTopBorder()  && !IsPlayerNearBottomBorder())
         {
             FollowPlayerY();
+        }
+        else
+        {
+            if (IsPlayerNearTopBorder())
+            {
+                transform.position = new Vector3(transform.position.x, rightTopBorder.transform.position.y - topSideDistance, transform.position.z);
+            }
+            else
+            {
+                if (IsPlayerNearBottomBorder())
+                {
+                    transform.position = new Vector3(transform.position.x, leftBottomBorder.transform.position.y - bottomSideDistance, transform.position.z);
+                }
+            }
         }
     }
 
