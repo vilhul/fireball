@@ -4,37 +4,37 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UpdateListenSprite : MonoBehaviour
+public class UpdateDialogSprite : MonoBehaviour
 {
     [SerializeField] Image spriteContainer;
-    [SerializeField] ListenBoxDisplay listenBoxDisplay;
+    [SerializeField] DialogBoxDisplay dialogBoxDisplay;
 
     public Image GetImage()
     {
         return spriteContainer;
     }
 
-    public ListenBoxDisplay GetListenBoxDisplay()
+    public DialogBoxDisplay GetDialogBoxDisplay()
     {
-        return listenBoxDisplay;
+        return dialogBoxDisplay;
     }
 
     public void UpdateSprite()
     {
-        listenBoxDisplay = GetComponent<ListenBoxDisplay>();
-        spriteContainer.sprite = listenBoxDisplay.GetSprite();
+        dialogBoxDisplay = GetComponent<DialogBoxDisplay>();
+        spriteContainer.sprite = dialogBoxDisplay.GetSprite();
     }
 
     // Start is called before the first frame update
     void Awake()
     {
-        listenBoxDisplay = GetComponent<ListenBoxDisplay>();
+        dialogBoxDisplay = GetComponent<DialogBoxDisplay>();
         // Getting to correct child
         // Vet genuint inte varför jag inte bara la skriptet PÅ spriten direkt, men pallar inte göra om
-        Transform listen = transform.Find("Listen");
-        if (listen != null)
+        Transform dialog = transform.Find("Dialog");
+        if (dialog != null)
         {
-            Transform imageBoxTransform = listen.Find("ImageBox");
+            Transform imageBoxTransform = dialog.Find("ImageBox");
             if (imageBoxTransform != null)
             {
                 Transform talkerImageTransform = imageBoxTransform.Find("TalkerImage");
@@ -52,17 +52,17 @@ public class UpdateListenSprite : MonoBehaviour
                 Debug.Log("imageBoxTransform is empty: " + imageBoxTransform);
             }
         }
-        if (listenBoxDisplay == null)
+        if (dialogBoxDisplay == null)
         {
-            Debug.LogError("listenBoxDisplay not found!");
+            Debug.LogError("dialogBoxDisplay not found!");
         }
-        if (listenBoxDisplay.GetSprite() != null && spriteContainer != null)
+        if (dialogBoxDisplay.GetSprite() != null && spriteContainer != null)
         {
-            spriteContainer.sprite = listenBoxDisplay.GetSprite();
-        } 
-        else if (listenBoxDisplay.GetSprite() == null)
+            spriteContainer.sprite = dialogBoxDisplay.GetSprite();
+        }
+        else if (dialogBoxDisplay.GetSprite() == null)
         {
-            Debug.LogError("listenSprite == null");
+            Debug.LogError("dialogSprite == null");
         }
         else if (spriteContainer == null)
         {

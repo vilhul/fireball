@@ -22,7 +22,6 @@ public class PlayerInteractions : MonoBehaviour
 
     private IEnumerator HitTime()
     {
-        Debug.Log("Väntar");
         yield return new WaitForSeconds(0.3f);
         isBeingHit = false;
     }

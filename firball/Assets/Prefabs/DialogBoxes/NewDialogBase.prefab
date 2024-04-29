@@ -1449,9 +1449,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09d8a0d1a84958f4dbe5bee98c7aeb9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listenBox: {fileID: 11400000, guid: 95d83884adfb1c34eb8d0b30a3263f02, type: 2}
-  nextListen: {fileID: 0}
-  nextAnswer: {fileID: 0}
+  dialogBox: {fileID: 11400000, guid: 71dae32ca88bed74092da38f37ef7be7, type: 2}
+  nextDialog: {fileID: 0}
   sprite: {fileID: 0}
   speech: 
 --- !u!114 &5787704053686166035
@@ -1466,8 +1465,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8441a9f68ffa0f9468311e9411cb4eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listenBoxDisplay: {fileID: 7571022441740892593}
+  dialogBoxDisplay: {fileID: 7571022441740892593}
   speechText: {fileID: 4313410860103074975}
+  timeSinceLastSwitch: 0
+  animationSpeed: 0
+  shownCharacters: 0
   fullDialogText: 
 --- !u!114 &7643653360963329594
 MonoBehaviour:
@@ -1481,11 +1483,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42246bf28d19a7d449d152ea440819c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listenBoxDisplay: {fileID: 7571022441740892593}
-  listenBoxText: {fileID: 5787704053686166035}
-  listenSprite: {fileID: 0}
-  listenBox: {fileID: 0}
-  nextListen: {fileID: 0}
+  dialogBoxDisplay: {fileID: 7571022441740892593}
+  dialogBoxText: {fileID: 5787704053686166035}
+  dialogSprite: {fileID: 7157932851050794414}
+  dialogBox: {fileID: 0}
+  nextDialog: {fileID: 0}
 --- !u!114 &7157932851050794414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1499,7 +1501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteContainer: {fileID: 1291564186756892326}
-  listenBoxDisplay: {fileID: 7571022441740892593}
+  dialogBoxDisplay: {fileID: 7571022441740892593}
 --- !u!114 &6817097343525414702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1513,6 +1515,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   answerList: {fileID: 11400000, guid: 3c966706ce3c35647b1b0ef2323d2f80, type: 2}
+  _3AO1: {fileID: 0}
+  _3AO2: {fileID: 0}
+  _3AO3: {fileID: 0}
+  _2AO1: {fileID: 0}
+  _2AO2: {fileID: 0}
+  _1AO1: {fileID: 0}
+  _3A: {fileID: 0}
+  _2A: {fileID: 0}
+  _1A: {fileID: 0}
 --- !u!1 &8052826769783173210
 GameObject:
   m_ObjectHideFlags: 0
