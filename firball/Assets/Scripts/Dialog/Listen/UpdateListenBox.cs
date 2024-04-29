@@ -5,12 +5,21 @@ using UnityEngine;
 
 public class UpdateListenBox : MonoBehaviour
 {
-    public ListenBoxDisplay listenBoxDisplay;
-    public UpdateListenBoxText listenBoxText;
-    public UpdateListenSprite listenSprite;
+    [SerializeField] ListenBoxDisplay listenBoxDisplay;
+    [SerializeField] UpdateListenBoxText listenBoxText;
+    [SerializeField] UpdateListenSprite listenSprite;
 
-    public ListenBox listenBox;
-    public ListenBox nextListen;
+    [SerializeField] ListenBox listenBox;
+    [SerializeField] ListenBox nextListen;
+
+    public ListenBox GetListenBox()
+    {
+        return listenBox;
+    }
+    public ListenBox GetNextListenBox()
+    {
+        return nextListen;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -26,21 +35,22 @@ public class UpdateListenBox : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             Debug.Log("Dialog updated to next stage");
-            listenBoxDisplay.listenBox = listenBoxDisplay.nextListen;
-            if (listenBoxDisplay.nextListen != null )
+            listenBoxDisplay.SetListenBox(listenBoxDisplay.GetNextListen());
+            if (listenBoxDisplay.GetListenBox() != null )
             {
-                listenBoxDisplay.nextListen = listenBoxDisplay.listenBox.nextListen;
+                listenBoxDisplay.SetNextListenBox(listenBoxDisplay.GetNextListen());
                 listenBoxDisplay.UpdateAttribs();
                 listenBoxText.UpdateCurrentSpeech();
                 listenSprite.UpdateSprite();
             }
-            else if (listenBoxDisplay.nextAnswer != null)
+            else if (listenBoxDisplay.GetNextAnswer() != null)
             {
-                // Do future code
+                //
             }
-            else if (listenBoxDisplay.nextAnswer == null && listenBoxDisplay.nextListen == null)
+            else if (listenBoxDisplay.GetNextAnswer() == null && listenBoxDisplay.GetNextListen() == null)
             {
-                Destroy(gameObject); // End dialog
+                gameObject.SetActive(false);
+                Destroy(gameObject); // End dialog, for now
             }
         }
     }

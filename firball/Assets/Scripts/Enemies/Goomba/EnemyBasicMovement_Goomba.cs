@@ -8,18 +8,15 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
     private float speed = 3f;
     private bool isFacingRight = true;
     public float hp, maxHp = 100f;
-    private float pushForceX = 150f;
-    private float pushForceY = 250f;
-    private bool isBeingHit = false;
-
+    //private float pushForceX = 150f;
+    //private float pushForceY = 250f;
+    private PlayerInteractions pl;
 
     [SerializeField] private Rigidbody2D rb;
 
+
     [Header("Sides")]
-    [SerializeField] private Transform head;
     [SerializeField] private Transform frontSide;
-    [SerializeField] private Transform rightSide;
-    [SerializeField] private Transform leftSide;
     [SerializeField] private Transform walkableSpaceFront;
     [SerializeField] private Transform walkableSpaceBack;
     
@@ -34,13 +31,15 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
 
     private void Start()
     {
+        pl = GameObject.FindGameObjectWithTag("Player").transform.Find("EnvironmentCollider").gameObject.GetComponent<PlayerInteractions>();
         healthCanvas.GetComponent<Canvas>().enabled=false;
         healthbar.UpdateHealthbar(hp, maxHp);
     }
 
     void Update()
     {
-        if (!isBeingHit)
+        
+        if (!pl.isBeingHit)
         {
             WallCheck();
         }
@@ -68,12 +67,6 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
         }
     }
 
-    private IEnumerator HitTime()
-    {
-        yield return new WaitForSeconds(0.5f);
-        isBeingHit = false;
-    }
-
     private void FloorCheck()
     {
         if(!IsFloorFront() && IsFloorBack())
@@ -85,16 +78,6 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
     private bool IsFrontSide()
     {
         return Physics2D.OverlapCircle(frontSide.position, 0.2f, wall);
-    }
-
-    private bool IsRightSide()
-    {
-        return Physics2D.OverlapBox(rightSide.position, new Vector2(0.1f, 1.6f), 0f, playerLayer);
-    }
-
-    private bool IsLeftSide()
-    {
-        return Physics2D.OverlapBox(leftSide.position, new Vector2(-0.1f, 1.6f), 0f, playerLayer);
     }
 
     private bool HitPlayer()
@@ -116,23 +99,6 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
     {
         healthbar.UpdateHealthbar(hp, maxHp);
 
-        // träffad från vänster
-        //if (HitPlayer() && IsLeftSide() && !isBeingHit)
-        //{
-        //    isBeingHit = true;
-        //    rb.velocity = new Vector2(0f, 0f);
-        //    rb.AddForce(new Vector2(pushForceX, pushForceY));
-        //    StartCoroutine(HitTime());
-        //}
-
-        //// träffad från höger
-        //if (HitPlayer() && IsRightSide() && !isBeingHit)
-        //{
-        //    isBeingHit = true;
-        //    rb.velocity = new Vector2(0f, 0f);
-        //    rb.AddForce(new Vector2(-pushForceX, pushForceY));
-        //    StartCoroutine(HitTime());
-        //}
 
         if (HitPlayer())
         {
@@ -142,10 +108,6 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-    private bool HeadIsTouched()
-    {
-        return Physics2D.OverlapBox(head.position, new Vector2(0.5f, 0.1f), 0f, playerLayer);
     }
 
     private void ShowHealtbar()
@@ -164,8 +126,5 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
         healtbarScale.x *= -1f;
         healthCanvas.localScale = healtbarScale;
 
-        rightSide.position = new Vector3((rightSide.position.x - transform.position.x) * -1f + transform.position.x, rightSide.position.y, 0f);
-
-        leftSide.position = new Vector3((leftSide.position.x - transform.position.x) * -1f + transform.position.x, leftSide.position.y, 0f);
     }
 }

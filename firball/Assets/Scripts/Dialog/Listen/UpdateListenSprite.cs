@@ -6,13 +6,23 @@ using UnityEngine.UI;
 
 public class UpdateListenSprite : MonoBehaviour
 {
-    public Image spriteContainer;
-    public ListenBoxDisplay listenBoxDisplay;
+    [SerializeField] Image spriteContainer;
+    [SerializeField] ListenBoxDisplay listenBoxDisplay;
+
+    public Image GetImage()
+    {
+        return spriteContainer;
+    }
+
+    public ListenBoxDisplay GetListenBoxDisplay()
+    {
+        return listenBoxDisplay;
+    }
 
     public void UpdateSprite()
     {
         listenBoxDisplay = GetComponent<ListenBoxDisplay>();
-        spriteContainer.sprite = listenBoxDisplay.sprite;
+        spriteContainer.sprite = listenBoxDisplay.GetSprite();
     }
 
     // Start is called before the first frame update
@@ -42,17 +52,15 @@ public class UpdateListenSprite : MonoBehaviour
                 Debug.Log("imageBoxTransform is empty: " + imageBoxTransform);
             }
         }
-            
-
         if (listenBoxDisplay == null)
         {
             Debug.LogError("listenBoxDisplay not found!");
         }
-        if (listenBoxDisplay.sprite != null && spriteContainer != null)
+        if (listenBoxDisplay.GetSprite() != null && spriteContainer != null)
         {
-            spriteContainer.sprite = listenBoxDisplay.sprite;
+            spriteContainer.sprite = listenBoxDisplay.GetSprite();
         } 
-        else if (listenBoxDisplay.sprite == null)
+        else if (listenBoxDisplay.GetSprite() == null)
         {
             Debug.LogError("listenSprite == null");
         }

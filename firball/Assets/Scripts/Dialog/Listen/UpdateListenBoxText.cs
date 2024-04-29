@@ -10,16 +10,21 @@ using UnityEngine.UI;
 public class UpdateListenBoxText : MonoBehaviour
 {
     // This code assumes speeches saved in a dialog are not modefied in any way, ex removed or added
-    public ListenBoxDisplay listenBoxDisplay;
-    public Text speechText;
-    int timeSinceLastSwitch; // Relative to time passed, increases by one for every deltaTime
-    int animationSpeed; // In frames
-    int shownCharacters;
-    public string fullDialogText;
+    [SerializeField] ListenBoxDisplay listenBoxDisplay;
+    [SerializeField] Text speechText;
+    [SerializeField] int timeSinceLastSwitch; // Relative to time passed, increases by one for every deltaTime
+    [SerializeField] int animationSpeed; // In frames
+    [SerializeField] int shownCharacters;
+    [SerializeField] string fullDialogText;
+
+    public string GetFullDialogText()
+    {
+        return fullDialogText;
+    }
 
     public void UpdateCurrentSpeech()
     {
-        fullDialogText = listenBoxDisplay.speech;
+        fullDialogText = listenBoxDisplay.GetSpeech();
         shownCharacters = 0;
     }
     private void AnimateSpeech()
@@ -45,7 +50,7 @@ public class UpdateListenBoxText : MonoBehaviour
         shownCharacters = 0;
         timeSinceLastSwitch = 0;
 
-        fullDialogText = listenBoxDisplay.speech;
+        fullDialogText = listenBoxDisplay.GetSpeech();
 
         // Getting to the correct child (No cops please)
         // Vet genuint inte varför jag inte bara la skriptet PÅ textObjektet direkt, men pallar inte göra om

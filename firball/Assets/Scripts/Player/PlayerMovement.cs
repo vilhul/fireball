@@ -13,12 +13,14 @@ public class InputSystemController : MonoBehaviour
     public static bool hasExitedOnce = false;
     public static string nextEntranceName = string.Empty;
 
+    private PlayerInteractions pl;
 
     //Axel
     [Header("Movement")]
     private float playerMovementSpeed = 5f;
     private float playerMovementDirection;
     private bool isFacingRight = true;
+
     
     [Header("Jumping")]
     private float playerJumpStrength = 12f;
@@ -32,18 +34,19 @@ public class InputSystemController : MonoBehaviour
     public Vector2 groundCheckSize = new Vector2(0.5f, 0.5f);
     public LayerMask groundLayer;
 
-
-
-    // Start is called before the first frame update
     void Start()
     {
+        pl = GameObject.FindGameObjectWithTag("Player").transform.Find("EnvironmentCollider").gameObject.GetComponent<PlayerInteractions>();
         source.PlayOneShot(clip);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        PlayerRb.velocity = new Vector2(playerMovementDirection * playerMovementSpeed, PlayerRb.velocity.y);
+        if (!pl.isBeingHit)
+        {
+            PlayerRb.velocity = new Vector2(playerMovementDirection * playerMovementSpeed, PlayerRb.velocity.y);
+        }
+
          
 
         if (playerMovementDirection >= 0)

@@ -9,7 +9,22 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "AnswerBox", menuName = "Answer")]
 public class AnswerBox : ScriptableObject
 {
-    public string desc; // "Choose your weapon!"
-    public AnswerBox nextAnswer;
-    public ListenBox nextListen;
+    string desc; // "Choose your weapon!"
+    AnswerBox nextAnswer;
+    ListenBox nextListen;
+
+    public string GetDesc()
+    {
+        return desc;
+    }
+
+    public AnswerBox GetNextAnswer()
+    {
+        return nextAnswer;
+    }
+
+    public ListenBox GetNextListen()
+    {
+        return nextListen;
+    }
 }

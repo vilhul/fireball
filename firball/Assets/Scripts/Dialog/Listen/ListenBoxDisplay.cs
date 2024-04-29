@@ -5,12 +5,47 @@ using UnityEngine.UI;
 
 public class ListenBoxDisplay : MonoBehaviour
 {
-    public ListenBox listenBox;
+    [SerializeField] ListenBox listenBox;
 
-    public ListenBox nextListen;
-    public AnswerList nextAnswer;
-    public Sprite sprite;
-    public string speech;
+    [SerializeField] ListenBox nextListen;
+    [SerializeField] AnswerList nextAnswerList;
+    [SerializeField] Sprite sprite;
+    [SerializeField] string speech;
+
+    public void SetNextListenBox(ListenBox nextListenBox)
+    {
+        nextListen = nextListenBox;
+    }
+
+    public void SetListenBox(ListenBox listenBoxIn)
+    {
+        listenBox = listenBoxIn;
+    }
+
+    public ListenBox GetListenBox()
+    {
+        return listenBox;
+    }
+
+    public Sprite GetSprite()
+    {
+        return sprite;
+    }
+
+    public ListenBox GetNextListen()
+    {
+        return nextListen;
+    }
+
+    public AnswerList GetNextAnswer()
+    {
+        return nextAnswerList;
+    }
+
+    public string GetSpeech()
+    {
+        return speech;
+    }
 
     public void UpdateAttribs()
     {
@@ -32,6 +67,11 @@ public class ListenBoxDisplay : MonoBehaviour
         //listenBox.LogAttribs();
 
         nextListen = listenBox.nextListen;
-        nextAnswer = listenBox.nextAnswer;
+        nextAnswerList = listenBox.nextAnswer;
+
+        while (sprite == null)
+        {
+            sprite = listenBox.sprite;
+        }
     }
 }
