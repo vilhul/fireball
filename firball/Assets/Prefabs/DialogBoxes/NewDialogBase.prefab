@@ -403,7 +403,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1451823000264883749
 RectTransform:
   m_ObjectHideFlags: 0
@@ -477,7 +477,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5404116844000041328
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1372,6 +1372,8 @@ GameObject:
   - component: {fileID: 7571022441740892593}
   - component: {fileID: 5787704053686166035}
   - component: {fileID: 7643653360963329594}
+  - component: {fileID: 7157932851050794414}
+  - component: {fileID: 6817097343525414702}
   m_Layer: 5
   m_Name: NewDialogBase
   m_TagString: Untagged
@@ -1484,6 +1486,33 @@ MonoBehaviour:
   listenSprite: {fileID: 0}
   listenBox: {fileID: 0}
   nextListen: {fileID: 0}
+--- !u!114 &7157932851050794414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6899772563890002830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11947afbad55dfa499bfdae393ec6948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteContainer: {fileID: 1291564186756892326}
+  listenBoxDisplay: {fileID: 7571022441740892593}
+--- !u!114 &6817097343525414702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6899772563890002830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f5376f3ab782234488faffd18066ac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  answerList: {fileID: 11400000, guid: 3c966706ce3c35647b1b0ef2323d2f80, type: 2}
 --- !u!1 &8052826769783173210
 GameObject:
   m_ObjectHideFlags: 0
@@ -1647,7 +1676,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7396784080652766430
 RectTransform:
   m_ObjectHideFlags: 0
