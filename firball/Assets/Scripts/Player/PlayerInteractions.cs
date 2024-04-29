@@ -29,7 +29,6 @@ public class PlayerInteractions : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("Player collided with " + col.name);
         
         //Höger
         if (col.gameObject.transform.position.x >= transform.position.x && col.gameObject.transform.CompareTag("Enemy"))
