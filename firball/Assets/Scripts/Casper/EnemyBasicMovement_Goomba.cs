@@ -8,12 +8,12 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
     private float speed = 3f;
     private bool isFacingRight = true;
     public float hp, maxHp = 100f;
-    private float pushForceX = 150f;
-    private float pushForceY = 250f;
-    private bool isBeingHit = false;
-
+    //private float pushForceX = 150f;
+    //private float pushForceY = 250f;
+    private PlayerInteractions pl;
 
     [SerializeField] private Rigidbody2D rb;
+
 
     [Header("Sides")]
     [SerializeField] private Transform head;
@@ -34,13 +34,15 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
 
     private void Start()
     {
+        pl = GameObject.FindGameObjectWithTag("Player").transform.Find("EnvironmentCollider").gameObject.GetComponent<PlayerInteractions>();
         healthCanvas.GetComponent<Canvas>().enabled=false;
         healthbar.UpdateHealthbar(hp, maxHp);
     }
 
     void Update()
     {
-        if (!isBeingHit)
+        
+        if (!pl.isBeingHit)
         {
             WallCheck();
         }
@@ -68,11 +70,11 @@ public class EnemyBasicMovement_Goomba : MonoBehaviour
         }
     }
 
-    private IEnumerator HitTime()
-    {
-        yield return new WaitForSeconds(0.5f);
-        isBeingHit = false;
-    }
+    //private IEnumerator HitTime()
+    //{
+    //    yield return new WaitForSeconds(0.5f);
+    //    isBeingHit = false;
+    //}
 
     private void FloorCheck()
     {
