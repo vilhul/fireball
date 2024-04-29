@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Dash : Ability
 {
-    public float dashVelocity;
+    [SerializeField] float dashVelocity;
 
     public override void Activate(GameObject parent)
     {

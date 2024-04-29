@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 62423f43c17105f4bbd69fbe3fbd49c7
+guid: 04eee8b380a1ea04c82a4399f5e41302
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: catgirlarea-ground_0
+      name: FireballSprite_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,41 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28364df9e55a1fa41a3a44edb484dd36
-      internalID: -859643238
+      spriteID: db6d17c27c0553c47a3ab32c7010f834
+      internalID: -1664280086
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: catgirlarea-ground_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f1a8f2de0c827f5469e84d9f89d63e32
-      internalID: 1343277365
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: catgirlarea-ground_2
+      name: FireballSprite_1
       rect:
         serializedVersion: 2
         x: 32
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,41 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f22992698cd6a74f8dd64932d1329bd
-      internalID: 1563845808
+      spriteID: 61ee010086f436a498b5622831711b4c
+      internalID: -632611432
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: catgirlarea-ground_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dd1ec79efff28184eaf3211f17c19d5d
-      internalID: 2026733777
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: catgirlarea-ground_4
+      name: FireballSprite_2
       rect:
         serializedVersion: 2
         x: 64
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,41 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aafe595870bfd2347bf96c6ed5d73dce
-      internalID: 1426411779
+      spriteID: bcf3d361efdb8774dae22f0c29df175c
+      internalID: 1159925890
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: catgirlarea-ground_5
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 58ee2735f189d554d9bc4a96711fd1f7
-      internalID: 1996053000
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: catgirlarea-ground_6
+      name: FireballSprite_3
       rect:
         serializedVersion: 2
         x: 96
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,41 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a56a1d7c0095f44992b14d4cae07f32
-      internalID: 1512831744
+      spriteID: f239f814c9a05994498b15e65ac2c50f
+      internalID: 8201246
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: catgirlarea-ground_7
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 17990fc382d021b418e83312d45a4cf7
-      internalID: 1115439773
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: catgirlarea-ground_8
+      name: FireballSprite_4
       rect:
         serializedVersion: 2
         x: 128
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -279,20 +195,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e20faf361f32cb49b7c6916f47500ae
-      internalID: 1740333705
+      spriteID: 9f4aa4d902701be418bb900c7c187764
+      internalID: -684165241
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: catgirlarea-ground_9
+      name: FireballSprite_5
       rect:
         serializedVersion: 2
-        x: 144
+        x: 160
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -300,8 +216,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 765bb8fd32dc7ad46b5b7f34bf46cb8d
-      internalID: -1262987699
+      spriteID: 2d4db90c6b735154a8ab0c4157ad4451
+      internalID: 703400411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireballSprite_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdd62bde236297f41917a910331b9a10
+      internalID: -1407983720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireballSprite_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44d5c9ca0197ec14da435fd35647e980
+      internalID: 1121689728
       vertices: []
       indices: 
       edges: []
@@ -317,16 +275,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      catgirlarea-ground_0: -859643238
-      catgirlarea-ground_1: 1343277365
-      catgirlarea-ground_2: 1563845808
-      catgirlarea-ground_3: 2026733777
-      catgirlarea-ground_4: 1426411779
-      catgirlarea-ground_5: 1996053000
-      catgirlarea-ground_6: 1512831744
-      catgirlarea-ground_7: 1115439773
-      catgirlarea-ground_8: 1740333705
-      catgirlarea-ground_9: -1262987699
+      FireballSprite_0: -1664280086
+      FireballSprite_1: -632611432
+      FireballSprite_2: 1159925890
+      FireballSprite_3: 8201246
+      FireballSprite_4: -684165241
+      FireballSprite_5: 703400411
+      FireballSprite_6: -1407983720
+      FireballSprite_7: 1121689728
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
