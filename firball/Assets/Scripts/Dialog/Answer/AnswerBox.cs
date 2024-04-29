@@ -9,22 +9,16 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "AnswerBox", menuName = "Answer")]
 public class AnswerBox : ScriptableObject
 {
-    string desc; // "Choose your weapon!"
-    AnswerBox nextAnswer;
-    ListenBox nextListen;
+    [SerializeField] string desc; // "Choose your weapon!"
+    [SerializeField] DialogBox nextDialog;
 
     public string GetDesc()
     {
         return desc;
     }
 
-    public AnswerBox GetNextAnswer()
+    public DialogBox GetNextListen()
     {
-        return nextAnswer;
-    }
-
-    public ListenBox GetNextListen()
-    {
-        return nextListen;
+        return nextDialog;
     }
 }

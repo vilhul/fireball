@@ -5,174 +5,130 @@ using UnityEngine;
 
 public class CameraBehavior : MonoBehaviour
 {
-
-    public Array roomBorders;
-    private GameObject player;
     private Camera mainCamera;
-    private float cameraWidth;
-    private class IsBorderInsideCamera
-    {
-        public bool left = true;
-        public bool up = true;
-        public bool right = true;
-        public bool down = true;
-    }
-    IsBorderInsideCamera isBorderInsideCamera = new IsBorderInsideCamera();
+    private GameObject player;
+    private GameObject[] roomBorders;
+    private GameObject leftBottomBorder;
+    private GameObject rightTopBorder;
 
-    private class IsPlayerInsideCamera
-    {
-        public bool x = true;
-        public bool y = true;
-    }
-    IsPlayerInsideCamera isPlayerInsideCamera = new IsPlayerInsideCamera();
+    private float leftSideDistance;
+    private float rightSideDistance;
+    private float topSideDistance;
+    private float bottomSideDistance;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        mainCamera = Camera.main;
-        cameraWidth = mainCamera.orthographicSize * 2f * mainCamera.aspect;
-        Debug.Log(cameraWidth);
 
+
+    //OKEJ IMORN SÅ SKA DU GÖRA EN FUNKTION HÄR SOM HANTERAR ALLT SOM HÄNDER NÄR ETT NYTT RUM LADDAS OCH PÅ SÅ SÄTT KAN DU FÅ DEN ATT BERÄKNA VAR KAMERAN BORDE SPAWNAS SÅ ATT DET BLIR RÄTT OCH LÄTT SOM EN PLÄTT!!!
+    private void Start()
+    {
+        mainCamera = GetComponent<Camera>();
         player = GameObject.FindGameObjectWithTag("Player");
-
-        UpdateCamera();
+        DetermineSideDistance();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        UpdateRoomBorders();
-        FindExceedingBorders();
         MoveCamera();
-    }
-
-    private void FindExceedingBorders()
-    {
-        foreach (GameObject roomBorder in roomBorders)
-        {
-            if(roomBorder.transform.position.x > player.transform.position.x)
-            {
-                if ((roomBorder.transform.position.x - player.transform.position.x) < cameraWidth / 2)
-                {
-                    isBorderInsideCamera.right = true;
-                } else
-                {
-                    isBorderInsideCamera.right = false;
-                }
-            }
-
-            if(roomBorder.transform.position.x < player.transform.position.x)
-            {
-                if((player.transform.position.x - roomBorder.transform.position.x) < cameraWidth / 2)
-                {
-                    isBorderInsideCamera.left = true;
-                } else
-                {
-                    isBorderInsideCamera.left = false;
-                }
-            }
-            if (roomBorder.transform.position.y > player.transform.position.y)
-            {
-                if ((roomBorder.transform.position.y - player.transform.position.y) < mainCamera.orthographicSize)
-                {
-                    isBorderInsideCamera.up = true;
-                }
-                else
-                {
-                    isBorderInsideCamera.up = false;
-                }
-            }
-
-            if (roomBorder.transform.position.y < player.transform.position.y)
-            {
-                if ((player.transform.position.y - roomBorder.transform.position.y) < mainCamera.orthographicSize)
-                {
-                    isBorderInsideCamera.down = true;
-                }
-                else
-                {
-                    isBorderInsideCamera.down = false;
-                }
-            }
-        }
-    }
-
-    private void MoveCamera()
-    {
-        if(!(isBorderInsideCamera.right || isBorderInsideCamera.left))
-        {
-            mainCamera.transform.position = new Vector3(player.transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z);
-        }
-        if (!(isBorderInsideCamera.up || isBorderInsideCamera.down))
-        {
-            mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, player.transform.position.y, mainCamera.transform.position.z);
-        }
-    }
-
-
-    public void UpdateCamera()
-    {
-        //kolla om spelaren är utanför kameran och flytta kameran så spelaren är vid kanten av den (funkar bara för x-y nu, vet inte om den ens behövs?)
-        if(player.transform.position.x > mainCamera.transform.position.x)
-        {
-            //höger på skärmen
-            if(player.transform.position.x > mainCamera.transform.position.x + cameraWidth/2)
-            {
-                mainCamera.transform.position = new Vector3(player.transform.position.x - cameraWidth/2, mainCamera.transform.position.y, mainCamera.transform.position.z);
-            }
-        }
-        if(player.transform.position.x < mainCamera.transform.position.x)
-        {
-            //vänster på skärmen
-            if(player.transform.position.x < mainCamera.transform.position.x - cameraWidth/2)
-            {
-                mainCamera.transform.position = new Vector3(player.transform.position.x + cameraWidth / 2, mainCamera.transform.position.y, mainCamera.transform.position.z);
-            }
-        }
-
-
-        foreach (GameObject roomBorder in roomBorders)
-        {
-            if (roomBorder.transform.position.x > mainCamera.transform.position.x)
-            {
-                //den här bordern är höger om kameran
-                if (roomBorder.transform.position.x < mainCamera.transform.position.x + cameraWidth / 2)
-                {
-                    mainCamera.transform.position = new Vector3(roomBorder.transform.position.x - cameraWidth / 2, mainCamera.transform.position.y, mainCamera.transform.position.z);
-                }
-            }
-            if (roomBorder.transform.position.x < mainCamera.transform.position.x)
-            {
-                //den här bordern är vänster om kameran
-                if (roomBorder.transform.position.x < mainCamera.transform.position.x - cameraWidth/2)
-                {
-                    mainCamera.transform.position = new Vector3(roomBorder.transform.position.x + cameraWidth / 2, mainCamera.transform.position.y, mainCamera.transform.position.z);
-                }
-            }
-
-
-            if (roomBorder.transform.position.y > mainCamera.transform.position.y)
-            {
-                //den här bordern är ovanför kameran
-                if (roomBorder.transform.position.y < mainCamera.transform.position.y + mainCamera.orthographicSize)
-                {
-                    mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, roomBorder.transform.position.y - mainCamera.orthographicSize, mainCamera.transform.position.z);
-                }
-            }
-            if (roomBorder.transform.position.y < mainCamera.transform.position.y)
-            {
-                //den här bordern är under kameran
-                if (roomBorder.transform.position.y < mainCamera.transform.position.y - mainCamera.orthographicSize)
-                {
-                    mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, roomBorder.transform.position.y + mainCamera.orthographicSize, mainCamera.transform.position.z);
-                }
-            }
-        }
     }
 
     public void UpdateRoomBorders()
     {
-        //Debug.Log("updaterar room borders");
+        Debug.Log("Updaterar RoomBorders");
+
         roomBorders = GameObject.FindGameObjectsWithTag("RoomBorder");
+        if(roomBorders.Length != 2)
+        {
+            if(roomBorders.Length < 2)
+            {
+                Debug.Log("för få roomborders");
+            }
+            if(roomBorders.Length > 2)
+            {
+                Debug.Log("för många roomborders");
+            }
+            return;
+        }
+
+        leftBottomBorder = roomBorders[0];
+        rightTopBorder = roomBorders[1];
+
+    }
+
+    private void MoveCamera()
+    {
+        if(!IsPlayerNearLeftBorder() && !IsPlayerNearRightBorder())
+        {
+            FollowPlayerX();
+        }
+        if(!IsPlayerNearTopBorder()  && !IsPlayerNearBottomBorder())
+        {
+            FollowPlayerY();
+        }
+    }
+
+
+    private bool IsPlayerNearLeftBorder()
+    {
+        if(player.transform.position.x + leftSideDistance <= leftBottomBorder.transform.position.x)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
+    }
+
+    private bool IsPlayerNearRightBorder()
+    {
+        if(player.transform.position.x + rightSideDistance >= rightTopBorder.transform.position.x)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
+    }
+
+    private bool IsPlayerNearTopBorder()
+    {
+        if(player.transform.position.y + topSideDistance >= rightTopBorder.transform.position.y)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
+    }
+
+    private bool IsPlayerNearBottomBorder()
+    {
+        if(player.transform.position.y + bottomSideDistance <= leftBottomBorder.transform.position.y)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
+    }
+
+
+    private void DetermineSideDistance()
+    {
+        leftSideDistance = -mainCamera.orthographicSize * mainCamera.aspect;
+        rightSideDistance = mainCamera.orthographicSize * mainCamera.aspect;
+        topSideDistance = mainCamera.orthographicSize;
+        bottomSideDistance = -mainCamera.orthographicSize;
+    }
+
+
+
+    public void FollowPlayerX()
+    {
+        transform.position = new Vector3(player.transform.position.x, transform.position.y, transform.position.z);
+    }
+
+    public void FollowPlayerY()
+    {
+        transform.position = new Vector3(transform.position.x, player.transform.position.y, transform.position.z);
     }
 }

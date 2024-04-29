@@ -7,10 +7,10 @@ using UnityEngine.UI;
 
 
 // Updates which speech to render (input based), as well as animates the speech (frame based)
-public class UpdateListenBoxText : MonoBehaviour
+public class UpdateDialogBoxText : MonoBehaviour
 {
-    // This code assumes speeches saved in a dialog are not modefied in any way, ex removed or added
-    [SerializeField] ListenBoxDisplay listenBoxDisplay;
+    // This code assumes speeches saved in a dialog are not modified in any way, ex removed or added
+    [SerializeField] DialogBoxDisplay dialogBoxDisplay;
     [SerializeField] Text speechText;
     [SerializeField] int timeSinceLastSwitch; // Relative to time passed, increases by one for every deltaTime
     [SerializeField] int animationSpeed; // In frames
@@ -24,7 +24,7 @@ public class UpdateListenBoxText : MonoBehaviour
 
     public void UpdateCurrentSpeech()
     {
-        fullDialogText = listenBoxDisplay.GetSpeech();
+        fullDialogText = dialogBoxDisplay.GetSpeech();
         shownCharacters = 0;
     }
     private void AnimateSpeech()
@@ -43,36 +43,36 @@ public class UpdateListenBoxText : MonoBehaviour
     void Start()
     {
         // Getting relevant DialogBoxDisplay object, MUST BE FIRST
-        listenBoxDisplay = GetComponent<ListenBoxDisplay>();
+        dialogBoxDisplay = GetComponent<DialogBoxDisplay>();
 
         // Animation
         animationSpeed = 1;
         shownCharacters = 0;
         timeSinceLastSwitch = 0;
 
-        fullDialogText = listenBoxDisplay.GetSpeech();
+        fullDialogText = dialogBoxDisplay.GetSpeech();
 
         // Getting to the correct child (No cops please)
         // Vet genuint inte varför jag inte bara la skriptet PÅ textObjektet direkt, men pallar inte göra om
-        Transform listen = transform.Find("Listen");
-        if (listen != null)
+        Transform dialog = transform.Find("Dialog");
+        if (dialog != null)
         {
-            Transform textBoxTransform = listen.Find("TextBox");
+            Transform textBoxTransform = dialog.Find("TextBox");
             if (textBoxTransform != null)
             {
-                Transform listenTextTransform = textBoxTransform.Find("ListenBox");
-                if (listenTextTransform != null)
+                Transform dialogTextTransform = textBoxTransform.Find("DialogBox");
+                if (dialogTextTransform != null)
                 {
-                    speechText = listenTextTransform.GetComponent<Text>();
+                    speechText = dialogTextTransform.GetComponent<Text>();
 
-                    if (listenBoxDisplay == null)
+                    if (dialogBoxDisplay == null)
                     {
-                        Debug.LogError("listenBoxDisplay not found");
+                        Debug.LogError("dialogBoxDisplay not found");
                     }
                 }
                 else
                 {
-                    Debug.Log("speechTextTransform is empty: " + listenTextTransform);
+                    Debug.Log("speechTextTransform is empty: " + dialogTextTransform);
                 }
             }
             else
@@ -82,11 +82,11 @@ public class UpdateListenBoxText : MonoBehaviour
         }
         else
         {
-            Debug.Log("Listen does not exist: " + listen);
+            Debug.Log("Dialog does not exist: " + dialog);
         }
-        if (listenBoxDisplay == null)
+        if (dialogBoxDisplay == null)
         {
-            Debug.LogError("listenBoxDisplay not found!");
+            Debug.LogError("dialogBoxDisplay not found!");
         }
     }
 

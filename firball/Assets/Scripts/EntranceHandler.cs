@@ -26,7 +26,6 @@ public class EntranceHandler : MonoBehaviour
         {
             CameraBehavior cameraBehavior = mainCamera.GetComponent<CameraBehavior>();
             cameraBehavior.UpdateRoomBorders();
-            cameraBehavior.UpdateCamera();
         } else
         {
             Debug.LogWarning("ingen kamera stumpan");
