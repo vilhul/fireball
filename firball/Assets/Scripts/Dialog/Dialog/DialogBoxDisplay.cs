@@ -6,12 +6,6 @@ using UnityEngine.UI;
 public class DialogBoxDisplay : MonoBehaviour
 {
     [SerializeField] DialogBox dialogBox;
-    [SerializeField] DialogBox nextDialog;
-
-    public void SetNextDialogBox(DialogBox nextDialogBox)
-    {
-        nextDialog = nextDialogBox;
-    }
 
     public void SetDialogBox(DialogBox dialogBoxIn)
     {
@@ -36,11 +30,5 @@ public class DialogBoxDisplay : MonoBehaviour
     public string GetSpeech()
     {
         return dialogBox.GetTextContent();
-    }
-
-    // Start is called before the first frame update
-    void Awake()
-    {
-        nextDialog = dialogBox.GetNextDialogBox();
     }
 }
