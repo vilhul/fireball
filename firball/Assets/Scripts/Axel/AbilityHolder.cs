@@ -27,8 +27,7 @@ public class AbilityHolder : MonoBehaviour
                 {
                     activeTime = ability.activeTime;
                     ability.Activate(gameObject);
-                    state = AbilityState.active;
-                    
+                    state = AbilityState.active;     
                 }
             break;
             case AbilityState.active:
@@ -40,7 +39,7 @@ public class AbilityHolder : MonoBehaviour
                 {
                     state = AbilityState.cooldown;
                     cooldownTime = ability.cooldownTime;
-                    ability.Activate(gameObject);
+                    ability.Deactivate(gameObject);
                 }
             break;
             case AbilityState.cooldown:
