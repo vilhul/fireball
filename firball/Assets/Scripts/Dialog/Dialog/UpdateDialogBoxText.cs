@@ -54,13 +54,13 @@ public class UpdateDialogBoxText : MonoBehaviour
 
         // Getting to the correct child (No cops please)
         // Vet genuint inte varför jag inte bara la skriptet PÅ textObjektet direkt, men pallar inte göra om
-        Transform dialog = transform.Find("Dialog");
+        Transform dialog = transform.Find("Listen");
         if (dialog != null)
         {
             Transform textBoxTransform = dialog.Find("TextBox");
             if (textBoxTransform != null)
             {
-                Transform dialogTextTransform = textBoxTransform.Find("DialogBox");
+                Transform dialogTextTransform = textBoxTransform.Find("ListenBox");
                 if (dialogTextTransform != null)
                 {
                     speechText = dialogTextTransform.GetComponent<Text>();

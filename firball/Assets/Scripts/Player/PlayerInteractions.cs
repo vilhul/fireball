@@ -20,7 +20,7 @@ public class PlayerInteractions : MonoBehaviour
 
     }
 
-    private IEnumerator HitTime()
+    private IEnumerator HitTimeout()
     {
         yield return new WaitForSeconds(0.3f);
         isBeingHit = false;
@@ -33,7 +33,8 @@ public class PlayerInteractions : MonoBehaviour
         if (col.gameObject.transform.position.x >= transform.position.x && col.gameObject.transform.CompareTag("Enemy"))
         {
             isBeingHit = true;
-            StartCoroutine(HitTime());
+            StartCoroutine(HitTimeout());
+            col.gameObject.GetComponent<EnemyMovementGoomba>().ToggleIsBeingHit();
 
             rb.velocity = new Vector2(0f, 0f);
             rb.AddForce(new Vector2(-pushForceX, pushForceY));
@@ -44,7 +45,8 @@ public class PlayerInteractions : MonoBehaviour
         else if (col.gameObject.transform.position.x <= transform.position.x && col.gameObject.transform.CompareTag("Enemy"))
         {
             isBeingHit = true;
-            StartCoroutine(HitTime());
+            StartCoroutine(HitTimeout());
+            col.gameObject.GetComponent<EnemyMovementGoomba>().ToggleIsBeingHit();
 
             rb.velocity = new Vector2(0f, 0f);
             rb.AddForce(new Vector2(pushForceX, pushForceY));

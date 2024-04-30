@@ -9,6 +9,7 @@ public class EnemyMovementGoomba : MonoBehaviour
     private bool isFacingRight = true;
     public float hp, maxHp = 100f;
     private PlayerInteractions pl;
+    private bool isBeingHit = false;
 
     [SerializeField] private Rigidbody2D rb;
     
@@ -31,7 +32,7 @@ public class EnemyMovementGoomba : MonoBehaviour
     void Update()
     {
         
-        if (!pl.isBeingHit)
+        if (!isBeingHit)
         {
             Walk();
         }
@@ -46,8 +47,7 @@ public class EnemyMovementGoomba : MonoBehaviour
         {
             rb.velocity = new Vector2(speed, rb.velocity.y);
         }
-
-        if (!isFacingRight)
+        else if (!isFacingRight)
         {
             rb.velocity = new Vector2(-speed, rb.velocity.y);
         }
@@ -91,5 +91,17 @@ public class EnemyMovementGoomba : MonoBehaviour
         healtbarScale.x *= -1f;
         healthCanvas.localScale = healtbarScale;
 
+    }
+
+    public IEnumerator HitTimeout()
+    {
+        yield return new WaitForSeconds(0.3f);
+        isBeingHit = false;
+    }
+
+    public void ToggleIsBeingHit()
+    {
+        isBeingHit = true;
+        StartCoroutine(HitTimeout());
     }
 }

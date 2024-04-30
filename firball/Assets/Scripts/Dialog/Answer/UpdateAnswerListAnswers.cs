@@ -1,40 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpdateAnswerListAnswers : MonoBehaviour
 {
     [SerializeField] AnswerListDisplay answerListDisplay;
-    [SerializeField] List<Transform> answerTransformList;
-    [SerializeField] List<GameObject> answerGameObjectList;
+    [SerializeField] DialogBoxDisplay dialogBoxDisplay;
 
-    void UpdateCurrentGameObjects()
+    public void UpdateAnswerTexts()
     {
-        answerTransformList = answerListDisplay.GetCurrentAnswersTransforms();
-        answerGameObjectList.Clear();
-        foreach (Transform t in answerTransformList)
+        if (answerListDisplay != null)
         {
-            answerGameObjectList.Add(t.gameObject);
+            int i = 0;
+            foreach (Transform t in answerListDisplay.GetCurrentAnswerTransforms())
+            {
+                Text textElement = t.GetChild(0).GetComponent<Text>();
+                textElement.text = dialogBoxDisplay.GetDialogBox().GetCurrentAnswers().GetAnswers()[i].GetDesc();
+                i++;
+            } 
         }
     }
-
-    void UpdateAnswerBoxText()
-    {
-        foreach (AnswerBox answer in answerListDisplay.GetAnswerList().GetAnswers())
-        {
-            Debug.Log(answer.GetDesc());
-        }
-    }
-
-    // Start is called before the first frame update
     void Start()
     {
+        dialogBoxDisplay = GetComponent<DialogBoxDisplay>();
         answerListDisplay = GetComponent<AnswerListDisplay>();
-        answerTransformList = answerListDisplay.GetCurrentAnswersTransforms();
-        foreach (Transform t in answerTransformList)
-        {
-            answerGameObjectList.Add(t.gameObject);
-        }
-        UpdateAnswerBoxText();
     }
 }
