@@ -1374,6 +1374,7 @@ GameObject:
   - component: {fileID: 7643653360963329594}
   - component: {fileID: 7157932851050794414}
   - component: {fileID: 6817097343525414702}
+  - component: {fileID: 4533164760275020972}
   m_Layer: 5
   m_Name: NewDialogBase
   m_TagString: Untagged
@@ -1450,9 +1451,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogBox: {fileID: 11400000, guid: 71dae32ca88bed74092da38f37ef7be7, type: 2}
-  nextDialog: {fileID: 0}
-  sprite: {fileID: 0}
-  speech: 
 --- !u!114 &5787704053686166035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1514,7 +1512,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f5376f3ab782234488faffd18066ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  answerList: {fileID: 11400000, guid: 3c966706ce3c35647b1b0ef2323d2f80, type: 2}
+  dialogBoxDisplay: {fileID: 0}
+  updateAnswerListAnswers: {fileID: 0}
   _3AO1: {fileID: 0}
   _3AO2: {fileID: 0}
   _3AO3: {fileID: 0}
@@ -1524,6 +1523,20 @@ MonoBehaviour:
   _3A: {fileID: 0}
   _2A: {fileID: 0}
   _1A: {fileID: 0}
+--- !u!114 &4533164760275020972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6899772563890002830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93dcb2718d2433e458bd292e6ee75d7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  answerListDisplay: {fileID: 6817097343525414702}
+  dialogBoxDisplay: {fileID: 7571022441740892593}
 --- !u!1 &8052826769783173210
 GameObject:
   m_ObjectHideFlags: 0
