@@ -52,6 +52,11 @@ public class CameraBehavior : MonoBehaviour
 
         leftBottomBorder = roomBorders[0];
         rightTopBorder = roomBorders[1];
+        if(leftBottomBorder.transform.position.x > rightTopBorder.transform.position.x)
+        {
+            leftBottomBorder = roomBorders[1];
+            rightTopBorder = roomBorders[0];
+        }
 
     }
 

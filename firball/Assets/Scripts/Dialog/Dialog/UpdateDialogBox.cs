@@ -8,6 +8,8 @@ public class UpdateDialogBox : MonoBehaviour
     [SerializeField] DialogBoxDisplay dialogBoxDisplay;
     [SerializeField] UpdateDialogBoxText dialogBoxText;
     [SerializeField] UpdateDialogSprite dialogSprite;
+    AnswerListDisplay answerListDisplay;
+    UpdateAnswerListAnswers updateAnswerListAnswers;
 
     [SerializeField] DialogBox dialogBox;
     [SerializeField] DialogBox nextDialog;
@@ -27,6 +29,8 @@ public class UpdateDialogBox : MonoBehaviour
         dialogBoxDisplay = GetComponent<DialogBoxDisplay>();
         dialogBoxText = GetComponent<UpdateDialogBoxText>();
         dialogSprite = GetComponent<UpdateDialogSprite>();
+        answerListDisplay = GetComponent<AnswerListDisplay>();
+        updateAnswerListAnswers = GetComponent<UpdateAnswerListAnswers>();
     }
 
     // Update is called once per frame
@@ -34,13 +38,13 @@ public class UpdateDialogBox : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            Debug.Log("Dialog updated to next stage");
             if (dialogBoxDisplay.GetNextDialog() != null)
             {
                 dialogBoxDisplay.SetDialogBox(dialogBoxDisplay.GetNextDialog());
-                dialogBoxDisplay.SetNextDialogBox(dialogBoxDisplay.GetNextDialog());
                 dialogBoxText.UpdateCurrentSpeech();
                 dialogSprite.UpdateSprite();
+                answerListDisplay.UpdateShownAnswerOptions();
+                updateAnswerListAnswers.UpdateAnswerTexts();
             }
             else if (dialogBoxDisplay.GetDialogBox().GetCurrentAnswers() == null && dialogBoxDisplay.GetNextDialog() == null)
             {
