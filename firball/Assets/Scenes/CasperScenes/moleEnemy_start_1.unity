@@ -166,6 +166,18 @@ PrefabInstance:
       propertyPath: source
       value: 
       objectReference: {fileID: 2102828861}
+    - target: {fileID: 773419456808407570, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 804140059}
+    - target: {fileID: 773419456808407570, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
+      propertyPath: isBeingHit
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 773419456808407570, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
+      propertyPath: playerCollider
+      value: 
+      objectReference: {fileID: 804140058}
     - target: {fileID: 2526591595291885433, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.29
@@ -5099,6 +5111,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdd824fa1270ad647ba1d8f1f7b4de0d, type: 3}
+--- !u!70 &804140058 stripped
+CapsuleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 4153620066526772659, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
+  m_PrefabInstance: {fileID: 314228280}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &804140059 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 4961659746470146123, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
+  m_PrefabInstance: {fileID: 314228280}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &804140064 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2526591595291885433, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
