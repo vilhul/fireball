@@ -530,7 +530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37c689cd69e585748b55f56f2d567da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 2526591595291885433, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
+  target: {fileID: 0}
   activateDistance: 50
   pathUpdateSeconds: 0.5
   speed: 5

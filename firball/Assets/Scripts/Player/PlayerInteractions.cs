@@ -13,11 +13,6 @@ public class PlayerInteractions : MonoBehaviour
     private float pushForceX = 150f;
     private float pushForceY = 200f;
 
-    void Update()
-    {
-
-    }
-
     private IEnumerator HitTimeout()
     {
         isBeingHit = true;
@@ -27,7 +22,6 @@ public class PlayerInteractions : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        
         //Höger
         if (col.gameObject.transform.position.x >= transform.position.x && col.gameObject.transform.CompareTag("Enemy"))
         {
@@ -37,10 +31,14 @@ public class PlayerInteractions : MonoBehaviour
             rb.AddForce(new Vector2(-pushForceX, pushForceY));
 
             // Enemy
-            col.gameObject.GetComponent<EnemyMovementGoomba>().ToggleIsBeingHit();
+            if(col.gameObject.GetComponent<EnemyMovementGoomba>()) // nödlösning
+            {
+                col.gameObject.GetComponent<EnemyMovementGoomba>().ToggleIsBeingHit();
+                col.gameObject.GetComponent<EnemyDamageGoomba>().UpdateHealtbar();
+            }
             col.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
             col.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(pushForceX, pushForceY));
-            col.gameObject.GetComponent<EnemyDamageGoomba>().UpdateHealtbar();
+            
         } //Vänster
         else if (col.gameObject.transform.position.x <= transform.position.x && col.gameObject.transform.CompareTag("Enemy"))
         {
@@ -50,10 +48,13 @@ public class PlayerInteractions : MonoBehaviour
             rb.AddForce(new Vector2(pushForceX, pushForceY));
 
             // Enemy
-            col.gameObject.GetComponent<EnemyMovementGoomba>().ToggleIsBeingHit();
+            if (col.gameObject.GetComponent<EnemyMovementGoomba>()) // nödlösning
+            {
+                col.gameObject.GetComponent<EnemyMovementGoomba>().ToggleIsBeingHit();
+                col.gameObject.GetComponent<EnemyDamageGoomba>().UpdateHealtbar();
+            }
             col.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
             col.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-pushForceX, pushForceY));
-            col.gameObject.GetComponent<EnemyDamageGoomba>().UpdateHealtbar();
         }
     }
 }
