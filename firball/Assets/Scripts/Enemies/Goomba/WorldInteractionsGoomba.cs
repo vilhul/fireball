@@ -10,9 +10,11 @@ public class WorldInteractionsGoomba : MonoBehaviour
     [SerializeField] private Transform walkableSpaceBack;
     [SerializeField] private LayerMask wall;
     private EnemyMovementGoomba emg;
+    
     void Start()
     {
         emg = transform.parent.GetComponent<EnemyMovementGoomba>();
+        
     }
 
     void Update()

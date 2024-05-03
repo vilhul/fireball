@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class EnemyDamageGoomba : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float hp, maxHp = 100f;
+    [SerializeField] private FloatingHealthbar healthbar;
+    [SerializeField] public Transform healthCanvas;
+
     void Start()
     {
-        
+        healthCanvas.GetComponent<Canvas>().enabled = false;
+        healthbar.UpdateHealthbar(hp, maxHp);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        healthbar = GetComponentInChildren<FloatingHealthbar>();
+
+        if ((hp <= 0f))
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void UpdateHealtbar()
+    {
+        healthCanvas.GetComponent<Canvas>().enabled = true;
+        healthbar.UpdateHealthbar(hp, maxHp);
     }
 }
