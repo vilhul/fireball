@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42708fff664630e47b8349cb2c75370e, type: 3}
   m_Name: SampleA1O3
   m_EditorClassIdentifier: 
+  desc: Option 3 och endDialog (kanske?!?!?!?)
+  nextDialog: {fileID: 0}

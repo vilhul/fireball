@@ -22,6 +22,15 @@ public class UpdateDialogBox : MonoBehaviour
     {
         return nextDialog;
     }
+    
+    // called from other scripts when they update dialogBox
+    public void UpdateAll()
+    {
+        dialogBoxText.UpdateCurrentSpeech();
+        dialogSprite.UpdateSprite();
+        answerListDisplay.UpdateShownAnswerOptions();
+        updateAnswerListAnswers.UpdateAnswerTexts();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +45,8 @@ public class UpdateDialogBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        // Detect "next"
+        if (Input.GetKeyDown(KeyCode.F) && dialogBoxDisplay.GetNextDialog() != null)
         {
             if (dialogBoxDisplay.GetNextDialog() != null)
             {

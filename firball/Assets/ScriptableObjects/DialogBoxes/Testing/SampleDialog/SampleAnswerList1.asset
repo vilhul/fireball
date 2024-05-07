@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2cdabb0bda62c9469e6c5bb31df8f22, type: 3}
   m_Name: SampleAnswerList1
   m_EditorClassIdentifier: 
+  answers:
+  - {fileID: 11400000, guid: e1eb51c5c130a1f428a0cfa19fe0c438, type: 2}
+  - {fileID: 11400000, guid: 961a397624951564c97249489615fd01, type: 2}
+  - {fileID: 11400000, guid: 2f7b919443ce598408587970023c6ec2, type: 2}

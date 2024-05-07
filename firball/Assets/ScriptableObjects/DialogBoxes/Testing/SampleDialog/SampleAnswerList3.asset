@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42708fff664630e47b8349cb2c75370e, type: 3}
-  m_Name: SampleA1O2
+  m_Script: {fileID: 11500000, guid: d2cdabb0bda62c9469e6c5bb31df8f22, type: 3}
+  m_Name: SampleAnswerList3
   m_EditorClassIdentifier: 
-  desc: "Option 2 och l\xE4nk till andra steget"
-  nextDialog: {fileID: 11400000, guid: e892cddd3f7a8b341b955c4af5afe979, type: 2}
+  answers:
+  - {fileID: 11400000, guid: e1eb51c5c130a1f428a0cfa19fe0c438, type: 2}
+  - {fileID: 11400000, guid: 961a397624951564c97249489615fd01, type: 2}
