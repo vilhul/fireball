@@ -9,48 +9,50 @@ public class PlayerInteractions : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
 
     [SerializeField] private Collider2D playerCollider;
-    [SerializeField] private LayerMask enemyLayer;
     [SerializeField] public bool isBeingHit = false;
     private float pushForceX = 150f;
     private float pushForceY = 200f;
 
-
-    void Update()
-    {
-
-    }
-
     private IEnumerator HitTimeout()
     {
+        isBeingHit = true;
         yield return new WaitForSeconds(0.3f);
         isBeingHit = false;
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        
         //Höger
         if (col.gameObject.transform.position.x >= transform.position.x && col.gameObject.transform.CompareTag("Enemy"))
         {
-            isBeingHit = true;
+            // Player
             StartCoroutine(HitTimeout());
-            col.gameObject.GetComponent<EnemyMovementGoomba>().ToggleIsBeingHit();
-
             rb.velocity = new Vector2(0f, 0f);
             rb.AddForce(new Vector2(-pushForceX, pushForceY));
 
+            // Enemy
+            if(col.gameObject.GetComponent<EnemyMovementGoomba>()) // nödlösning
+            {
+                col.gameObject.GetComponent<EnemyMovementGoomba>().ToggleIsBeingHit();
+                col.gameObject.GetComponent<EnemyDamageGoomba>().UpdateHealtbar();
+            }
             col.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
             col.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(pushForceX, pushForceY));
+            
         } //Vänster
         else if (col.gameObject.transform.position.x <= transform.position.x && col.gameObject.transform.CompareTag("Enemy"))
         {
-            isBeingHit = true;
+            // Player
             StartCoroutine(HitTimeout());
-            col.gameObject.GetComponent<EnemyMovementGoomba>().ToggleIsBeingHit();
-
             rb.velocity = new Vector2(0f, 0f);
             rb.AddForce(new Vector2(pushForceX, pushForceY));
 
+            // Enemy
+            if (col.gameObject.GetComponent<EnemyMovementGoomba>()) // nödlösning
+            {
+                col.gameObject.GetComponent<EnemyMovementGoomba>().ToggleIsBeingHit();
+                col.gameObject.GetComponent<EnemyDamageGoomba>().UpdateHealtbar();
+            }
             col.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
             col.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-pushForceX, pushForceY));
         }
