@@ -8,7 +8,7 @@ public class EnemyMovementGoomba : MonoBehaviour
     private float speed = 3f;
     private bool isFacingRight = true;
     
-    private PlayerInteractions pl;
+    //private PlayerInteractions pl;
     private EnemyDamageGoomba edg;
     private bool isBeingHit = false;
 
@@ -17,7 +17,7 @@ public class EnemyMovementGoomba : MonoBehaviour
 
     private void Start()
     {
-        pl = GameObject.FindGameObjectWithTag("Player").transform.Find("EnvironmentCollider").gameObject.GetComponent<PlayerInteractions>();
+        //pl = GameObject.FindGameObjectWithTag("Player").transform.Find("EnvironmentCollider").gameObject.GetComponent<PlayerInteractions>();
         edg = transform.GetComponent<EnemyDamageGoomba>(); 
     }
 
@@ -40,7 +40,6 @@ public class EnemyMovementGoomba : MonoBehaviour
             rb.velocity = new Vector2(-speed, rb.velocity.y);
         }
     }
-
 
     public void Flip()
     {

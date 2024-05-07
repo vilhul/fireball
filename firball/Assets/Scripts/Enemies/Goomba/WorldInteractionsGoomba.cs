@@ -14,7 +14,6 @@ public class WorldInteractionsGoomba : MonoBehaviour
     void Start()
     {
         emg = transform.parent.GetComponent<EnemyMovementGoomba>();
-        
     }
 
     void Update()
