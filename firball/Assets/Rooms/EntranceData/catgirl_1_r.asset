@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextRoom: {fileID: 102900000, guid: 527f6894b1b5a01488742ebeb55fab01, type: 3}
   thisRoom: {fileID: 102900000, guid: 3fc9f0865b5462045a1d960e3f6633f0, type: 3}
-  nextEntranceName: catgirl_ 2_l
+  nextEntranceName: catgirl_2_l

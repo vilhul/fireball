@@ -26,8 +26,7 @@ public class Fireball : Ability
         else
         {
             rb.velocity = -parent.transform.right * fireballSpeed;
-            fireball.transform.position = new Vector3(fireball.transform.position.x - 1f, fireball.transform.position.y, fireball.transform.position.z);
-            fireball.transform.rotation = Quaternion.Euler(0,180,0);
+            fireball.transform.SetPositionAndRotation(new Vector3(fireball.transform.position.x - 1f, fireball.transform.position.y, fireball.transform.position.z), Quaternion.Euler(0,180,0));
         }
         //bör göra ett nytt script i eldbollen som säger att den bör despawna efter ett tag
     }
