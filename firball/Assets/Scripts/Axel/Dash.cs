@@ -9,8 +9,8 @@ public class Dash : Ability
     [SerializeField] float dashVelocity;
     InputSystemController movement;
     float movementSpeed;
-    float movementDirection;
-    bool isFacingRight;
+    //float movementDirection;
+    //bool isFacingRight;
 
     public override void Activate(GameObject parent)
     {
@@ -18,8 +18,8 @@ public class Dash : Ability
         movement = parent.GetComponent<InputSystemController>();
         //hämtar variabler som behövs från playerMovement
         movementSpeed = movement.GetPlayerMovementSpeed();
-        movementDirection = movement.GetPlayerMovementDirection();
-        isFacingRight = movement.GetIsFacingRight();
+        //movementDirection = movement.GetPlayerMovementDirection();
+        //isFacingRight = movement.GetIsFacingRight();
 
         
         //multiplicerar hastigheten med dashvelocity ända till deactivate

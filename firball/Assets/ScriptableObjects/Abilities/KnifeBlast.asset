@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Knife Blast
   cooldownTime: 1
-  activeTime: 0.5
+  activeTime: 4
   knifeProjectile: {fileID: 2403092086455054407, guid: 2f32233dc3deb31489bcd238a8122c89, type: 3}
   knifeSpeed: 10
