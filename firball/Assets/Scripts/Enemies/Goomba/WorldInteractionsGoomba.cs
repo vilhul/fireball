@@ -10,9 +10,10 @@ public class WorldInteractionsGoomba : MonoBehaviour
     [SerializeField] private Transform walkableSpaceBack;
     [SerializeField] private LayerMask wall;
     private EnemyMovementGoomba emg;
+    
     void Start()
     {
-        emg = GameObject.FindGameObjectWithTag("Enemy").gameObject.GetComponent<EnemyMovementGoomba>();
+        emg = transform.parent.GetComponent<EnemyMovementGoomba>();
     }
 
     void Update()
@@ -22,18 +23,24 @@ public class WorldInteractionsGoomba : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("Enemy wall Enter " + col.name);
-        emg.Flip();
-        rb.velocity = new Vector2(0f, 0f);
+        if (col.gameObject.layer == 3)
+        {
+            emg.Flip();
+        }
+
+        if (col.CompareTag("Enemy"))
+        {
+            emg.Flip();
+        }
     }
     private bool IsFloorFront()
     {
-        return Physics2D.OverlapCircle(walkableSpaceFront.position, 0.2f, wall);
+        return Physics2D.OverlapCircle(walkableSpaceFront.position, 0.4f, wall);
     }
 
     private bool IsFloorBack()
     {
-        return Physics2D.OverlapCircle(walkableSpaceBack.position, 0.2f, wall);
+        return Physics2D.OverlapCircle(walkableSpaceBack.position, 0.4f, wall);
     }
 
     private void FloorCheck()

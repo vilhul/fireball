@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42a3256abee46a643bc2513e48c8eeaf, type: 3}
-  m_Name: start_2_l
+  m_Script: {fileID: 11500000, guid: 663349c3bf1c67043bdbe418463f1bf3, type: 3}
+  m_Name: KnifeBlast
   m_EditorClassIdentifier: 
-  nextRoom: {fileID: 102900000, guid: 3fc9f0865b5462045a1d960e3f6633f0, type: 3}
-  thisRoom: {fileID: 102900000, guid: 527f6894b1b5a01488742ebeb55fab01, type: 3}
-  nextEntranceName: start_1_r
+  name: Knife Blast
+  cooldownTime: 1
+  activeTime: 4
+  knifeProjectile: {fileID: 2403092086455054407, guid: 2f32233dc3deb31489bcd238a8122c89, type: 3}
+  knifeSpeed: 10

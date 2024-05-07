@@ -10,28 +10,24 @@ public class Fireball : Ability
     
     public override void Activate(GameObject parent)
     {
+        //Instantierar en eldboll och hämtar ariabler
         GameObject fireball = Instantiate(fireballProjectile, parent.transform.position, Quaternion.identity); ;
-        InputSystemController movement = parent.GetComponent<InputSystemController>();
-        bool isFacingRight = movement.GetIsFacingRight();
         Rigidbody2D rb = fireball.GetComponent<Rigidbody2D>();
+        InputSystemController playerMovement = parent.GetComponent<InputSystemController>();
+        bool isFacingRight = playerMovement.GetIsFacingRight();
         
-        if (rb != null )
+        //skapar eldboll åt höger eller åt vänster framför spelaren
+        if (isFacingRight)
         {
-            if (isFacingRight)
-            {
-                rb.velocity = parent.transform.right * fireballSpeed;
-                fireball.transform.position = new Vector3(fireball.transform.position.x + 1f, fireball.transform.position.y, fireball.transform.position.z);
+            rb.velocity = parent.transform.right * fireballSpeed;
+            fireball.transform.position = new Vector3(fireball.transform.position.x + 1f, fireball.transform.position.y, fireball.transform.position.z);
                 
-            }
-            else
-            {
-                rb.velocity = -parent.transform.right * fireballSpeed;
-                fireball.transform.position = new Vector3(fireball.transform.position.x - 1f, fireball.transform.position.y, fireball.transform.position.z);
-                fireball.transform.rotation = Quaternion.Euler(0,180,0);
-            }
-        }else
-        {
-            Debug.LogError("Fireball prefab saknar Rigidbody2D-komponent!");
         }
+        else
+        {
+            rb.velocity = -parent.transform.right * fireballSpeed;
+            fireball.transform.SetPositionAndRotation(new Vector3(fireball.transform.position.x - 1f, fireball.transform.position.y, fireball.transform.position.z), Quaternion.Euler(0,180,0));
+        }
+        //bör göra ett nytt script i eldbollen som säger att den bör despawna efter ett tag
     }
 }

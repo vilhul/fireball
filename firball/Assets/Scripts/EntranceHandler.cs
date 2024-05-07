@@ -18,7 +18,7 @@ public class EntranceHandler : MonoBehaviour
 
     private void Start()
     {
-        if (InputSystemController.nextEntranceName != string.Empty)
+        if (InputSystemController.nextEntranceName == entranceDataSO.name)
         {
             player.transform.position = transform.position;
         }

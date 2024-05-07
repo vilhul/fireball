@@ -8,14 +8,13 @@ public class InputSystemController : MonoBehaviour
 {
     public Rigidbody2D PlayerRb;
 
-    //vilgot
+    // Map stuff
     public static bool isInEntrance = false;
     public static bool hasExitedOnce = false;
     public static string nextEntranceName = string.Empty;
 
     private PlayerInteractions pl;
 
-    //Axel
     [Header("Movement")]
     private float playerMovementSpeed = 5f;
     private float playerMovementDirection;
