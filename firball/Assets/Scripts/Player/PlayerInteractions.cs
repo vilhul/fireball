@@ -66,3 +66,5 @@ public class PlayerInteractions : MonoBehaviour
         }
     }
 }
+//https://www.youtube.com/watch?v=1E8AI5UgmAw slopes
+// https://www.youtube.com/watch?v=B34iq4O5ZYI Raycast tutorial
