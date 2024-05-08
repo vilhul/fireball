@@ -31,10 +31,18 @@ public class PlayerInteractions : MonoBehaviour
             rb.AddForce(new Vector2(-pushForceX, pushForceY));
 
             // Enemy
+            // Goomba
             if(col.gameObject.GetComponent<EnemyMovementGoomba>()) // nödlösning
             {
                 col.gameObject.GetComponent<EnemyMovementGoomba>().ToggleIsBeingHit();
                 col.gameObject.GetComponent<EnemyDamageGoomba>().UpdateHealtbar();
+            }
+
+            // Mole
+            if(col.gameObject.GetComponent <EnemyMovementMole>())
+            {
+                col.gameObject.GetComponent<EnemyMovementMole>().ToggleIsBeingHit();
+                col.gameObject.GetComponent<EnemyDamageMole>().UpdateHealtbar();
             }
             col.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
             col.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(pushForceX, pushForceY));
