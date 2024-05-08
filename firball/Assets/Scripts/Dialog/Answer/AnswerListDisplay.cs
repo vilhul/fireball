@@ -9,18 +9,18 @@ public class AnswerListDisplay : MonoBehaviour
     [SerializeField] DialogBoxDisplay dialogBoxDisplay;
     [SerializeField] UpdateAnswerListAnswers updateAnswerListAnswers;
 
-    [SerializeField] Transform _3AO1;
-    [SerializeField] Transform _3AO2;
-    [SerializeField] Transform _3AO3;
+    Transform _3AO1;
+    Transform _3AO2;
+    Transform _3AO3;
 
-    [SerializeField] Transform _2AO1;
-    [SerializeField] Transform _2AO2;
+    Transform _2AO1;
+    Transform _2AO2;
 
-    [SerializeField] Transform _1AO1;
+    Transform _1AO1;
 
-    [SerializeField] Transform _3A;
-    [SerializeField] Transform _2A;
-    [SerializeField] Transform _1A;
+    Transform _3A;
+    Transform _2A;
+    Transform _1A;
 
     public void UpdateShownAnswerOptions()
     {
@@ -51,6 +51,12 @@ public class AnswerListDisplay : MonoBehaviour
             {
                 Debug.LogError("Too many answerOptions");
             }
+        }
+        else
+        {
+            _1A.gameObject.SetActive(false);
+            _2A.gameObject.SetActive(false);
+            _3A.gameObject.SetActive(false);
         }
     }
 

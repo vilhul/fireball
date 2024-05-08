@@ -26,7 +26,14 @@ public class DialogBox : ScriptableObject
 
     public DialogBox GetNextDialogBox()
     {
-        return nextDialog;
+        if (nextDialog != null)
+        {
+            return nextDialog;
+        }
+        else
+        {
+            return null;
+        }
     }
 
     public AnswerList GetCurrentAnswers()

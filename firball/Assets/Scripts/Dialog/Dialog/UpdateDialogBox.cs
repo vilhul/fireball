@@ -11,25 +11,34 @@ public class UpdateDialogBox : MonoBehaviour
     AnswerListDisplay answerListDisplay;
     UpdateAnswerListAnswers updateAnswerListAnswers;
 
-    [SerializeField] DialogBox dialogBox;
-    [SerializeField] DialogBox nextDialog;
-
-    public DialogBox GetDialogBox()
-    {
-        return dialogBox;
-    }
-    public DialogBox GetNextDialogBox()
-    {
-        return nextDialog;
-    }
+    //public DialogBox GetDialogBox()
+    //{
+    //    return dialogBoxDisplay.GetDialogBox();
+    //}
+    //public DialogBox GetNextDialogBox()
+    //{
+    //    return dialogBoxDisplay.GetNextDialog();
+    //}
     
     // called from other scripts when they update dialogBox
     public void UpdateAll()
     {
+        if (dialogBoxDisplay.GetDialogBox().GetCurrentAnswers() == null
+            && dialogBoxDisplay.GetNextDialog() == null)
+        {
+            Debug.LogWarning(dialogBoxDisplay.GetDialogBox().GetCurrentAnswers());
+            gameObject.SetActive(false);
+            return;
+        }
+        else if (dialogBoxDisplay.GetDialogBox().GetCurrentAnswers() == null)
+        {
+            answerListDisplay.UpdateShownAnswerOptions();
+        }
         dialogBoxText.UpdateCurrentSpeech();
         dialogSprite.UpdateSprite();
         answerListDisplay.UpdateShownAnswerOptions();
         updateAnswerListAnswers.UpdateAnswerTexts();
+        
     }
 
     // Start is called before the first frame update
@@ -51,10 +60,7 @@ public class UpdateDialogBox : MonoBehaviour
             if (dialogBoxDisplay.GetNextDialog() != null)
             {
                 dialogBoxDisplay.SetDialogBox(dialogBoxDisplay.GetNextDialog());
-                dialogBoxText.UpdateCurrentSpeech();
-                dialogSprite.UpdateSprite();
-                answerListDisplay.UpdateShownAnswerOptions();
-                updateAnswerListAnswers.UpdateAnswerTexts();
+                UpdateAll();
             }
             else if (dialogBoxDisplay.GetDialogBox().GetCurrentAnswers() == null && dialogBoxDisplay.GetNextDialog() == null)
             {
