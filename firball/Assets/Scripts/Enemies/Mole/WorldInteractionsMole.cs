@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WorldInteractionsMole : MonoBehaviour
 {
-    [SerializeField] private Transform frontSideCheck;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask wall;
     EnemyMovementMole emm;
@@ -20,7 +19,7 @@ public class WorldInteractionsMole : MonoBehaviour
     {
         if ((col.gameObject.layer == 3 || col.CompareTag("Enemy")) && IsGrounded())
         {
-            Debug.Log("Simon är Straight");
+            Debug.Log("Mole Jump");
             rb.velocity = new Vector2(rb.velocity.x, emm.jumpingPower);
         }
     }
