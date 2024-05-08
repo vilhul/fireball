@@ -55,13 +55,13 @@ public class EnemyMovementGoomba : MonoBehaviour
 
     public IEnumerator HitTimeout()
     {
+        isBeingHit = true;
         yield return new WaitForSeconds(0.3f);
         isBeingHit = false;
     }
 
     public void ToggleIsBeingHit()
     {
-        isBeingHit = true;
         StartCoroutine(HitTimeout());
     }
 }

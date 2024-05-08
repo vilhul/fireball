@@ -24,8 +24,6 @@ public class InputSystemController : MonoBehaviour
     [Header("Jumping")]
     private float playerJumpStrength = 12f;
     [SerializeField] Animator animator;
-    [SerializeField] AudioSource source;
-    [SerializeField] AudioClip clip;
 
 
     [Header("GroundCheck")]
@@ -36,7 +34,7 @@ public class InputSystemController : MonoBehaviour
     void Start()
     {
         pl = GameObject.FindGameObjectWithTag("Player").transform.Find("EnvironmentCollider").gameObject.GetComponent<PlayerInteractions>();
-        source.PlayOneShot(clip);
+
     }
 
     void Update()
@@ -44,13 +42,6 @@ public class InputSystemController : MonoBehaviour
         if (!pl.isBeingHit)
         {
             PlayerRb.velocity = new Vector2(playerMovementDirection * playerMovementSpeed, PlayerRb.velocity.y);
-        }
-
-         
-
-        if (playerMovementDirection >= 0)
-        {
-            source.volume = 0;
         }
     }
 
@@ -65,18 +56,6 @@ public class InputSystemController : MonoBehaviour
         else if (Keyboard.current.aKey.isPressed && isFacingRight)
         {
             Flip();
-        }
-        MoonWalk(playerMovementDirection);
-
-    }
-
-    public void MoonWalk(float playerMovementDirection)
-    {
-        Debug.Log("moonwalk på g");
-        if (playerMovementDirection < 0 && Keyboard.current.zKey.isPressed)
-        {
-            Debug.Log("spelar ljud");
-            source.volume = 1;
         }
 
     }

@@ -9,12 +9,12 @@ public class EnemyMovementMole : MonoBehaviour
     public Transform target;
     public float activateDistance = 25f;
     public float pathUpdateSeconds = 0.3f;
+    private bool isBeingHit = false;
 
     [Header("Physics")]
     public float speed = 4f;
     public float jumpingPower = 15f;
     public float nextWaypointDistance = 3f;
-    [SerializeField] private LayerMask playerLayer;
 
     [Header("Custom Behavior")]
     public bool followEnabled = true;
@@ -41,7 +41,7 @@ public class EnemyMovementMole : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (TargetInDistance() && followEnabled)
+        if (TargetInDistance() && followEnabled && !isBeingHit)
         {
             PathFollow();
         }
@@ -116,5 +116,15 @@ public class EnemyMovementMole : MonoBehaviour
         }
     }
     //slut på kopierad kod
-    
+
+    public IEnumerator HitTimeout()
+    {
+        isBeingHit = true;
+        yield return new WaitForSeconds(0.5f);
+        isBeingHit = false;
+    }
+    public void ToggleIsBeingHit()
+    {
+        StartCoroutine(HitTimeout());
+    }
 }

@@ -31,11 +31,16 @@ public class KnifeBlast : Ability
                 knifeRotation = -90;
             }
             
+            
             spawnPosition = parent.transform.position + new Vector3(xOffset, yPositions[i], 0f);
 
             GameObject knife = Instantiate(knifeProjectile, spawnPosition, Quaternion.Euler(0,0,knifeRotation));
             knife.transform.parent = parent.transform;
             knifeList.Add(knife);
+            //if(i==2)
+            //{
+            //    knife.GetComponent<SpriteRenderer>().sortingLayerID = SortingLayer.NameToID("PlayerEnemiesNpcs");
+            //}
         }
         
     }
