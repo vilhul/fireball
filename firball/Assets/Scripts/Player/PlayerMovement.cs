@@ -43,6 +43,9 @@ public class InputSystemController : MonoBehaviour
         {
             PlayerRb.velocity = new Vector2(playerMovementDirection * playerMovementSpeed, PlayerRb.velocity.y);
         }
+       
+        UpdatePlayerJumpVariables();
+        
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -62,6 +65,7 @@ public class InputSystemController : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
+        
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             PlayerRb.velocity = new Vector2(PlayerRb.velocity.x, playerJumpStrength);
@@ -78,22 +82,46 @@ public class InputSystemController : MonoBehaviour
     {
         if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer))
         {
-            //Debug.Log("På marken");
-            animator.SetBool("PlayerJump", true);
+            
+            
             return true;
+        }else if(PlayerRb.velocity.y > 0f && Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("spelare är i luften");
+            
         }
 
-        //if(PlayerRb.velocity.y < 0f)
-        //{
-        //    animator.SetFloat("UpOrDown", -1f);
-        //}
-        if (PlayerRb.velocity.y > 0f && Input.GetKeyDown(KeyCode.Space));
-        {
-            animator.SetBool("PlayerJump", false);
-        }
+            
         //Debug.Log("Funktionen kallas");
         return false;
 
+    }
+
+    public void UpdatePlayerJumpVariables()
+    {
+        if(IsGrounded())
+        {
+            //Debug.Log("Spelare hoppar inte");
+            animator.SetBool("PlayerJump", false);
+        }
+        
+        if (PlayerRb.velocity.y > 0f) 
+        {
+            //Debug.Log("Spelaren hoppar uppåt");
+            animator.SetBool("PlayerJump", true);
+            animator.SetFloat("UpOrDown", 10f);
+        }  
+        else if (PlayerRb.velocity.y < 0f)
+        {
+            //Debug.Log("Spelare faller");
+            animator.SetFloat("UpOrDown", -1f);
+        }
+        else
+        {
+            //Debug.Log("Spelare står still i y-led");
+            animator.SetFloat("UpOrDown", 1f);
+        }
+        
     }
 
     public void OnDrawGizmosSelected()
