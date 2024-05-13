@@ -26,6 +26,6 @@ public class WorldInteractionsMole : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapBox(groundCheck.position, new Vector2(1f, 0.1f), 0f, wall);
+        return Physics2D.OverlapBox(groundCheck.position, new Vector2(0.5f, 0.1f), 0f, wall);
     }
 }
