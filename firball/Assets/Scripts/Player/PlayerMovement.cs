@@ -105,13 +105,13 @@ public class InputSystemController : MonoBehaviour
             animator.SetBool("PlayerJump", false);
         }
         
-        if (PlayerRb.velocity.y > 0f) 
+        if (PlayerRb.velocity.y > 0f && IsGrounded()==false) 
         {
             //Debug.Log("Spelaren hoppar uppåt");
             animator.SetBool("PlayerJump", true);
             animator.SetFloat("UpOrDown", 10f);
         }  
-        else if (PlayerRb.velocity.y < 0f)
+        else if (PlayerRb.velocity.y < 0f && IsGrounded() == false)
         {
             //Debug.Log("Spelare faller");
             animator.SetFloat("UpOrDown", -1f);
