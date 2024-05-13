@@ -27,7 +27,7 @@ public class AbilityHolder : MonoBehaviour
     {
         switch (state)
         {
-            case AbilityState.ready:
+            case AbilityState.ready: 
                 if (Input.GetKeyDown(key))
                 {
                     activeTime = ability.activeTime;

@@ -79,7 +79,17 @@ public class InputSystemController : MonoBehaviour
         if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer))
         {
             //Debug.Log("På marken");
+            animator.SetBool("PlayerJump", true);
             return true;
+        }
+
+        //if(PlayerRb.velocity.y < 0f)
+        //{
+        //    animator.SetFloat("UpOrDown", -1f);
+        //}
+        if (PlayerRb.velocity.y > 0f && Input.GetKeyDown(KeyCode.Space));
+        {
+            animator.SetBool("PlayerJump", false);
         }
         //Debug.Log("Funktionen kallas");
         return false;
