@@ -63,22 +63,25 @@ public class AnswerListDisplay : MonoBehaviour
     public List<Transform> GetCurrentAnswerTransforms()
     {
         List<Transform> transforms = new List<Transform>();
-        if (dialogBoxDisplay.GetDialogBox().GetCurrentAnswers() != null)
+        if (dialogBoxDisplay.GetDialogBox() != null)
         {
-            if (dialogBoxDisplay.GetDialogBox().GetCurrentAnswers().GetAnswers().Length == 3)
-            {
-                transforms.Add(_3AO1);
-                transforms.Add(_3AO2);
-                transforms.Add(_3AO3);
-            }
-            if (dialogBoxDisplay.GetDialogBox().GetCurrentAnswers().GetAnswers().Length == 2)
-            {
-                transforms.Add(_2AO1);
-                transforms.Add(_2AO2);
-            }
-            if (dialogBoxDisplay.GetDialogBox().GetCurrentAnswers().GetAnswers().Length == 1)
-            {
-                transforms.Add(_1AO1);
+            if (dialogBoxDisplay.GetDialogBox().GetCurrentAnswers() != null) 
+            { 
+                if (dialogBoxDisplay.GetDialogBox().GetCurrentAnswers().GetAnswers().Length == 3)
+                {
+                    transforms.Add(_3AO1);
+                    transforms.Add(_3AO2);
+                    transforms.Add(_3AO3);
+                }
+                if (dialogBoxDisplay.GetDialogBox().GetCurrentAnswers().GetAnswers().Length == 2)
+                {
+                    transforms.Add(_2AO1);
+                    transforms.Add(_2AO2);
+                }
+                if (dialogBoxDisplay.GetDialogBox().GetCurrentAnswers().GetAnswers().Length == 1)
+                {
+                    transforms.Add(_1AO1);
+                }
             }
         }
         return transforms;
