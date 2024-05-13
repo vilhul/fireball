@@ -23,22 +23,24 @@ public class UpdateDialogBox : MonoBehaviour
     // called from other scripts when they update dialogBox
     public void UpdateAll()
     {
-        if (dialogBoxDisplay.GetDialogBox().GetCurrentAnswers() == null
+        if (dialogBoxDisplay.GetDialogBox() != null)
+        {
+            if (dialogBoxDisplay.GetDialogBox().GetCurrentAnswers() == null
             && dialogBoxDisplay.GetNextDialog() == null)
-        {
-            Debug.LogWarning(dialogBoxDisplay.GetDialogBox().GetCurrentAnswers());
-            gameObject.SetActive(false);
-            return;
-        }
-        else if (dialogBoxDisplay.GetDialogBox().GetCurrentAnswers() == null)
-        {
+            {
+                Debug.LogWarning(dialogBoxDisplay.GetDialogBox().GetCurrentAnswers());
+                gameObject.SetActive(false);
+                return;
+            }
+            else if (dialogBoxDisplay.GetDialogBox().GetCurrentAnswers() == null)
+            {
+                answerListDisplay.UpdateShownAnswerOptions();
+            }
+            dialogBoxText.UpdateCurrentSpeech();
+            dialogSprite.UpdateSprite();
             answerListDisplay.UpdateShownAnswerOptions();
+            updateAnswerListAnswers.UpdateAnswerTexts();
         }
-        dialogBoxText.UpdateCurrentSpeech();
-        dialogSprite.UpdateSprite();
-        answerListDisplay.UpdateShownAnswerOptions();
-        updateAnswerListAnswers.UpdateAnswerTexts();
-        
     }
 
     // Start is called before the first frame update
@@ -54,7 +56,7 @@ public class UpdateDialogBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Detect "next"
+        // Detect "next
         if (Input.GetKeyDown(KeyCode.F) && dialogBoxDisplay.GetNextDialog() != null)
         {
             if (dialogBoxDisplay.GetNextDialog() != null)
@@ -62,10 +64,10 @@ public class UpdateDialogBox : MonoBehaviour
                 dialogBoxDisplay.SetDialogBox(dialogBoxDisplay.GetNextDialog());
                 UpdateAll();
             }
-            else if (dialogBoxDisplay.GetDialogBox().GetCurrentAnswers() == null && dialogBoxDisplay.GetNextDialog() == null)
-            {
-                gameObject.SetActive(false);
-            }
+        }
+        if (dialogBoxDisplay.GetDialogBox() == null && dialogBoxDisplay.GetNextDialog() == null)
+        {
+            gameObject.SetActive(false);
         }
     }
 }

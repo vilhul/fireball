@@ -1685,9 +1685,10 @@ GameObject:
   - component: {fileID: 7157932851050794414}
   - component: {fileID: 6817097343525414702}
   - component: {fileID: 4533164760275020972}
+  - component: {fileID: 4848808666100221817}
   m_Layer: 5
-  m_Name: NewDialogBase
-  m_TagString: Untagged
+  m_Name: Dialog
+  m_TagString: Dialog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1760,7 +1761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09d8a0d1a84958f4dbe5bee98c7aeb9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogBox: {fileID: 11400000, guid: 71dae32ca88bed74092da38f37ef7be7, type: 2}
+  dialogBox: {fileID: 11400000, guid: e100d4fcda9b4c542ab14b63df5e71a4, type: 2}
 --- !u!114 &5787704053686166035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1794,8 +1795,6 @@ MonoBehaviour:
   dialogBoxDisplay: {fileID: 7571022441740892593}
   dialogBoxText: {fileID: 5787704053686166035}
   dialogSprite: {fileID: 7157932851050794414}
-  dialogBox: {fileID: 0}
-  nextDialog: {fileID: 0}
 --- !u!114 &7157932851050794414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1824,15 +1823,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogBoxDisplay: {fileID: 0}
   updateAnswerListAnswers: {fileID: 0}
-  _3AO1: {fileID: 0}
-  _3AO2: {fileID: 0}
-  _3AO3: {fileID: 0}
-  _2AO1: {fileID: 0}
-  _2AO2: {fileID: 0}
-  _1AO1: {fileID: 0}
-  _3A: {fileID: 0}
-  _2A: {fileID: 0}
-  _1A: {fileID: 0}
 --- !u!114 &4533164760275020972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1847,6 +1837,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   answerListDisplay: {fileID: 6817097343525414702}
   dialogBoxDisplay: {fileID: 7571022441740892593}
+--- !u!114 &4848808666100221817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6899772563890002830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c400d27c0b11264aa137146b1016106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8095901744971828396
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ public class EnemyMovementMole : MonoBehaviour
 
     [Header("Physics")]
     public float speed = 4f;
-    public float jumpingPower = 15f;
+    public float jumpingPower = 30f;
     public float nextWaypointDistance = 3f;
 
     [Header("Custom Behavior")]

@@ -14,21 +14,49 @@ public class DialogBoxDisplay : MonoBehaviour
 
     public DialogBox GetDialogBox()
     {
-        return dialogBox;
+        if (dialogBox != null)
+        {
+            return dialogBox;
+        }
+        else
+        {
+            return null;
+        }
     }
 
     public Sprite GetSprite()
     {
-        return dialogBox.GetSprite() ;
+        if (dialogBox != null)
+        {
+            return dialogBox.GetSprite();
+        }
+        else
+        {
+            return null;
+        }
     }
 
     public DialogBox GetNextDialog()
     {
-        return dialogBox.GetNextDialogBox();
+        if (dialogBox != null)
+        {
+            return dialogBox.GetNextDialogBox();
+        }
+        else
+        {
+            return null;
+        }   
     }
 
     public string GetSpeech()
     {
-        return dialogBox.GetTextContent();
+        if (dialogBox != null)
+        {
+            return dialogBox.GetTextContent();
+        }
+        else
+        {
+            return null;
+        }
     }
 }
