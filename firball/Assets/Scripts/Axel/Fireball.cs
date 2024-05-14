@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 [CreateAssetMenu]
 public class Fireball : Ability
 {
     [SerializeField] GameObject fireballProjectile;
     [SerializeField] float fireballSpeed = 10f;
+    private Scene currentRoom;
     
     public override void Activate(GameObject parent)
     {
@@ -15,6 +17,16 @@ public class Fireball : Ability
         Rigidbody2D rb = fireball.GetComponent<Rigidbody2D>();
         InputSystemController playerMovement = parent.GetComponent<InputSystemController>();
         bool isFacingRight = playerMovement.GetIsFacingRight();
+
+        //Flyttar elbdollen till rumscenen istället för persistentscene där den skapas
+        foreach(Scene scene in SceneManager.GetAllScenes())
+        {
+            if(scene.isLoaded && scene.name != "PersistentScene")
+            {
+                currentRoom = scene;
+            }
+        }
+        SceneManager.MoveGameObjectToScene(fireball, currentRoom);
         
         //skapar eldboll åt höger eller åt vänster framför spelaren
         if (isFacingRight)

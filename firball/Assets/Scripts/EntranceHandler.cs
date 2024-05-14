@@ -35,6 +35,8 @@ public class EntranceHandler : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
+        if (!collision.CompareTag("Player")) return;
+
         if(!InputSystemController.isInEntrance)
         {
 
@@ -50,6 +52,8 @@ public class EntranceHandler : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (!collision.CompareTag("Player")) return;
+
         if (InputSystemController.isInEntrance)
         {
            if(!InputSystemController.hasExitedOnce)
