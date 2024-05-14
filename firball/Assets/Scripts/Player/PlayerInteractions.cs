@@ -44,6 +44,13 @@ public class PlayerInteractions : MonoBehaviour
                 col.gameObject.GetComponent<EnemyMovementMole>().ToggleIsBeingHit();
                 col.gameObject.GetComponent<EnemyDamageMole>().UpdateHealtbar();
             }
+
+            // Robot 
+            if (col.gameObject.gameObject.GetComponent<EnemyMovementRobot>())
+            {
+                col.gameObject.GetComponent<EnemyMovementRobot>().ToggleIsBeingHit();
+                col.gameObject.GetComponent<EnemyDamageRobot>().UpdateHealtbar();
+            }
             col.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
             col.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(pushForceX, pushForceY));
             

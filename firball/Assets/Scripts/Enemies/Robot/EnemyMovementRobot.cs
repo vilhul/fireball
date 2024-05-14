@@ -10,6 +10,7 @@ public class EnemyMovementRobot : MonoBehaviour
     //private PlayerInteractions pl;
     private EnemyDamageRobot edg;
     private bool isBeingHit = false;
+    [SerializeField] public Animator animator;
 
     [SerializeField] private Rigidbody2D rb;
 
@@ -30,6 +31,7 @@ public class EnemyMovementRobot : MonoBehaviour
 
     private void Walk()
     {
+        animator.SetBool("Is walking", true);
         if (isFacingRight)
         {
             rb.velocity = new Vector2(speed, rb.velocity.y);
