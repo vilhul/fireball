@@ -734,6 +734,10 @@ PrefabInstance:
       propertyPath: PlayerRb
       value: 
       objectReference: {fileID: 563300669}
+    - target: {fileID: 390616395922136996, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
+      propertyPath: groundCheckSize.y
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 2526591595291885433, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -765,6 +769,34 @@ PrefabInstance:
     - target: {fileID: 2526591595291885433, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271053092189050567, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271053092189050567, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271053092189050567, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271053092189050567, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271053092189050567, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271053092189050567, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271053092189050567, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
+      propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6603163321816494269, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
       propertyPath: m_Name
