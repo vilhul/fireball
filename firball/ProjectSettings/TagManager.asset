@@ -6,6 +6,7 @@ TagManager:
   tags:
   - RoomBorder
   - Enemy
+  - Dialog
   layers:
   - Default
   - TransparentFX
@@ -54,9 +55,6 @@ TagManager:
     locked: 0
   - name: PlayerEnemiesNpcs
     uniqueID: 2369848543
-    locked: 0
-  - name: AboveCharacters
-    uniqueID: 2083244007
     locked: 0
   - name: Hud
     uniqueID: 842858797
