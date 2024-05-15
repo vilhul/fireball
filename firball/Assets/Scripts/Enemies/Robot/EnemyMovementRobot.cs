@@ -7,9 +7,9 @@ public class EnemyMovementRobot : MonoBehaviour
     private float speed = 3f;
     private bool isFacingRight = true;
 
-    //private PlayerInteractions pl;
+    private GameObject player;
     private EnemyDamageRobot edg;
-    private bool isBeingHit = false; //DETTA KOMMER FUCKA MED SAKER den va public förut
+    private bool isBeingHit = false; 
     [SerializeField] public Animator animator;
 
     [SerializeField] private Rigidbody2D rb;
@@ -17,7 +17,7 @@ public class EnemyMovementRobot : MonoBehaviour
 
     private void Start()
     {
-        //pl = GameObject.FindGameObjectWithTag("Player").transform.Find("EnvironmentCollider").gameObject.GetComponent<PlayerInteractions>();
+        player = GameObject.FindGameObjectWithTag("Player");
         edg = transform.GetComponent<EnemyDamageRobot>();
     }
 
@@ -27,6 +27,23 @@ public class EnemyMovementRobot : MonoBehaviour
         {
             Walk();
         }
+
+        float distance = Vector2.Distance(transform.position, player.transform.position);
+        if (distance < 13)
+        {
+            if (!isBeingHit)
+            {
+                isBeingHit = true;
+            }
+            if (player.transform.position.x < transform.position.x && isFacingRight)
+            {
+                Flip();
+            }
+            if (player.transform.position.x > transform.position.x && !isFacingRight)
+            {
+                Flip();
+            }
+        } else { isBeingHit = false; }
     }
 
     private void Walk()
