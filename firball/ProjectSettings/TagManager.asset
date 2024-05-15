@@ -7,6 +7,7 @@ TagManager:
   - RoomBorder
   - Enemy
   - Dialog
+  - Spike
   layers:
   - Default
   - TransparentFX
@@ -50,11 +51,11 @@ TagManager:
   - name: Ground
     uniqueID: 2424994561
     locked: 0
-  - name: Foreground
-    uniqueID: 3014973897
-    locked: 0
   - name: PlayerEnemiesNpcs
     uniqueID: 2369848543
+    locked: 0
+  - name: Foreground
+    uniqueID: 3014973897
     locked: 0
   - name: Hud
     uniqueID: 842858797

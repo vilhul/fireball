@@ -8,6 +8,9 @@ public class InputSystemController : MonoBehaviour
 {
     public Rigidbody2D PlayerRb;
 
+    public Vector2 oldPos = Vector2.zero;
+
+
     // Map stuff
     public static bool isInEntrance = false;
     public static bool hasExitedOnce = false;
@@ -103,6 +106,9 @@ public class InputSystemController : MonoBehaviour
         {
             //Debug.Log("Spelare hoppar inte");
             animator.SetBool("PlayerJump", false);
+
+            //Uppdatera var du senast hoppade ifrån
+            oldPos = transform.position;
         }
         
         if (PlayerRb.velocity.y > 0f && IsGrounded()==false) 
@@ -121,7 +127,6 @@ public class InputSystemController : MonoBehaviour
             //Debug.Log("Spelare står still i y-led");
             animator.SetFloat("UpOrDown", 1f);
         }
-        
     }
 
     public void OnDrawGizmosSelected()
