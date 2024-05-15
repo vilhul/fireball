@@ -11,10 +11,11 @@ public class DialogLoader : MonoBehaviour
     GameObject dialog;
     // Start is called before the first frame update
 
-    public void LoadDialog(DialogBox startDialog)
+    public void LoadDialog()
     {
         SetDialogActive();
-        dialog.GetComponent<DialogBoxDisplay>().SetDialogBox(startDialog);
+        dialog.GetComponent<DialogBoxDisplay>().SetDialogBox(dialogToLoad);
+        dialog.GetComponent<UpdateDialogBox>().UpdateAll();
     }
 
     void SetDialogActive()
@@ -22,6 +23,14 @@ public class DialogLoader : MonoBehaviour
         dialog.SetActive(true);
     }
 
+    public DialogBox GetDialogToLoad()
+    {
+        if (dialogToLoad != null)
+        {
+            return dialogToLoad;
+        }
+        else { return null; }
+    }
     void DialogGameObjectStartLogic()
     {
         // Used to find and set Dialog
@@ -32,14 +41,5 @@ public class DialogLoader : MonoBehaviour
     {
         DialogGameObjectStartLogic();
         // dialog.GetComponent<DialogBoxDisplay>();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.L) && Input.GetKeyDown(KeyCode.O)) 
-        {
-            LoadDialog(dialogToLoad);
-            Debug.Log("New Dialog Loaded");
-        }
     }
 }

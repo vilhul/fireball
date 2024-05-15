@@ -4,21 +4,21 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - RoomBorder
   - Enemy
-  - Dialog
   - Spike
+  - NPC
+  - Dialog
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - 
   - Water
   - UI
   - 
+  - Npc
   - 
-  - Player
-  - Enemy
+  - 
   - 
   - 
   - 
@@ -44,19 +44,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Background
-    uniqueID: 3336164279
-    locked: 0
-  - name: Ground
-    uniqueID: 2424994561
-    locked: 0
-  - name: PlayerEnemiesNpcs
-    uniqueID: 2369848543
-    locked: 0
-  - name: Foreground
-    uniqueID: 3014973897
-    locked: 0
-  - name: Hud
-    uniqueID: 842858797
     locked: 0

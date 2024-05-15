@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 public class PlayerNpcInteract : MonoBehaviour
 {
-    [SerializeField] float maxInteractionDistance = 10f;
+    [SerializeField] float maxInteractionDistance = 0.5f;
     InputSystemController playerMovement;
     Transform playerTransform;
     DialogLoader dialogLoader;
@@ -46,14 +46,20 @@ public class PlayerNpcInteract : MonoBehaviour
     void Update()
     {
         // Player presses interact key
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             List<GameObject> npcs = GetNpcsInRange();
 
             foreach (GameObject npc in npcs)
             {
-                Debug.Log("Hit Npc: " + npc.name);
+                if (npc.GetComponent<DialogLoader>().GetDialogToLoad() != null)
+                {
+                    npc.GetComponent<DialogLoader>().LoadDialog();
+                    break;
+                }   
+                //Debug.Log("Hit Npc: " + npc.name);
             }
+            npcs.Clear();
         }
     }
 }

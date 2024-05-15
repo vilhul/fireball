@@ -59,4 +59,8 @@ public class DialogBoxDisplay : MonoBehaviour
             return null;
         }
     }
+    private void Update()
+    {
+        Debug.LogWarning(GetNextDialog());
+    }
 }
