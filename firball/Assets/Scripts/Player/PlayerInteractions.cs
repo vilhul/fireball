@@ -13,6 +13,15 @@ public class PlayerInteractions : MonoBehaviour
     private float pushForceX = 150f;
     private float pushForceY = 200f;
 
+
+    private InputSystemController inputSystemController;
+
+    private void Awake()
+    {
+        rb = transform.parent.GetComponent<Rigidbody2D>();
+        inputSystemController = GetComponentInParent<InputSystemController>();
+    }
+
     private IEnumerator HitTimeout()
     {
         isBeingHit = true;
@@ -22,6 +31,12 @@ public class PlayerInteractions : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
+        if(col.CompareTag("Spike"))
+        {
+            transform.parent.position = inputSystemController.oldPos;
+            rb.velocity = Vector2.zero;
+        }
+
         //Höger
         if (col.gameObject.transform.position.x >= transform.position.x && col.gameObject.transform.CompareTag("Enemy"))
         {
