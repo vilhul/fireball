@@ -9,7 +9,7 @@ public class EnemyMovementRobot : MonoBehaviour
 
     //private PlayerInteractions pl;
     private EnemyDamageRobot edg;
-    private bool isBeingHit = false;
+    private bool isBeingHit = false; //DETTA KOMMER FUCKA MED SAKER den va public förut
     [SerializeField] public Animator animator;
 
     [SerializeField] private Rigidbody2D rb;
@@ -65,4 +65,6 @@ public class EnemyMovementRobot : MonoBehaviour
     {
         StartCoroutine(HitTimeout());
     }
+
+    
 }
