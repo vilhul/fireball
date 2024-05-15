@@ -14,23 +14,22 @@ public class EnemyShootingRobot : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    // Update is called once per frame
     void Update()
     {
         float distance = Vector2.Distance(transform.position, player.transform.position);
 
-        if(distance < 10)
+        if(distance < 13)
         {
             timer += Time.deltaTime;
             if(timer > 1)
             {
                 timer = 0;
-                shoot();
+                Shoot();
             }
         }
     }
 
-    void shoot()
+    void Shoot()
     {
         Instantiate(beem, beemPos.position, Quaternion.identity);
     }

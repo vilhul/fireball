@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerDamage : MonoBehaviour
 {
-    [Header("Health")]
+
     public float hp = 100f;
     public float maxHp = 100f;
 
@@ -14,5 +14,25 @@ public class PlayerDamage : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void Take10Damage()
+    {
+        hp -= 10f;
+    }
+
+    public void Take25Damage()
+    {
+        hp -= 25f;
+    }
+
+    public void Take50Damage()
+    {
+        hp -= 50f;
+    }
+
+    public void DIE()
+    {
+        hp = 0f;
     }
 }
