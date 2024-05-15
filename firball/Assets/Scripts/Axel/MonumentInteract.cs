@@ -15,7 +15,8 @@ public class MonumentInteract : MonoBehaviour
     private bool playerHasClaimedAbility = false;
     [SerializeField] private Ability typeOfAbility;
     [SerializeField] private KeyCode assignToKey;
-    [SerializeField] private Sprite deActivatedMonumentSprite;
+    //[SerializeField] private Sprite deActivatedMonumentSprite;
+    [SerializeField] private Animator animatorOnTheMonument;
     
 
     private void Start()
@@ -71,7 +72,7 @@ public class MonumentInteract : MonoBehaviour
         }else
         {
             interactIndicator.SetActive(false);
-            interactIndicator.GetComponent<SpriteRenderer>().sprite = deActivatedMonumentSprite;
+            animatorOnTheMonument.SetBool("PlayerHasClaimedAbility", true);
         }
     }
 }

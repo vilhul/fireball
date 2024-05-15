@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4735684214112036258}
   - component: {fileID: -456983990143743060}
   - component: {fileID: -1377863900923100614}
+  - component: {fileID: 2536922378780216612}
   m_Layer: 8
   m_Name: FireballProjectile
   m_TagString: Untagged
@@ -172,6 +173,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &2536922378780216612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162827568541495391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2726f3665701270409436c85d93fcb93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3529047991590410104
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,7 +234,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 0.5821822, b: 0, a: 1}
-  m_Intensity: 30
+  m_Intensity: 3
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000b7d3d9c6017b8a90c9d9b4b3df04418de7c72b7c2d013d32
