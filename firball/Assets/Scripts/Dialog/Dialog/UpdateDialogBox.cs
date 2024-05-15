@@ -10,15 +10,6 @@ public class UpdateDialogBox : MonoBehaviour
     [SerializeField] UpdateDialogSprite dialogSprite;
     AnswerListDisplay answerListDisplay;
     UpdateAnswerListAnswers updateAnswerListAnswers;
-
-    //public DialogBox GetDialogBox()
-    //{
-    //    return dialogBoxDisplay.GetDialogBox();
-    //}
-    //public DialogBox GetNextDialogBox()
-    //{
-    //    return dialogBoxDisplay.GetNextDialog();
-    //}
     
     // called from other scripts when they update dialogBox
     public void UpdateAll()
@@ -59,6 +50,7 @@ public class UpdateDialogBox : MonoBehaviour
         // Detect "next
         if (Input.GetKeyDown(KeyCode.F) && dialogBoxDisplay.GetNextDialog() != null)
         {
+            
             if (dialogBoxDisplay.GetNextDialog() != null)
             {
                 dialogBoxDisplay.SetDialogBox(dialogBoxDisplay.GetNextDialog());
@@ -69,5 +61,6 @@ public class UpdateDialogBox : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+        Debug.Log(dialogBoxDisplay.GetNextDialog());
     }
 }

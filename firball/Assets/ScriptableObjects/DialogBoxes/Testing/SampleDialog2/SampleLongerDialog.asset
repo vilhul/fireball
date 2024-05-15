@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64a0bf60ad0168540af02b4296432562, type: 3}
   m_Name: SampleLongerDialog
   m_EditorClassIdentifier: 
-  textContent: 
+  textContent: Mad bro?
   sprite: {fileID: -1664280086, guid: 04eee8b380a1ea04c82a4399f5e41302, type: 3}
   nextDialog: {fileID: 0}
   currentAnswers: {fileID: 11400000, guid: a01875b3c0714c645bcd197dfc4315eb, type: 2}

@@ -20,7 +20,7 @@ public class UpdateDialogByAnswers : MonoBehaviour
         int i = 0;
         foreach (Transform t in answerListDisplay.GetCurrentAnswerTransforms())
         {
-            if (t.gameObject.GetComponent<SelectableAnswers>().GetClicked())
+            if (t.gameObject.GetComponent<SelectableAnswers>().GetClicked() && !Input.GetKeyDown(KeyCode.Space))
             {
                 DialogBox nextDia = dialogBoxDisplay.GetDialogBox().GetCurrentAnswers().GetAnswers()[i].GetNextListen();
                 SetDialogBox(nextDia);
