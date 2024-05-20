@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UserInterface/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=e9060571a4b51794ea6a0ed792476991&amp;type=3#MainMenuStyle" />
     <ui:VisualElement name="Box" class="box">
-        <ui:Label text="Fireball" name="Header" class="header" />
+        <ui:Label text="The Game" name="Header" class="header" style="color: rgb(183, 0, 165);" />
         <ui:VisualElement name="fireball" class="fireball" />
         <ui:Button name="start" text="Start" class="start-btn" />
         <ui:Button name="options" text="Options" class="start-btn" />
