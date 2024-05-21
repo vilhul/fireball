@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Rooms/RoomScenes/mole_3.unity
     guid: 877998ba293741c4198d1a7cb3d541b7
+  - enabled: 1
+    path: Assets/Rooms/RoomScenes/mole_4.unity
+    guid: e8bd660be82609f44b0c13b18bdfda25
   m_configObjects: {}

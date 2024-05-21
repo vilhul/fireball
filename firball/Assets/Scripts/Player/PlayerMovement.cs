@@ -100,6 +100,7 @@ public class InputSystemController : MonoBehaviour
 
     }
 
+
     public void UpdatePlayerJumpVariables()
     {
         if(IsGrounded())

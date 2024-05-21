@@ -13,9 +13,9 @@ public class LadderLogic : MonoBehaviour
 
     public void OnTriggerStay2D(Collider2D collision)
     {
-        if(Input.GetKeyDown(KeyCode.W))
+        if(Input.GetKey(KeyCode.W))
         {
-            playerMovement.PlayerRb.velocity = new Vector2(playerMovement.PlayerRb.velocity.x, 10f);
+            playerMovement.PlayerRb.velocity = new Vector2(playerMovement.PlayerRb.velocity.x, 5f);
         }
     }
 }
