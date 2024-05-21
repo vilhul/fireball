@@ -8,6 +8,7 @@ TagManager:
   - Spike
   - NPC
   - Dialog
+  - RoomBorder
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Ground
   - Npc
   - 
   - 
@@ -44,4 +45,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3656919637
+    locked: 0
+  - name: Ground
+    uniqueID: 4157547995
+    locked: 0
+  - name: Characters
+    uniqueID: 91405999
+    locked: 0
+  - name: Foreground
+    uniqueID: 489969259
     locked: 0
