@@ -10,7 +10,7 @@ public class UpdateDialogBox : MonoBehaviour
     [SerializeField] UpdateDialogSprite dialogSprite;
     AnswerListDisplay answerListDisplay;
     UpdateAnswerListAnswers updateAnswerListAnswers;
-    
+
     // called from other scripts when they update dialogBox
     public void UpdateAll()
     {
@@ -19,7 +19,6 @@ public class UpdateDialogBox : MonoBehaviour
             if (dialogBoxDisplay.GetDialogBox().GetCurrentAnswers() == null
             && dialogBoxDisplay.GetNextDialog() == null)
             {
-                Debug.LogWarning(dialogBoxDisplay.GetDialogBox().GetCurrentAnswers());
                 gameObject.SetActive(false);
                 return;
             }
@@ -46,13 +45,14 @@ public class UpdateDialogBox : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    { 
         // Detect "next
         if (Input.GetKeyDown(KeyCode.F) && dialogBoxDisplay.GetNextDialog() != null)
         {
-            
             if (dialogBoxDisplay.GetNextDialog() != null)
             {
+                // Sets to correct box, changes to wrong one elsewhere??!?
+                // Problem likely lies in UpdateByAnswer
                 dialogBoxDisplay.SetDialogBox(dialogBoxDisplay.GetNextDialog());
                 UpdateAll();
             }
@@ -61,6 +61,5 @@ public class UpdateDialogBox : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-        Debug.Log(dialogBoxDisplay.GetNextDialog());
     }
 }

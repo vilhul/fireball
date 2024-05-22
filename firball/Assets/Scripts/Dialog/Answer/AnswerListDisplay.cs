@@ -65,8 +65,8 @@ public class AnswerListDisplay : MonoBehaviour
         List<Transform> transforms = new List<Transform>();
         if (dialogBoxDisplay.GetDialogBox() != null)
         {
-            if (dialogBoxDisplay.GetDialogBox().GetCurrentAnswers() != null) 
-            { 
+            if (dialogBoxDisplay.GetDialogBox().GetCurrentAnswers() != null)
+            {
                 if (dialogBoxDisplay.GetDialogBox().GetCurrentAnswers().GetAnswers().Length == 3)
                 {
                     transforms.Add(_3AO1);
@@ -83,6 +83,7 @@ public class AnswerListDisplay : MonoBehaviour
                     transforms.Add(_1AO1);
                 }
             }
+            else return null;
         }
         return transforms;
     }

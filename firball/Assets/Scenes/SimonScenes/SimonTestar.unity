@@ -135,7 +135,8 @@ GameObject:
   - component: {fileID: 82792901}
   - component: {fileID: 82792900}
   - component: {fileID: 82792899}
-  m_Layer: 10
+  - component: {fileID: 82792903}
+  m_Layer: 7
   m_Name: Npc
   m_TagString: NPC
   m_Icon: {fileID: 0}
@@ -261,12 +262,25 @@ Transform:
   m_GameObject: {fileID: 82792898}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -155.28, y: -1.73, z: 0}
+  m_LocalPosition: {x: -155.31, y: -2.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &82792903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82792898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bdb04e7d8d185843ac4b55ed6ba5bae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogToLoad: {fileID: 11400000, guid: e100d4fcda9b4c542ab14b63df5e71a4, type: 2}
 --- !u!1 &121940676 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6603163321816494269, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
@@ -290,18 +304,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxInteractionDistance: 10
---- !u!114 &121940686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 121940676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c76191b1d9ad1440b7e6cef36d892ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &121940687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,19 +316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cf9ad4b222da3b41ad53b6a3f4a75a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &121940688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 121940676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57bd88d60246d164da908e08ef1e9dc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SaveDialogObjectOnStart: {fileID: 0}
 --- !u!1001 &142644523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -337,11 +326,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2526591595291885433, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -156.8
+      value: -156.92
       objectReference: {fileID: 0}
     - target: {fileID: 2526591595291885433, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.1
+      value: -2.4
       objectReference: {fileID: 0}
     - target: {fileID: 2526591595291885433, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -389,12 +378,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6603163321816494269, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 121940685}
-    - targetCorrespondingSourceObject: {fileID: 6603163321816494269, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 121940686}
-    - targetCorrespondingSourceObject: {fileID: 6603163321816494269, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 121940688}
     - targetCorrespondingSourceObject: {fileID: 6603163321816494269, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 121940687}

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class EnemyMovementRobot : MonoBehaviour
@@ -10,6 +11,7 @@ public class EnemyMovementRobot : MonoBehaviour
     private GameObject player;
     private EnemyDamageRobot edg;
     private bool isBeingHit = false; 
+    private bool isWalking = false;
     [SerializeField] public Animator animator;
 
     [SerializeField] private Rigidbody2D rb;
@@ -48,7 +50,15 @@ public class EnemyMovementRobot : MonoBehaviour
 
     private void Walk()
     {
-        animator.SetBool("Is walking", true);
+        
+        if (Mathf.Abs(rb.velocity.x) > 1 )
+        {
+            animator.SetFloat("Walk Velocity", 3);
+        } else if (rb.velocity.x < 1)
+        {
+            animator.SetFloat("Walk Velocity", 0);
+        }
+
         if (isFacingRight)
         {
             rb.velocity = new Vector2(speed, rb.velocity.y);

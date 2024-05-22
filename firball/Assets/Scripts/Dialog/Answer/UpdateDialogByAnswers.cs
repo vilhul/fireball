@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
@@ -18,15 +19,21 @@ public class UpdateDialogByAnswers : MonoBehaviour
     void CheckForClicks()
     {
         int i = 0;
-        foreach (Transform t in answerListDisplay.GetCurrentAnswerTransforms())
+        List<Transform> currentAnswers = answerListDisplay.GetCurrentAnswerTransforms();
+        if (currentAnswers != null)
         {
-            if (t.gameObject.GetComponent<SelectableAnswers>().GetClicked() && !Input.GetKeyDown(KeyCode.Space))
+            foreach (Transform t in currentAnswers)
             {
-                DialogBox nextDia = dialogBoxDisplay.GetDialogBox().GetCurrentAnswers().GetAnswers()[i].GetNextListen();
-                SetDialogBox(nextDia);
-                break;
+                if (t.gameObject.GetComponent<SelectableAnswers>().GetClicked() && !Input.GetKeyDown(KeyCode.Space))
+                {
+                    DialogBox nextDia = dialogBoxDisplay.GetDialogBox().GetCurrentAnswers().GetAnswers()[i].GetNextListen();
+                    SetDialogBox(nextDia);
+                    currentAnswers[i].gameObject.GetComponent<SelectableAnswers>().SetClickedFalse();
+                    break;
+                }
+                i++;
             }
-            i++;
+            currentAnswers.Clear();
         }
     }
 
