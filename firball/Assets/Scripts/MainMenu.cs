@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+// using System.Diagnostics;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,20 +19,22 @@ public class MainMenu : MonoBehaviour
     private Button startBtn;
     private Button optionsBtn;
     private Button quitBtn;
+    private Button switchCharacter;
     private VisualElement meteor;
-
-
-
+    public CharacterChangerManager characterChangerManager;
+    //Hej Azel :DD
+    SpriteRenderer spriteRenderer;
 
     private void OnEnable()
     {
         //definierar rootVisualElement, är som document i html
         rootEl = uiDoc.rootVisualElement;
 
-        //definerar de tre knapparna och säger att när de klickas kör denna funktion
+        //definerar de FYRA knapparna och säger att när de klickas kör denna funktion
         startBtn = rootEl.Query<Button>("start");
         optionsBtn = rootEl.Query<Button>("options");
         quitBtn = rootEl.Query<Button>("quit");
+        switchCharacter = rootEl.Query<Button>("SwitchCharacterButton");
 
         startBtn.RegisterCallback<ClickEvent>( (evt) =>
         {
@@ -47,6 +50,14 @@ public class MainMenu : MonoBehaviour
         {
             quitBtnClickedMethod();
         });
+
+        switchCharacter.RegisterCallback<ClickEvent>((evt) =>
+        {
+            characterChangerManager.ActivatePlayerSpriteChange();
+
+        });
+
+        
 
         //skapar flera fireballs med random storlek och random position vart de spawnar horisontellt
         for (int i = 0; i < 5; i++) {
@@ -110,4 +121,9 @@ public class MainMenu : MonoBehaviour
         //koden nedan är bara för att quitknappen ska fungera i editorn
         UnityEditor.EditorApplication.isPlaying = false;
     }
+
+    /*private void switchCharacterClickedMethod() {
+        Debug.Log("Clickad");
+        spriteRenderer.sprite = partygnome;
+    }*/
 }

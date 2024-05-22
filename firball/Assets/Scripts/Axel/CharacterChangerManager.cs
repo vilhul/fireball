@@ -5,25 +5,32 @@ using UnityEngine;
 
 public class CharacterChangerManager : MonoBehaviour
 {
-    [SerializeField] GameObject spriteShower;
+    [SerializeField] GameObject spriteDisplayer;
     SpriteRenderer spriteRenderer;
-    [SerializeField] Sprite partygnome;
+    [SerializeField] Sprite [] spriteList;
+    int spriteIndex = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-       spriteRenderer = spriteShower.GetComponent<SpriteRenderer>();  
+       spriteRenderer = spriteDisplayer.GetComponent<SpriteRenderer>();
+       spriteRenderer.sprite = spriteList[spriteIndex];
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+     if(spriteIndex >= spriteList.Length - 1) 
+        {
+            spriteIndex = 0;
+        }   
     }
 
     public void ActivatePlayerSpriteChange()
     {
         Debug.Log("Clickad");
-        spriteRenderer.sprite = partygnome;
+        spriteIndex++;
+        Debug.Log(spriteIndex);
+        spriteRenderer.sprite = spriteList[spriteIndex];
     }       
 }

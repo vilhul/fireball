@@ -19,7 +19,7 @@ public class Fireball1 : MonoBehaviour
         distance = Vector3.Distance(transform.position, player.transform.position);
         if (distance > maxDistance) { 
             Destroy(gameObject);
-            Debug.Log("eldboll orde ha förstörts");
+            Debug.Log("eldboll borde ha förstörts");
         }
     }
 

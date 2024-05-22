@@ -7,4 +7,5 @@
         <ui:Button name="options" text="Options" class="start-btn" />
         <ui:Button name="quit" text="Quit" class="start-btn" />
     </ui:VisualElement>
+    <ui:Button name="SwitchCharacterButton" text="↻" class="start-btn" style="flex-direction: column; flex-wrap: nowrap; align-items: stretch; justify-content: flex-start; align-self: flex-start; position: absolute; top: 661px; left: 251px; background-image: url(&quot;project://database/Assets/Sprites/RealSpritesFR/Other/Frame.png?fileID=21300000&amp;guid=337b5c48803658f41b98546c271f06c3&amp;type=3#Frame&quot;); background-color: rgba(188, 188, 188, 0); height: 120px; width: 120px; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; font-size: 96px; -unity-text-align: upper-center; -unity-font: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=9604fc24a6cce6d4fb4308c691342cac&amp;type=3#NotInter-Regular&quot;);" />
 </ui:UXML>
