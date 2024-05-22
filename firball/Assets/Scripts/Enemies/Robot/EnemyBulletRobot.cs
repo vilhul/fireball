@@ -28,7 +28,6 @@ public class EnemyBulletRobot : MonoBehaviour
 
         if (col.gameObject.CompareTag("Player"))
         {
-            Debug.Log("PLAYER ÄR TRÄFFAD");
             player.GetComponent<PlayerDamage>().Take10Damage();
             Destroy(gameObject);
         }
