@@ -46,7 +46,7 @@ public class PlayerNpcInteract : MonoBehaviour
     void Update()
     {
         // Player presses interact key
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && GameObject.FindGameObjectWithTag("Dialog") == null)
         {
             List<GameObject> npcs = GetNpcsInRange();
 

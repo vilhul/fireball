@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2cdabb0bda62c9469e6c5bb31df8f22, type: 3}
+  m_Name: TestKindWay
+  m_EditorClassIdentifier: 
+  answers:
+  - {fileID: 11400000, guid: ed1ff507ff8ef3b4f98b63deb6f3fe43, type: 2}
+  - {fileID: 11400000, guid: 7c6495eaa4742274c9866d245739af6f, type: 2}

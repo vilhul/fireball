@@ -10,7 +10,7 @@ public class SelectableAnswers : MonoBehaviour
 {
     [SerializeField] private Button button;
 
-    bool clicked;
+    [SerializeField] bool clicked;
     public void SetClickedTrue()
     {
         clicked = true;
@@ -32,8 +32,12 @@ public class SelectableAnswers : MonoBehaviour
         button.onClick.AddListener(SetClickedTrue);
         SetClickedFalse();
     }
-    void LateUpdate()
+    private void Update()
     {
         SetClickedFalse();
+    }
+    void LateUpdate()
+    {
+        
     }
 }

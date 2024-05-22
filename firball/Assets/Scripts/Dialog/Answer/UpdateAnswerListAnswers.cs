@@ -10,7 +10,7 @@ public class UpdateAnswerListAnswers : MonoBehaviour
 
     public void UpdateAnswerTexts()
     {
-        if (answerListDisplay != null)
+        if (answerListDisplay.GetCurrentAnswerTransforms() != null)
         {
             int i = 0;
             foreach (Transform t in answerListDisplay.GetCurrentAnswerTransforms())
