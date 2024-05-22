@@ -23,7 +23,7 @@ public class WorldInteractionsGoomba : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.layer == 3)
+        if (col.gameObject.layer == 6)
         {
             emg.Flip();
         }

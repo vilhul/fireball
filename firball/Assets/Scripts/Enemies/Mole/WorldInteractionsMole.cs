@@ -17,7 +17,7 @@ public class WorldInteractionsMole : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if ((col.gameObject.layer == 3 || col.CompareTag("Enemy")) && IsGrounded())
+        if ((col.gameObject.layer == 6 || col.CompareTag("Enemy")) && IsGrounded())
         {
             Debug.Log("Mole Jump");
             rb.velocity = new Vector2(rb.velocity.x, emm.jumpingPower);
