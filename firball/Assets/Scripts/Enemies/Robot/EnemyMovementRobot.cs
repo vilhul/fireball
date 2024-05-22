@@ -11,7 +11,6 @@ public class EnemyMovementRobot : MonoBehaviour
     private GameObject player;
     private EnemyDamageRobot edg;
     private bool isBeingHit = false; 
-    private bool isWalking = false;
     [SerializeField] public Animator animator;
 
     [SerializeField] private Rigidbody2D rb;
@@ -25,6 +24,7 @@ public class EnemyMovementRobot : MonoBehaviour
 
     void Update()
     {
+        animator.SetFloat("WalkVelocity", Mathf.Abs(rb.velocity.x));
         if (!isBeingHit)
         {
             Walk();
@@ -50,15 +50,6 @@ public class EnemyMovementRobot : MonoBehaviour
 
     private void Walk()
     {
-        
-        if (Mathf.Abs(rb.velocity.x) > 1 )
-        {
-            animator.SetFloat("Walk Velocity", 3);
-        } else if (rb.velocity.x < 1)
-        {
-            animator.SetFloat("Walk Velocity", 0);
-        }
-
         if (isFacingRight)
         {
             rb.velocity = new Vector2(speed, rb.velocity.y);

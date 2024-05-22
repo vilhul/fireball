@@ -9,9 +9,12 @@ public class EnemyShootingRobot : MonoBehaviour
 
     private float timer;
     private GameObject player;
+    private EnemyMovementRobot emr;
+    private bool hasShot = false;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        emr = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyMovementRobot>();
     }
 
     void Update()
@@ -21,9 +24,18 @@ public class EnemyShootingRobot : MonoBehaviour
         if(distance < 13)
         {
             timer += Time.deltaTime;
-            if(timer > 1)
+            if(timer == 0)
+            {
+                emr.animator.SetBool("IsSeeingPlayer", true);
+            } else if(timer > 2.4f)
             {
                 timer = 0;
+                hasShot = false;
+                emr.animator.SetBool("IsSeeingPlayer", false);
+            }
+            if(timer > 2.2f && !hasShot)
+            {
+                hasShot = true;
                 Shoot();
             }
         }
