@@ -10,7 +10,7 @@ public class EnemyDamageGoomba : MonoBehaviour
 
     void Start()
     {
-        healthCanvas.GetComponent<Canvas>().enabled = false;
+        healthCanvas.GetComponent<Canvas>().enabled = true;
         healthbar.UpdateHealthbar(hp, maxHp);
     }
 

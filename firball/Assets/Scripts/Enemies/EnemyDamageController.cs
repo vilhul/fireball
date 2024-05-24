@@ -15,19 +15,10 @@ public class EnemyDamageController : MonoBehaviour
         }
     }
 
-    public void Take10Damage()
+    public void TakeDamage(float damage)
     {
-        hp -= 10f;
-    }
-
-    public void Take25Damage()
-    {
-        hp -= 25f;
-    }
-
-    public void Take50Damage()
-    {
-        hp -= 50f;
+        hp -= damage;
+        Debug.Log("Fiende tog skada");
     }
 
     public void DIE()
