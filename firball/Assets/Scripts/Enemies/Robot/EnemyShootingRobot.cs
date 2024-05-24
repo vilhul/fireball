@@ -11,6 +11,7 @@ public class EnemyShootingRobot : MonoBehaviour
     private GameObject player;
     private EnemyMovementRobot emr;
     private bool hasShot = false;
+    private bool animHasPlayed = false;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -24,24 +25,32 @@ public class EnemyShootingRobot : MonoBehaviour
         if(distance < 13)
         {
             timer += Time.deltaTime;
-            if(timer == 0)
+            if(timer > 0 && !animHasPlayed)
             {
-                emr.animator.SetBool("IsSeeingPlayer", true);
-            } else if(timer > 2.4f)
+                emr.animator.SetTrigger("SeeingPlayer");
+                animHasPlayed = true;
+            } 
+            if(timer > 2.5f)
             {
-                timer = 0;
                 hasShot = false;
-                emr.animator.SetBool("IsSeeingPlayer", false);
+                timer = 0;
+                animHasPlayed = false;
             }
-            if(timer > 2.2f && !hasShot)
+            if(timer > 2.3f && !hasShot)
             {
                 hasShot = true;
                 Shoot();
             }
+        } else
+        {
+            timer = 0;
+            animHasPlayed = false;
+            hasShot = false;
+            emr.animator.StopPlayback();
         }
     }
 
-    void Shoot()
+    private void Shoot()
     {
         Instantiate(beem, beemPos.position, Quaternion.identity);
     }
