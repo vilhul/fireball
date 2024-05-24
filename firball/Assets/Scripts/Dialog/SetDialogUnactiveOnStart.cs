@@ -9,6 +9,6 @@ public class SetDialogUnactiveOnStart : MonoBehaviour
     void Start()
     {
         SaveDialogObjectOnStart = GetComponent<SaveDialogObjectOnStart>();
-        SaveDialogObjectOnStart.enabled = false;
+        SaveDialogObjectOnStart.GetDialogObject().SetActive(false);
     }
 }
