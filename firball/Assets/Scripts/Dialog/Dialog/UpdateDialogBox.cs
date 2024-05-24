@@ -17,7 +17,8 @@ public class UpdateDialogBox : MonoBehaviour
         if (dialogBoxDisplay.GetDialogBox() != null)
         {
             if (dialogBoxDisplay.GetDialogBox().GetCurrentAnswers() == null
-            && dialogBoxDisplay.GetNextDialog() == null)
+            && dialogBoxDisplay.GetNextDialog() == null
+            && dialogBoxDisplay.GetDialogBox().GetTextContent() == "")
             {
                 gameObject.SetActive(false);
                 return;
@@ -31,6 +32,12 @@ public class UpdateDialogBox : MonoBehaviour
             answerListDisplay.UpdateShownAnswerOptions();
             updateAnswerListAnswers.UpdateAnswerTexts();
         }
+        else
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+        Debug.Log("DialogBox: " + dialogBoxDisplay.GetDialogBox().ToString());
     }
 
     // Start is called before the first frame update
@@ -45,21 +52,14 @@ public class UpdateDialogBox : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { 
-        // Detect "next
-        if (Input.GetKeyDown(KeyCode.F) && dialogBoxDisplay.GetNextDialog() != null)
+    {
+        //Debug.Log(dialogBoxDisplay.GetDialogBox());
+        //Debug.Log(dialogBoxDisplay.GetNextDialog());
+        // Detect "next"
+        if (Input.GetKeyDown(KeyCode.F) && dialogBoxDisplay.GetDialogBox().GetCurrentAnswers() == null)
         {
-            if (dialogBoxDisplay.GetNextDialog() != null)
-            {
-                // Sets to correct box, changes to wrong one elsewhere??!?
-                // Problem likely lies in UpdateByAnswer
-                dialogBoxDisplay.SetDialogBox(dialogBoxDisplay.GetNextDialog());
-                UpdateAll();
-            }
-        }
-        if (dialogBoxDisplay.GetDialogBox() == null && dialogBoxDisplay.GetNextDialog() == null)
-        {
-            gameObject.SetActive(false);
+            dialogBoxDisplay.SetDialogBox(dialogBoxDisplay.GetNextDialog());
+            UpdateAll();   
         }
     }
 }

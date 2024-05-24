@@ -740,7 +740,7 @@ MonoBehaviour:
   walkableSpaceBack: {fileID: 3469123506095873325}
   wall:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 64
 --- !u!1 &6396942094209368953
 GameObject:
   m_ObjectHideFlags: 0
