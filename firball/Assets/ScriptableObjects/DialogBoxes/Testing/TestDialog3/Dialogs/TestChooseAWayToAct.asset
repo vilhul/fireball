@@ -15,4 +15,4 @@ MonoBehaviour:
   textContent: How would you like to act?
   sprite: {fileID: -1661836982, guid: 66df9e243e2e04047aa4b380750c48a9, type: 3}
   nextDialog: {fileID: 0}
-  currentAnswers: {fileID: 0}
+  currentAnswers: {fileID: 11400000, guid: 71c3004918328794a93ea10eaf388a51, type: 2}

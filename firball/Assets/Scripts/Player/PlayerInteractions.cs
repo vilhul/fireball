@@ -50,21 +50,21 @@ public class PlayerInteractions : MonoBehaviour
             if(col.gameObject.GetComponent<EnemyMovementGoomba>()) // nödlösning
             {
                 col.gameObject.GetComponent<EnemyMovementGoomba>().ToggleIsBeingHit();
-                col.gameObject.GetComponent<EnemyDamageGoomba>().UpdateHealtbar();
+                col.gameObject.GetComponent<EnemyDamageGoomba>().UpdateGoombaHealtbar();
             }
 
             // Mole
             if(col.gameObject.GetComponent <EnemyMovementMole>())
             {
                 col.gameObject.GetComponent<EnemyMovementMole>().ToggleIsBeingHit();
-                col.gameObject.GetComponent<EnemyDamageMole>().UpdateHealtbar();
+                col.gameObject.GetComponent<EnemyDamageMole>().UpdateMoleHealtbar();
             }
 
             // Robot 
             if (col.gameObject.gameObject.GetComponent<EnemyMovementRobot>())
             {
                 col.gameObject.GetComponent<EnemyMovementRobot>().ToggleIsBeingHit();
-                col.gameObject.GetComponent<EnemyDamageRobot>().UpdateHealtbar();
+                col.gameObject.GetComponent<EnemyDamageRobot>().UpdateRobotHealtbar();
             }
             col.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
             col.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(pushForceX, pushForceY));
@@ -78,10 +78,25 @@ public class PlayerInteractions : MonoBehaviour
             rb.AddForce(new Vector2(pushForceX, pushForceY));
 
             // Enemy
+            // Goomba
             if (col.gameObject.GetComponent<EnemyMovementGoomba>()) // nödlösning
             {
                 col.gameObject.GetComponent<EnemyMovementGoomba>().ToggleIsBeingHit();
-                col.gameObject.GetComponent<EnemyDamageGoomba>().UpdateHealtbar();
+                col.gameObject.GetComponent<EnemyDamageGoomba>().UpdateGoombaHealtbar();
+            }
+
+            // Mole
+            if (col.gameObject.GetComponent<EnemyMovementMole>())
+            {
+                col.gameObject.GetComponent<EnemyMovementMole>().ToggleIsBeingHit();
+                col.gameObject.GetComponent<EnemyDamageMole>().UpdateMoleHealtbar();
+            }
+
+            // Robot 
+            if (col.gameObject.gameObject.GetComponent<EnemyMovementRobot>())
+            {
+                col.gameObject.GetComponent<EnemyMovementRobot>().ToggleIsBeingHit();
+                col.gameObject.GetComponent<EnemyDamageRobot>().UpdateRobotHealtbar();
             }
             col.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
             col.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-pushForceX, pushForceY));

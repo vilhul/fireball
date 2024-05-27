@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64a0bf60ad0168540af02b4296432562, type: 3}
   m_Name: TestFunWayNoPls
   m_EditorClassIdentifier: 
-  textContent: 
-  sprite: {fileID: 0}
+  textContent: No pls
+  sprite: {fileID: 21300000, guid: ac4839f9063683141b7b6428ab73d644, type: 3}
   nextDialog: {fileID: 0}
   currentAnswers: {fileID: 0}

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42708fff664630e47b8349cb2c75370e, type: 3}
   m_Name: TestEnSvars
   m_EditorClassIdentifier: 
-  desc: 
+  desc: Preciiiiiiis
   nextDialog: {fileID: 0}

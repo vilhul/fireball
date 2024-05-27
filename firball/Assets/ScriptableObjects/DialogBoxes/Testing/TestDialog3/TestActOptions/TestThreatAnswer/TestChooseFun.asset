@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64a0bf60ad0168540af02b4296432562, type: 3}
   m_Name: TestChooseFun
   m_EditorClassIdentifier: 
-  textContent: 
-  sprite: {fileID: 0}
+  textContent: Choose fun-way
+  sprite: {fileID: -1661836982, guid: 66df9e243e2e04047aa4b380750c48a9, type: 3}
   nextDialog: {fileID: 0}
-  currentAnswers: {fileID: 0}
+  currentAnswers: {fileID: 11400000, guid: 180e223e688312047845ea4afdd83f33, type: 2}

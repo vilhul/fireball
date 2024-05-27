@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class SetDialogUnactiveOnStart : MonoBehaviour
 {
-    SaveDialogObjectOnStart SaveDialogObjectOnStart;
     // Start is called before the first frame update
     void Start()
     {
-        SaveDialogObjectOnStart = GetComponent<SaveDialogObjectOnStart>();
-        SaveDialogObjectOnStart.GetDialogObject().SetActive(false);
+        GameObject.FindWithTag("Dialog").SetActive(false);
     }
 }

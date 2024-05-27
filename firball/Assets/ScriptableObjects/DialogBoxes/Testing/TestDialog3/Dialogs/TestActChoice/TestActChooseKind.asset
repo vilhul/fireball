@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42708fff664630e47b8349cb2c75370e, type: 3}
   m_Name: TestActChooseKind
   m_EditorClassIdentifier: 
-  desc: 
-  nextDialog: {fileID: 0}
+  desc: Be kind (boring)
+  nextDialog: {fileID: 11400000, guid: 5be2ded572803344aa6708f09db93c91, type: 2}
