@@ -414,7 +414,7 @@ GameObject:
   - component: {fileID: 6524269187579547250}
   - component: {fileID: 1508458548342892710}
   - component: {fileID: 5581009513246613257}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: World Interactions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -515,7 +515,7 @@ GameObject:
   - component: {fileID: 1338548258424302506}
   - component: {fileID: 6663930241674824737}
   - component: {fileID: 6970008921553704322}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: EnemyGoomba
   m_TagString: Enemy
   m_Icon: {fileID: 0}
