@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireballProjectileController : MonoBehaviour
+public class ProjectileController : MonoBehaviour
 {
     GameObject player;
-    float maxDistance = 15f;
+    [SerializeField] float maxDistance = 15f;
     float distance;
+    [SerializeField] float projectileDamage;
     EnemyDamageController enemyDamageController;
     void Start()
     {
@@ -35,7 +36,7 @@ public class FireballProjectileController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             //om eldboll nuddar fiende
-            enemyDamageController.TakeDamage(25);
+            enemyDamageController.TakeDamage(projectileDamage);
             Destroy(gameObject);
         }
     }

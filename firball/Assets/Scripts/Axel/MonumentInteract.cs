@@ -8,8 +8,8 @@ public class MonumentInteract : MonoBehaviour
 {
     private GameObject player;
     private Transform playerTransform;
-    private GameObject interactIndicator;
-    private float minDistForInteraction = 2f;
+    //private GameObject interactIndicator;
+    private readonly float minDistForInteraction = 2f;
     private Vector3 indicatorPos;
     private bool hasResetIndicatorPos = false;
     private bool playerHasClaimedAbility = false;
@@ -17,14 +17,15 @@ public class MonumentInteract : MonoBehaviour
     [SerializeField] private KeyCode assignToKey;
     //[SerializeField] private Sprite deActivatedMonumentSprite;
     [SerializeField] private Animator animatorOnTheMonument;
-    
+    [SerializeField] private GameObject interactIndicator;
+
 
     private void Start()
     {
         //Hämtar nödvändiga variabler
         player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = player.transform;
-        interactIndicator = GameObject.Find("InteractIndicator");
+        
         indicatorPos = interactIndicator.transform.position;
     }
 
