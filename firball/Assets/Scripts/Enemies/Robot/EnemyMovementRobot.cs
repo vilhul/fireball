@@ -24,7 +24,6 @@ public class EnemyMovementRobot : MonoBehaviour
 
     void Update()
     {
-        animator.SetFloat("WalkVelocity", Mathf.Abs(rb.velocity.x));
         if (!isBeingHit)
         {
             Walk();
@@ -33,6 +32,7 @@ public class EnemyMovementRobot : MonoBehaviour
         float distance = Vector2.Distance(transform.position, player.transform.position);
         if (distance < 13)
         {
+            animator.SetBool("IsWalking", false);
             if (!isBeingHit)
             {
                 isBeingHit = true;
@@ -50,6 +50,7 @@ public class EnemyMovementRobot : MonoBehaviour
 
     private void Walk()
     {
+        animator.SetBool("IsWalking", true);
         if (isFacingRight)
         {
             rb.velocity = new Vector2(speed, rb.velocity.y);
