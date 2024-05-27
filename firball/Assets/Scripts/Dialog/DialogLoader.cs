@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DialogLoader : MonoBehaviour
 {
@@ -34,7 +35,16 @@ public class DialogLoader : MonoBehaviour
     void DialogGameObjectStartLogic()
     {
         // Used to find and set Dialog
-        dialog = GameObject.FindWithTag("Dialog");
+        GameObject[] rootGameObjects = SceneManager.GetSceneByName("PersistentScene").GetRootGameObjects();
+        foreach (GameObject gameObject in rootGameObjects)
+        {
+            if (gameObject.CompareTag("Player"))
+            {
+                dialog = gameObject.GetComponent<SaveDialogObjectOnStart>().GetDialogObject();
+                break;
+            }
+        }
+        Debug.LogWarning(dialog);
     }
 
     void Start()

@@ -37,7 +37,6 @@ public class UpdateDialogBox : MonoBehaviour
             gameObject.SetActive(false);
             return;
         }
-        Debug.Log("DialogBox: " + dialogBoxDisplay.GetDialogBox().ToString());
     }
 
     // Start is called before the first frame update

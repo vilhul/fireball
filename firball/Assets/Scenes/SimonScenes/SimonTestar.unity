@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 82792901}
   - component: {fileID: 82792900}
   - component: {fileID: 82792899}
-  - component: {fileID: 82792903}
   m_Layer: 7
   m_Name: Npc
   m_TagString: NPC
@@ -155,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bdb04e7d8d185843ac4b55ed6ba5bae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogToLoad: {fileID: 11400000, guid: 71dae32ca88bed74092da38f37ef7be7, type: 2}
+  dialogToLoad: {fileID: 11400000, guid: c3d56b534f2b92c4f874b8ab2b79a172, type: 2}
 --- !u!61 &82792900
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -268,19 +267,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &82792903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 82792898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bdb04e7d8d185843ac4b55ed6ba5bae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogToLoad: {fileID: 11400000, guid: e100d4fcda9b4c542ab14b63df5e71a4, type: 2}
 --- !u!4 &121940684 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2526591595291885433, guid: 0de3a350d65b7eb479856999e73ff1c8, type: 3}
