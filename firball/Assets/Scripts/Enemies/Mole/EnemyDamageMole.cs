@@ -24,7 +24,7 @@ public class EnemyDamageMole : MonoBehaviour
         }
     }
 
-    public void UpdateHealtbar()
+    public void UpdateMoleHealtbar()
     {
         healthCanvas.GetComponent<Canvas>().enabled = true;
         healthbar.UpdateHealthbar(hp, maxHp);
