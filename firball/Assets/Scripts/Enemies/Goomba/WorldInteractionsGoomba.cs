@@ -10,7 +10,9 @@ public class WorldInteractionsGoomba : MonoBehaviour
     [SerializeField] private Transform walkableSpaceBack;
     [SerializeField] private LayerMask wall;
     private EnemyMovementGoomba emg;
-    
+    private float groundCheckSize = 0.4f;
+
+
     void Start()
     {
         emg = transform.parent.GetComponent<EnemyMovementGoomba>();
@@ -35,12 +37,19 @@ public class WorldInteractionsGoomba : MonoBehaviour
     }
     private bool IsFloorFront()
     {
-        return Physics2D.OverlapCircle(walkableSpaceFront.position, 0.4f, wall);
+        return Physics2D.OverlapCircle(walkableSpaceFront.position, groundCheckSize, wall);
     }
 
     private bool IsFloorBack()
     {
-        return Physics2D.OverlapCircle(walkableSpaceBack.position, 0.4f, wall);
+        return Physics2D.OverlapCircle(walkableSpaceBack.position, groundCheckSize, wall);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(walkableSpaceFront.position, groundCheckSize);
+        Gizmos.DrawWireSphere(walkableSpaceBack.position, groundCheckSize);
     }
 
     private void FloorCheck()

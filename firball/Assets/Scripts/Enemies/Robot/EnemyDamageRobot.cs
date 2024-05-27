@@ -24,7 +24,7 @@ public class EnemyDamageRobot : MonoBehaviour
         }
     }
 
-    public void UpdateHealtbar()
+    public void UpdateRobotHealtbar()
     {
         healthCanvas.GetComponent<Canvas>().enabled = true;
         healthbar.UpdateHealthbar(hp, maxHp);

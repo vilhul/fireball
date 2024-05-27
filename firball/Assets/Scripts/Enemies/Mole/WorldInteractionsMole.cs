@@ -6,6 +6,7 @@ public class WorldInteractionsMole : MonoBehaviour
 {
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask wall;
+    private Vector2 groundCheckSize = new Vector2(0.5f, 0.1f);
     EnemyMovementMole emm;
 
     Rigidbody2D rb;
@@ -19,13 +20,16 @@ public class WorldInteractionsMole : MonoBehaviour
     {
         if ((col.gameObject.layer == 6 || col.CompareTag("Enemy")) && IsGrounded())
         {
-            Debug.Log("Mole Jump");
             rb.velocity = new Vector2(rb.velocity.x, emm.jumpingPower);
         }
     }
-
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireCube(groundCheck.position, groundCheckSize);
+    }
     private bool IsGrounded()
     {
-        return Physics2D.OverlapBox(groundCheck.position, new Vector2(0.5f, 0.1f), 0f, wall);
+        return Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0f, wall);
     }
 }
