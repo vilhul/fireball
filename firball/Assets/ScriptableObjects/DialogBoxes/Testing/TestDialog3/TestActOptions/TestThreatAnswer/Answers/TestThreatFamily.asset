@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: TestThreatFamily
   m_EditorClassIdentifier: 
   desc: Kommer japp din familj bror
-  nextDialog: {fileID: 0}
+  nextDialog: {fileID: 11400000, guid: a7bf5a507f6e4314facd482d21792be1, type: 2}

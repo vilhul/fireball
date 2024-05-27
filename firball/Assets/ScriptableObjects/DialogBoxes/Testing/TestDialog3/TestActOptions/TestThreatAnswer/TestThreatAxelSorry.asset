@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64a0bf60ad0168540af02b4296432562, type: 3}
   m_Name: TestThreatAxelSorry
   m_EditorClassIdentifier: 
-  textContent: 
-  sprite: {fileID: 0}
-  nextDialog: {fileID: 0}
+  textContent: "F\xF6rl\xE5t :("
+  sprite: {fileID: -663759137, guid: 4e07f686211fc6944a258f24eff00f90, type: 3}
+  nextDialog: {fileID: 11400000, guid: 344bffb6242c2b649966c077daa6581a, type: 2}
   currentAnswers: {fileID: 0}

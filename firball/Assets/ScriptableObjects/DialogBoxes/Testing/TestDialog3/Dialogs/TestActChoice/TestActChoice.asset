@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2cdabb0bda62c9469e6c5bb31df8f22, type: 3}
   m_Name: TestActChoice
   m_EditorClassIdentifier: 
-  answers: []
+  answers:
+  - {fileID: 11400000, guid: 6cb527d35c8be7e4aa78100d0114dd03, type: 2}
+  - {fileID: 11400000, guid: 4f154800002c46f48a03249442687fcb, type: 2}

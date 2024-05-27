@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42708fff664630e47b8349cb2c75370e, type: 3}
   m_Name: TestActChooseThreat
   m_EditorClassIdentifier: 
-  desc: 
-  nextDialog: {fileID: 0}
+  desc: Hota (kul)
+  nextDialog: {fileID: 11400000, guid: 86013b2a2ecc0b14b8c156d955bfa455, type: 2}
