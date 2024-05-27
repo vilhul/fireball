@@ -44,7 +44,6 @@ public class DialogLoader : MonoBehaviour
                 break;
             }
         }
-        Debug.LogWarning(dialog);
     }
 
     void Start()
