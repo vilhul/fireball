@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: TestKindHandhold
   m_EditorClassIdentifier: 
   desc: Handhold
-  nextDialog: {fileID: 0}
+  nextDialog: {fileID: 11400000, guid: ad283ad287a532442930ee869bf5c6bb, type: 2}

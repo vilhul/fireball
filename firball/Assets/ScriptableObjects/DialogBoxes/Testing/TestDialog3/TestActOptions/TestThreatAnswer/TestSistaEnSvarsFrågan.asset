@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2cdabb0bda62c9469e6c5bb31df8f22, type: 3}
   m_Name: "TestSistaEnSvarsFr\xE5gan"
   m_EditorClassIdentifier: 
-  answers: []
+  answers:
+  - {fileID: 11400000, guid: eec3b31b057779341bd8af1e5ccaaeb6, type: 2}
