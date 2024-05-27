@@ -9,6 +9,7 @@ public class WorldInteractionsRobot : MonoBehaviour
     [SerializeField] private Transform walkableSpaceFront;
     [SerializeField] private Transform walkableSpaceBack;
     [SerializeField] private LayerMask wall;
+    private float groundCheckSize = 0.4f;
     private EnemyMovementRobot emr;
 
     void Start()
@@ -35,12 +36,12 @@ public class WorldInteractionsRobot : MonoBehaviour
     }
     private bool IsFloorFront()
     {
-        return Physics2D.OverlapCircle(walkableSpaceFront.position, 0.4f, wall);
+        return Physics2D.OverlapCircle(walkableSpaceFront.position, groundCheckSize, wall);
     }
 
     private bool IsFloorBack()
     {
-        return Physics2D.OverlapCircle(walkableSpaceBack.position, 0.4f, wall);
+        return Physics2D.OverlapCircle(walkableSpaceBack.position, groundCheckSize, wall);
     }
 
     private void FloorCheck()
@@ -49,5 +50,12 @@ public class WorldInteractionsRobot : MonoBehaviour
         {
             emr.Flip();
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(walkableSpaceFront.position, groundCheckSize);
+        Gizmos.DrawWireSphere(walkableSpaceBack.position, groundCheckSize);
     }
 }
