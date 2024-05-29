@@ -44,9 +44,9 @@ public class EntranceHandler : MonoBehaviour
             InputSystemController.nextEntranceName = entranceDataSO.nextEntranceName;
 
             Debug.Log("loading");
+            SceneManager.UnloadSceneAsync(entranceDataSO.thisRoom.name);
             SceneManager.LoadScene(entranceDataSO.nextRoom.name, LoadSceneMode.Additive);
             Debug.Log("unloading");
-            SceneManager.UnloadSceneAsync(entranceDataSO.thisRoom.name);
         }
     }
 

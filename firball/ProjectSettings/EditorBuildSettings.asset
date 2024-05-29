@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SimonScenes/SimonTestar.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 519a26bb70f110b48b85b667f8ef09e4
+  - enabled: 1
     path: Assets/Scenes/PersistentScene.unity
     guid: 8b030f612e1ff4c47b4cf1e0e74cc287
   - enabled: 1

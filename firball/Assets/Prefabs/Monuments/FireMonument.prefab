@@ -457,3 +457,4 @@ MonoBehaviour:
   typeOfAbility: {fileID: 11400000, guid: ed032134603b7994fbfc335ce1a9553a, type: 2}
   assignToKey: 102
   animatorOnTheMonument: {fileID: 3983678028750519123}
+  interactIndicator: {fileID: 743736661559464951}

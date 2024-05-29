@@ -105,7 +105,7 @@ public class MainMenu : MonoBehaviour
     private void startBtnClickedMethod()
     {
         Debug.Log("startknapp klickad");
-        SceneManager.LoadSceneAsync(persistentScene.name, LoadSceneMode.Single);
+        SceneManager.LoadScene(persistentScene.name, LoadSceneMode.Single);
         SceneManager.LoadSceneAsync(startingRoom.name, LoadSceneMode.Additive);
     }
 
